@@ -58,16 +58,16 @@ var DinnerModel = function() {
 	//it is removed from the menu and the new one added.
 	this.addDishToMenu = function(id) {
 		//TODO Lab 2
-    //Get the dish with the specified id
-    var newDish =  $(dishes).filter(function(dish) {
+    //Get the dish (in an array) with the specified id
+    var newDish =  $(dishes).filter(function(index,dish) {
       return dish.id == id;
     });
     //Check if there is another dish of the same type
-    this.selectedDishes = $(selectedDishes).filter(function(dish){
+    this.selectedDishes = $(selectedDishes).filter(function(index,dish){
       return dish.type !== newDish.type;
     });
     //Append newDish to selectedDishes
-    this.selectedDishes.push(newDish);
+    this.selectedDishes.push(newDish[0]);
 	}
 
 	//Removes dish from menu
