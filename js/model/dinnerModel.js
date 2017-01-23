@@ -73,6 +73,9 @@ var DinnerModel = function() {
 	//Removes dish from menu
 	this.removeDishFromMenu = function(id) {
 		//TODO Lab 2
+		selectedDishes = $(selectedDishes).filter(function(index, dish){
+			return dish.id !== id;
+		});
 	}
 
 	//function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
