@@ -1,8 +1,7 @@
 //DinnerModel Object constructor
 var DinnerModel = function () {
 
-<<<<<<< HEAD
-  var numberOfGuests = 0;
+  var numberOfGuests = 1;
   var selectedDishes = [];
 
 	this.setNumberOfGuests = function(num) {
@@ -40,6 +39,7 @@ var DinnerModel = function () {
 	//Returns the total price of the menu (all the ingredients multiplied by number of guests).
 	this.getTotalMenuPrice = function () {
 		var totalCost = 0;
+    var nrGuests = this.getNumberOfGuests();
 		$.each(this.getAllIngredients(), function (index, ingredient) {
 			totalCost +=  ingredient.price * this.numberOfGuests;		// this.numberOfGuests is NaN
 		});
