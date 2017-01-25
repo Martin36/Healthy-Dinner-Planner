@@ -1,41 +1,32 @@
 //DinnerModel Object constructor
 var DinnerModel = function() {
 
-	//TODO Lab 2 implement the data structure that will hold number of guest
-	// and selected dinner options for dinner menu
-
   var numberOfGuests = 0;
   var selectedDishes = [];
 
 	this.setNumberOfGuests = function(num) {
-		//TODO Lab 2
     this.numberOfGuests = num;
 	}
 
 	// should return
 	this.getNumberOfGuests = function() {
-		//TODO Lab 2
     return this.numberOfGuests;
 	}
 
 	//Returns the dish that is on the menu for selected type
 	this.getSelectedDish = function(type) {
-		//TODO Lab 2
     return $(selectedDishes).filter(function(index, dish){
       return dish.type == type;
     });
   }
 
-
 	//Returns all the dishes on the menu.
 	this.getFullMenu = function() {
-		//TODO Lab 2
     return this.selectedDishes;
 	}
 
 	//Returns all ingredients for all the dishes on the menu.
 	this.getAllIngredients = function() {
-		//TODO Lab 2
     var ingredients = [];
     $.each(selectedDishes,function(index,dish){
       $.each(dish.ingredients,function(index,ingredient){
@@ -57,7 +48,6 @@ var DinnerModel = function() {
 	//Adds the passed dish to the menu. If the dish of that type already exists on the menu
 	//it is removed from the menu and the new one added.
 	this.addDishToMenu = function(id) {
-		//TODO Lab 2
     //Get the dish (in an array) with the specified id
     var newDish =  $(dishes).filter(function(index,dish) {
       return dish.id == id;
@@ -72,7 +62,6 @@ var DinnerModel = function() {
 
 	//Removes dish from menu
 	this.removeDishFromMenu = function(id) {
-		//TODO Lab 2
 		selectedDishes = $(selectedDishes).filter(function(index, dish){
 			return dish.id !== id;
 		});
