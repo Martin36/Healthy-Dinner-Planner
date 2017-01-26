@@ -1,5 +1,12 @@
-.jumbotron {
-    background-color: #f9e79f
+.jumbotron#title {
+  background-color: #f9e79f;
+  margin-bottom: 0;
+}
+
+.jumbotron#no-margin {
+  background-color:#f5b041;
+  margin-top:0;
+  margin-bottom: 0;
 }
 
 .container-fluid#info-container {
@@ -10,8 +17,15 @@
 hr {
   border-width: medium;
   border-color: rgba(0, 0, 0, 1);
+  margin-top:0;
+  margin-bottom:0;
 }
 
 #info-box{
   background-color: rgba(214, 234, 248, 0.5);
+}
+
+#specialButton {
+  background-color: #f39c12;
+  margin-bottom: 10px;
 }
