@@ -29,3 +29,15 @@ hr {
   background-color: #f39c12;
   margin-bottom: 10px;
 }
+
+.col-fixed-240{
+    width:240px;
+    background:red;
+}
+
+.col-fixed-160{
+    margin-left:240px;
+    width:160px;
+    background:blue;
+    position:fixed;
+}
