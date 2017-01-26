@@ -1,7 +1,6 @@
 //DinnerModel Object constructor
 var DinnerModel = function () {
-
-<<<<<<< HEAD
+  		
   var numberOfGuests = 0;
   var selectedDishes = [];
 
