@@ -6,3 +6,12 @@
   margin-top: 100px;
   margin-left: 100px
 }
+
+hr {
+  border-width: medium;
+  border-color: rgba(0, 0, 0, 1);
+}
+
+#info-box{
+  background-color: rgba(214, 234, 248, 0.5);
+}
