@@ -2,62 +2,70 @@
 <html lang="eng">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, intitial-scale=1">
-    <title>Healthy Dinnerplanner</title>
-    <!--Bootstrap-->
-    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="CSS/superCSS.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, intitial-scale=1">
+  <title>Healthy Dinnerplanner</title>
+  <!--Bootstrap-->
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="CSS/superCSS.css">
 </head>
 
 <body style="background-color: #70ea5e ">
-    <div class="jumbotron text-center">
-        <div class="container ">
-            <h1>Helthy Dinnerplanner</h1>
-            <p>Welcome to the healthy dinnerplanner which takes care of both your time and body</p>
-        </div>
+  <div class="jumbotron text-center">
+    <div class="container ">
+      <h1>Helthy Dinnerplanner</h1>
+      <p>Welcome to the healthy dinnerplanner which takes care of both your time and body</p>
     </div>
+  </div>
 
-    <div class="container-fluid ">
-        <div class="row " style="background-color: #c030c0 ">
-            <div class="col-sm-2 " style="background-color: #fff ">
-                <h2>My Dinner</h2>
-                <p>People
-                    <select class="form-controll ">
-                        <option value="1 ">1</option>
-                        <option value="2 ">2</option>
-                        <option value="3 ">3</option>
-                        <option value="4 ">4</option>
-                    </select>
-                </p>
-
-                <div class="row " style="background-color: #c0c0c0 ">
-                    <div class="col-sm-12 ">Dish Name</div>
-                </div>
-
-                <div class="row">
-                    <div class="col-sm-10">Pending</div>
-                    <div class="col-sm-2">0.00</div>
-                </div>
-
-                <hr>
-
-                <p>SEK</p>
-                <button type="button" class="btn btn-primary btn-block">primary</button>
-
-            </div>
-            <div class="col-sm-10 " style="background-color: #ff8040 ">
-                <h1>More info and stuff</h1>
-
-                <button type="button " class="btn btn-danger ">danger</button>
-                <button type="button " class="btn btn-primary ">primary</button>
-                <button type="button " class="btn btn-success ">success</button>
-                <button type="button " class="btn btn-warning ">warning</button>
-                <button type="button " class="btn btn-link ">link</button>
-
-            </div>
+  <div class="container-fluid ">
+    <div class="row " style="background-color: #c030c0 ">
+      <div class="col-sm-2 " style="background-color: #fff">
+        <h2>My Dinner</h2>
+        <p>People
+          <select class="form-controll ">
+            <option value="1 ">1</option>
+            <option value="2 ">2</option>
+            <option value="3 ">3</option>
+            <option value="4 ">4</option>
+          </select>
+        </p>
+        <div class="row " style="background-color: #c0c0c0 ">
+          <div class="col-sm-12 ">Dish Name</div>
         </div>
+        <div class="row">
+          <div class="col-sm-10">Pending</div>
+          <div class="col-sm-2">0.00</div>
+        </div>
+        <hr>
+        <p>SEK</p>
+        <button type="button" class="btn btn-primary btn-block">primary</button>
+      </div>
+
+      <!--Right column with info and stuff-->
+      <div class="col-sm-10 " style="background-color: #ff8040 ">
+        <h1>Select dish</h1>
+        <hr>
+        <!--Search input-->
+        <div class="col-sm-4">
+          <div class="input-group">
+            <input type="text" class="form-control">
+            <span class="input-group-btn"> 
+              <button type=" button " class="btn btn-primary">
+              <span class="glyphicon glyphicon-search"></span>
+            </button>
+            </span>
+          </div>
+        </div>
+        <!--Dish type drop down-->
+        <div class="col-sm-8">
+
+          <button type="button" class="btn btn-primary dropdown-toggle">button</button>
+
+        </div>
+      </div>
     </div>
+  </div>
 </body>
 
 </html>
