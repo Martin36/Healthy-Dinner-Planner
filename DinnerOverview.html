@@ -11,24 +11,37 @@
     <link rel="stylesheet" text="text/css" href="CSS/superCSS.css">
   </head>
   <body>
-    <div class="jumbotron text-center" style="background-color: #f9e79f">
+    <div class="jumbotron text-center" id="title">
       <h1>Healthy Dinner Planner</h1>
       <p>Welcome to the healthy dinner planner which takes care of both your time and body!</p>
     </div>
 
-    <div class="container-fluid" id="info-container">
+    <hr>
+    <div class="jumbotron" id="no-margin">
       <div class="modal-body row">
-        <div class="col-md-3" id="info-box">
-          <!-- Your first column here -->
-          <h1 style="center">A home dinner service</h1>
-          <hr style="margin-top:10px;margin-bottom:10px">
-          <p>Some text.... blalblalblalblalblalbalbabla</p>
-          <button type="button" id="specialButton" class="btn">Create New Dinner</button>
+        <div class="col-md-6">
+          <h2 style="margin-top:0">My Dinner: 4 people</h2>
         </div>
-        <div class="col-md-4">
-          <!-- Your second column here -->
+        <div class="col-md-6">
+          <button type="button" class="btn btn-default btn-lg" style="float:right">
+            <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Back
+          </button>
         </div>
       </div>
+    </div>
+    <hr>
+
+    <div class="row" style="margin-top: 20px">
+      <div class="col-md-2 col-md-offset-3" style="background-color: #45F3E2">
+        <img class="img-responsive" src="images/bakedbrie.jpg" />
+      </div>
+      <div class="col-md-2">
+        <img class="img-responsive" src="images/icecream.jpg" />
+      </div>
+      <div class="col-md-2">
+        <img class="img-responsive" src="images/meatballs.jpg" />
+      </div>
+
     </div>
 
     <!-- jQuery -->
