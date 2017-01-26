@@ -1,16 +1,17 @@
 //DinnerModel Object constructor
 var DinnerModel = function() {
 
-    var numberOfGuests = 0;
+    var numberOfGuests = 3;
     var selectedDishes = [];
 
     this.setNumberOfGuests = function(num) {
-        this.numberOfGuests = num;
+        //don't use this.numberOfGuests to access class variable
+        numberOfGuests = num;
     }
 
     // should return
     this.getNumberOfGuests = function() {
-        return this.numberOfGuests;
+        return numberOfGuests;
     }
 
     //Returns the dish that is on the menu for selected type
@@ -22,7 +23,7 @@ var DinnerModel = function() {
 
     //Returns all the dishes on the menu.
     this.getFullMenu = function() {
-        return this.selectedDishes;
+        return selectedDishes;
     }
 
     //Returns all ingredients for all the dishes on the menu.
@@ -41,7 +42,7 @@ var DinnerModel = function() {
         var totalCost = 0;
         var nrGuests = this.getNumberOfGuests();
         $.each(this.getAllIngredients(), function(index, ingredient) {
-            totalCost += ingredient.price * this.numberOfGuests; // this.numberOfGuests is NaN
+            totalCost += ingredient.price * numberOfGuests; // this.numberOfGuests is NaN
         });
         return totalCost;
     }
@@ -54,11 +55,11 @@ var DinnerModel = function() {
             return dish.id == id;
         });
         //Check if there is another dish of the same type
-        this.selectedDishes = $(selectedDishes).filter(function(index, dish) {
+        selectedDishes = $(selectedDishes).filter(function(index, dish) {
             return dish.type !== newDish.type;
         });
         //Append newDish to selectedDishes
-        this.selectedDishes.push(newDish[0]);
+        selectedDishes.push(newDish[0]);
     }
 
     //Removes dish from menu
