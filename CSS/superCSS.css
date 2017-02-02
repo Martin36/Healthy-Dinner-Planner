@@ -41,3 +41,9 @@ hr {
     background:blue;
     position:fixed;
 }
+
+.center-content{
+   position: relative;
+   top: 50%;
+   transform: translateY(-50%);
+}
