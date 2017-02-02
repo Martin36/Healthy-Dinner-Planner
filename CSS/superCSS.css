@@ -20,7 +20,6 @@ hr {
   margin-top: 0;
   margin-bottom: 0;
   padding-bottom: 0px;
-<<<<<<< HEAD
 }
 hr.padding {
   border-width: medium;
@@ -28,8 +27,6 @@ hr.padding {
   margin-top: 20px;
   margin-bottom: 20px;
   padding-top: 20px;
-=======
->>>>>>> 926e077bd37e088edee25e3fe633edd36c7043c5
 }
 
 #info-box {
@@ -37,11 +34,12 @@ hr.padding {
 }
 
 #specialButton {
-  color: black;
   background-color: #f39c12;
   margin-bottom: 10px;
-  border-color: #e17100;
-  outline-color: #e17100;
+}
+
+.row {
+  height: 100%;
 }
 
 #sidebar {
@@ -61,7 +59,7 @@ hr.padding {
 }
 
 .header1 {
-  background-color: #c0c0c0;
+  background-color: grey;
 }
 
 .alignLeft {
@@ -93,4 +91,9 @@ hr.padding {
   position: relative;
   top: 50%;
   transform: translateY(-50%);
+}
+
+.img-responsive.border{
+  border: 2px solid;
+  
 }
