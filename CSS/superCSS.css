@@ -19,7 +19,7 @@ hr {
   border-color: rgba(0, 0, 0, 1);
   margin-top: 0;
   margin-bottom: 0;
-  padding-bottom: 10px;
+  padding-bottom: 0px;
 }
 
 #info-box {
@@ -27,12 +27,11 @@ hr {
 }
 
 #specialButton {
+  color: black;
   background-color: #f39c12;
   margin-bottom: 10px;
-}
-
-.row {
-  height: 100%;
+  border-color: #e17100;
+  outline-color: #e17100;
 }
 
 #sidebar {
@@ -52,7 +51,7 @@ hr {
 }
 
 .header1 {
-  background-color: grey;
+  background-color: #c0c0c0;
 }
 
 .alignLeft {
