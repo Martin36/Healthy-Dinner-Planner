@@ -11,16 +11,16 @@
 </head>
 
 <body style="background-color: #70ea5e ">
-  <div class="jumbotron text-center">
+  <div class="jumbotron text-center" id="title">
     <div class="container ">
       <h1>Helthy Dinnerplanner</h1>
       <p>Welcome to the healthy dinnerplanner which takes care of both your time and body</p>
     </div>
   </div>
-
   <div class="container-fluid ">
-    <div class="row " style="background-color: #c030c0 ">
-      <div class="col-sm-2 " style="background-color: #fff">
+    <div class="row">
+      <!--Left column/sidebar with stuff-->
+      <div class="col-sm-2 border" id="sidebar" style="background-color: #fff">
         <h2>My Dinner</h2>
         <p>People
           <select class="form-controll ">
@@ -30,42 +30,77 @@
             <option value="4 ">4</option>
           </select>
         </p>
-        <div class="row " style="background-color: #c0c0c0 ">
-          <div class="col-sm-12 ">Dish Name</div>
+        <hr class="fullStretch">
+        <div class="row header1">
+          <div class="col-sm-12">
+            <p class="alignLeft">Dish Name</p>
+            <p class="alignRight">Cost</p>
+          </div>
         </div>
+        <hr class="fullStretch">
         <div class="row">
-          <div class="col-sm-10">Pending</div>
-          <div class="col-sm-2">0.00</div>
+          <div class=" col-sm-12 ">
+            <p class="alignLeft ">Pending</p>
+            <p class="alignRight ">0.00</p>
+          </div>
         </div>
         <hr>
-        <p>SEK</p>
-        <button type="button" class="btn btn-primary btn-block">primary</button>
+        <div class="row ">
+          <div class="col-sm-12 ">
+            <p class="alignRight ">SEK 0.00</p>
+          </div>
+        </div>
+        <button type="button" class="btn btn-primary btn-block" id="specialButton">Confirm Dinner</button>
       </div>
 
       <!--Right column with info and stuff-->
-      <div class="col-sm-10 " style="background-color: #ff8040 ">
-        <h1>Select dish</h1>
-        <hr>
-        <!--Search input-->
-        <div class="col-sm-4">
-          <div class="input-group">
-            <input type="text" class="form-control">
-            <span class="input-group-btn"> 
-              <button type=" button " class="btn btn-primary">
-              <span class="glyphicon glyphicon-search"></span>
-            </button>
-            </span>
+      <div class="col-sm-10 ">
+        <div class="row " style="background-color: #c0c0c0 ">
+          <div class="col-sm-12 ">
+            <h1>Select dish</h1>
           </div>
         </div>
-        <!--Dish type drop down-->
-        <div class="col-sm-8">
+        <hr>
+        <!--Search input, new row otherwise i couldn't select the text input-->
+        <div class="row " style="background-color: #8080ff ">
+          <div class=" col-sm-3 ">
+            <div class="input-group ">
+              <input type="text " class="form-control ">
+              <span class="input-group-btn "> 
+              <button type="button " class="btn btn-primary ">
+              <span class="glyphicon glyphicon-search "></span>
+              </button>
+              </span>
+            </div>
+          </div>
 
-          <button type="button" class="btn btn-primary dropdown-toggle">button</button>
+          <!--Dish type drop down-->
+          <div class="col-sm-2 ">
+            <div class="dropdown ">
+              <button class="btn btn-primary dropdown-toggle " type="button " data-toggle="dropdown ">Dish Type
+              <span class="caret "></span></button>
+              <ul class="dropdown-menu ">
+                <li><a href="# ">Starter</a></li>
+                <li><a href="# ">Main</a></li>
+                <li><a href="# ">Desert</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
 
+        <!--Grid layout with dishes in the right column-->
+        <div class="row ">
+          <p>HEJ</p>
         </div>
       </div>
     </div>
   </div>
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery.js "></script>
+  <!-- Bootstrap JavaScript, needed if you want for instance tabs, models, popovers etc. -->
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js "></script>
+
 </body>
 
 </html>
