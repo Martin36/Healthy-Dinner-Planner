@@ -62,3 +62,21 @@ hr {
 .alignRight {
   float: right;
 }
+
+.col-fixed-240 {
+  width: 240px;
+  background: red;
+}
+
+.col-fixed-160 {
+  margin-left: 240px;
+  width: 160px;
+  background: blue;
+  position: fixed;
+}
+
+.center-content {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
