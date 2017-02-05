@@ -116,11 +116,21 @@ hr.padding {
   border: 2px solid;
 }
 
-#mainContent {
+#mainHeader {
   background-color: orange;
 }
 
 .borderTBR {
   border: 4px black solid;
   border-left: 0;
+}
+
+.outerFrame {
+  border: 4px black solid;
+  border-left: 0;
+  border-top: 0;
+  overflow: hidden;
+  height: 100%;
+  padding-bottom: 100%;
+  margin-bottom: -100%;
 }

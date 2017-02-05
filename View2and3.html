@@ -54,14 +54,10 @@
       </div>
 
       <!--Right column with info and stuff-->
-      <div class="col-md-10" id="mainContent">
-        <div class="row borderTBR">
+      <div class="col-md-10">
+        <div class="row borderTBR" id="mainHeader">
           <div class="col-md-12">
-            <div class="row">
-              <div class="col-md-12">
-                <h2>Select dish</h2>
-              </div>
-            </div>
+            <h2>Select dish</h2>
             <hr>
             <!--Search input, new row otherwise i couldn't select the text input-->
             <div class="row topMargin">
@@ -80,7 +76,7 @@
               <div class="col-md-2 ">
                 <div class="dropdown">
                   <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="specialButton">Dish Type
-              <span class="caret"></span></button>
+                    <span class="caret"></span></button>
                   <ul class="dropdown-menu">
                     <li><a href="#">Starter</a></li>
                     <li><a href="#">Main</a></li>
@@ -91,10 +87,13 @@
             </div>
           </div>
         </div>
+
         <!--Grid layout with dishes and scroll functionality when overflow-->
-        <div class="row">
+        <div class="row outerFrame">
+          <!--Use overflow-y sroll here-->
           <div class="col-md-12">
             <p>Hej</p>
+
           </div>
         </div>
       </div>
