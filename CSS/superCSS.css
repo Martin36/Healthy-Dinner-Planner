@@ -55,7 +55,7 @@ hr.padding {
   margin: 0 0 0 0;
 }
 
-#sidebar .topMargin {
+.topMargin {
   margin-top: 10px;
 }
 
@@ -114,4 +114,13 @@ hr.padding {
 
 .img-responsive.border {
   border: 2px solid;
+}
+
+#mainContent {
+  background-color: orange;
+}
+
+.borderTBR {
+  border: 4px black solid;
+  border-left: 0;
 }

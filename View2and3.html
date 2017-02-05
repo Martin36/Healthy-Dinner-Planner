@@ -10,13 +10,15 @@
   <link rel="stylesheet" type="text/css" href="CSS/superCSS.css">
 </head>
 
-<body style="background-color: #70ea5e ">
+<body>
   <div class="jumbotron text-center" id="title">
     <div class="container ">
       <h1>Helthy Dinnerplanner</h1>
       <p>Welcome to the healthy dinnerplanner which takes care of both your time and body</p>
     </div>
   </div>
+
+  <!--Container that holds the entire view below the jumbotron-->
   <div class="container-fluid">
     <div class="row">
       <!--Left column/sidebar with stuff-->
@@ -52,40 +54,49 @@
       </div>
 
       <!--Right column with info and stuff-->
-      <div class="col-md-10 ">
-        <div class="row " style="background-color: #c0c0c0 ">
-          <div class="col-md-12 ">
-            <h1>Select dish</h1>
-          </div>
-        </div>
-        <hr>
-        <!--Search input, new row otherwise i couldn't select the text input-->
-        <div class="row " style="background-color: #8080ff ">
-          <div class=" col-md-3 ">
-            <div class="input-group ">
-              <input type="text " class="form-control ">
-              <span class="input-group-btn "> 
-              <button type="button " class="btn btn-primary ">
-              <span class="glyphicon glyphicon-search "></span> Search
-              </button>
-              </span>
+      <div class="col-md-10" id="mainContent">
+        <div class="row borderTBR">
+          <div class="col-md-12">
+            <div class="row">
+              <div class="col-md-12">
+                <h2>Select dish</h2>
+              </div>
             </div>
-          </div>
+            <hr>
+            <!--Search input, new row otherwise i couldn't select the text input-->
+            <div class="row topMargin">
+              <div class=" col-md-5 ">
+                <div class="input-group ">
+                  <input type="text " class="form-control ">
+                  <span class="input-group-btn "> 
+                    <button type="button" class="btn btn-primary" id="specialButton">
+                  <span class="glyphicon glyphicon-search "></span> Search
+                  </button>
+                  </span>
+                </div>
+              </div>
 
-          <!--Dish type drop down-->
-          <div class="col-md-2 ">
-            <div class="dropdown">
-              <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dish Type
+              <!--Dish type drop down-->
+              <div class="col-md-2 ">
+                <div class="dropdown">
+                  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="specialButton">Dish Type
               <span class="caret"></span></button>
-              <ul class="dropdown-menu">
-                <li><a href="#">Starter</a></li>
-                <li><a href="#">Main</a></li>
-                <li><a href="#">Desert</a></li>
-              </ul>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">Starter</a></li>
+                    <li><a href="#">Main</a></li>
+                    <li><a href="#">Desert</a></li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <!--Grid layout with dishes in the right column-->
+        <!--Grid layout with dishes and scroll functionality when overflow-->
+        <div class="row">
+          <div class="col-md-12">
+            <p>Hej</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
