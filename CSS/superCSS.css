@@ -131,6 +131,30 @@ hr.padding {
   border-top: 0;
   overflow: hidden;
   height: 100%;
-  padding-bottom: 100%;
-  margin-bottom: -100%;
+}
+
+.scrollY {
+  overflow-y: scroll
+}
+
+.outer {
+  height: 500px;
+}
+
+.frame {
+  margin-bottom: 20px;
+  margin-top: 20px;
+  margin-right: 20px;
+  margin-left: 20px;
+  padding: 0;
+  border: 2px black solid;
+}
+
+.frame img {
+  width: 50%;
+  padding: 2px;
+}
+
+.frame .bg {
+  background-color: gray;
 }
