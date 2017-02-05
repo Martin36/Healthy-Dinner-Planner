@@ -70,6 +70,11 @@ hr.padding {
   border: 4px black solid;
 }
 
+#sidebar {
+  border-bottom: 0;
+  border-left: 0;
+}
+
 .fullStretch {
   padding: 0px;
   margin-left: -100%;
@@ -123,14 +128,14 @@ hr.padding {
 .borderTBR {
   border: 4px black solid;
   border-left: 0;
+  border-right: 0;
 }
 
 .outerFrame {
   border: 4px black solid;
   border-left: 0;
   border-top: 0;
-  overflow: hidden;
-  height: 100%;
+  border-bottom: 0;
 }
 
 .scrollY {
@@ -138,7 +143,7 @@ hr.padding {
 }
 
 .outer {
-  height: 500px;
+  height: 552px;
 }
 
 .frame {
