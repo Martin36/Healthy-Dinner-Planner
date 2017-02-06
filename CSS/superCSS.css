@@ -158,10 +158,12 @@ hr.padding {
   margin-top: 0px;
 }
 
-.frame img {}
-
-.thumbnail {
+.thumbnail.border {
   border: 1px black solid;
+}
+
+.thumbnail.noBorder {
+  border: 0;
 }
 
 .frame p {
@@ -170,4 +172,17 @@ hr.padding {
 
 .frame .bg {
   background-color: gray;
+}
+
+.cropper {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.cropper img {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  top: 0%;
 }
