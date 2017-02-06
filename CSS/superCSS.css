@@ -135,14 +135,16 @@ hr.padding {
   border-left: 0;
   border-top: 0;
   border-bottom: 0;
+  overflow-y: scroll;
+  height: 581px;
 }
 
-.scrollY {
-  overflow-y: scroll
-}
-
-.outer {
-  height: 552px;
+.outerFrame2 {
+  border: 4px black solid;
+  border-left: 0;
+  border-bottom: 0;
+  overflow-y: scroll;
+  height: 710px;
 }
 
 .frame {
