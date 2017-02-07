@@ -8,9 +8,11 @@ var DinnerOverview = function(model){
   var starter = model.getSelectedDish("starter");
   console.log(starter);
   console.log(starter.name);
-  $("#starterName").html(starter.name);
+  $("#starterTitle").html(starter.name);
   console.log("images/" + starter.image);
   $("#starterImage").attr("src", "images/" + starter.image);
+  $("#starterDescription").html("");
+  $("#starterPrice").html();
 
   //Set nr of guests
   model.setNumberOfGuests(10);
