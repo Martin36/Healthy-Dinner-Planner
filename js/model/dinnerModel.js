@@ -1,7 +1,7 @@
 //DinnerModel Object constructor
 var DinnerModel = function() {
 
-    var numberOfGuests = 3;
+    var numberOfGuests = 5;
     var selectedDishes = [];
 
     this.setNumberOfGuests = function(num) {
@@ -18,7 +18,7 @@ var DinnerModel = function() {
     this.getSelectedDish = function(type) {
         return $(selectedDishes).filter(function(index, dish) {
             return dish.type == type;
-        });
+        })[0];
     }
 
     //Returns all the dishes on the menu.
