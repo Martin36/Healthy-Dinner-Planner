@@ -18,6 +18,8 @@ $(function() {
   if ($("#sidebar").length)
     var view2 = new View2_SelectedDishesView($("#sidebar"), model);
 
-  var view4 = new View4_DishOverview($("#dishOverview"), model);
+  if ($("#dishOverview").length)
+    var view4 = new View4_DishOverview($("#dishOverview"), model);
+
   var dinnerOverview = new DinnerOverview(model);
 });

@@ -3,13 +3,16 @@ var View2_SelectedDishesView = function(container, model) {
 
   // Get all the relevant elements of the view (ones that show data
   // and/or ones that responed to interaction)
-  this.dishContainer = container.find("#selectedDishes");
-  this.selectedDishes = model.getFullMenu();
+  var dishContainer = container.find("#selectedDishes");
+  var selectedDishes = model.getFullMenu();
+  var totalPrice = container.find("#totalPrice");
 
   //console.log(this.dishContainer);
 
-  for (var i = 0; i < this.selectedDishes.length; i++) {
-    var dish = this.selectedDishes[i];
+  totalPrice.html("SEK " + model.getTotalMenuPrice().toString());
+
+  for (var i = 0; i < selectedDishes.length; i++) {
+    var dish = selectedDishes[i];
     var selDish = $("<div>").addClass("row");
     var col = $("<div>").addClass("col-md-12");
     var well = $("<div>").addClass("well margin");
@@ -24,6 +27,6 @@ var View2_SelectedDishesView = function(container, model) {
     well.append(price);
     well.append(button);
     button.append(cross);
-    this.dishContainer.append(selDish);
+    dishContainer.append(selDish);
   }
 }
