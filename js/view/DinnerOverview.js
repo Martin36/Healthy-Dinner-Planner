@@ -21,6 +21,12 @@ var DinnerOverview = function(model){
     $("#mainCoursePrice").html(model.getDishPrice(mainCourse.id));
   }
 
+  //Set up view of dessert
+  var dessert = model.getSelectedDish("dessert");
+  if(dessert != "undefined"){
+
+  }
+
   //Set nr of guests
   model.setNumberOfGuests(10);
   this.numberOfGuests = $("#numberOfGuests");
