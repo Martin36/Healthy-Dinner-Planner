@@ -42,7 +42,7 @@ var DinnerModel = function() {
         var totalCost = 0;
         var nrGuests = this.getNumberOfGuests();
         $.each(this.getAllIngredients(), function(index, ingredient) {
-            totalCost += ingredient.price * numberOfGuests; // this.numberOfGuests is NaN
+            totalCost += ingredient.price * numberOfGuests;
         });
         return totalCost;
     }
@@ -53,13 +53,13 @@ var DinnerModel = function() {
         //Get the dish (in an array) with the specified id
         var newDish = $(dishes).filter(function(index, dish) {
             return dish.id == id;
-        });
+        })[0];
         //Check if there is another dish of the same type
         selectedDishes = $(selectedDishes).filter(function(index, dish) {
             return dish.type !== newDish.type;
         });
         //Append newDish to selectedDishes
-        selectedDishes.push(newDish[0]);
+        selectedDishes.push(newDish);
     }
 
     //Removes dish from menu

@@ -184,9 +184,7 @@ hr.padding {
   border: 0;
 }
 
-.thumbnail.fixedHeight {
-  /*height: 300px;*/
-}
+.thumbnail.fixedHeight {}
 
 .frame p {
   padding-right: 0px;
@@ -241,4 +239,8 @@ button.circle {
   position: absolute;
   bottom: 6px;
   right: 2%;
+}
+
+.foodImage {
+  width: 100%;
 }
