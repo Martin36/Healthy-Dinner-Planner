@@ -18,5 +18,10 @@ $(function() {
   if($("#sidebar").length)
     var view2 = new View2_SelectedDishesView($("#sidebar"), model);
 
-  var dinnerOverview = new DinnerOverview(model);
+  if($("#coursesRow").length)
+    var dinnerOverview = new DinnerOverview(model);
+
+  if($("#preparationContainer").length)
+    var dinnerPreparation = new DinnerPreparation($("#preparationContainer"), model);
+
 });
