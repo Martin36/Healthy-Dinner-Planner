@@ -1,13 +1,10 @@
 //ExampleView Object constructor
 var SelectDishesView = function(container, model) {
 
-  this.tempDesc = "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam.";
-
   // Get all the relevant elements of the view (ones that show data
   // and/or ones that responed to interaction)
   this.dishes = container.find("#selectableDishes");
   this.dishList = container.find("#listWithDishes");
-  this.title = container.find("#titleThing");
 
   this.allDishes = model.getAllDishes().prevObject;
 
@@ -21,11 +18,9 @@ var SelectDishesView = function(container, model) {
     img.attr("style", "width: 100%")
     var caption = $("<div>").addClass("caption");
     var title = $("<h4>").html(this.allDishes[i].name);
-    var descr = $("<p>").html(this.tempDesc);
 
 
     caption.append(title);
-    //caption.append(descr);
     href.append(img);
     href.append(caption);
     thumb.append(href);

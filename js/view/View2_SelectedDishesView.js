@@ -27,15 +27,3 @@ var View2_SelectedDishesView = function(container, model) {
     this.dishContainer.append(selDish);
   }
 }
-
-/*
-<div class="row">
-  <div class="col-md-12">
-    <div class="well margin">
-      <p class="alignLeft">Ice Cream</p>
-      <p class="alignRight">77.00</p>
-      <button type="button" class="btn btn-danger circle"><span class="glyphicon glyphicon-remove"></span></button>
-    </div>
-  </div>
-</div>
-*/
