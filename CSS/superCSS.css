@@ -184,7 +184,9 @@ hr.padding {
   border: 0;
 }
 
-.thumbnail.fixedHeight {}
+.thumbnail.fixedHeight {
+  /*height: 300px;*/
+}
 
 .frame p {
   padding-right: 0px;

@@ -12,6 +12,7 @@ var SelectDishesView = function(container, model) {
   this.allDishes = model.getAllDishes().prevObject;
 
   for (var i = 0; i < this.allDishes.length; i++) {
+
     // TODO: Don't create a new variable for every element
     var dish = $("<div>").addClass("col-md-2 frame");
     var thumb = $("<div>").addClass("thumbnail fixedHeight")
