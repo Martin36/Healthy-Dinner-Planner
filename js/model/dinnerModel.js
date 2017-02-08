@@ -98,6 +98,16 @@ var DinnerModel = function() {
             }
         }
     }
+    //Function that returns price of selected dish of type
+    this.getDishPrice = function(id){
+      var totalPrice = 0;
+      var ingredients = this.getDish(id).ingredients;
+      for(index in ingredients){
+        totalPrice += ingredients[index].price;
+        //console.log(ingredient);
+      }
+      return totalPrice;
+    }
 
 
     // the dishes variable contains an array of all the
