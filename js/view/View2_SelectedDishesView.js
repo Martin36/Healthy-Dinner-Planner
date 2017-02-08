@@ -6,7 +6,7 @@ var View2_SelectedDishesView = function(container, model) {
   this.dishContainer = container.find("#selectedDishes");
   this.selectedDishes = model.getFullMenu();
 
-  console.log(this.dishContainer);
+  //console.log(this.dishContainer);
 
   for (var i = 0; i < this.selectedDishes.length; i++) {
     var dish = this.selectedDishes[i];

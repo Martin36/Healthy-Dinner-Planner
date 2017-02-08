@@ -18,7 +18,7 @@ var DinnerModel = function() {
     this.getSelectedDish = function(type) {
         return $(selectedDishes).filter(function(index, dish) {
             return dish.type == type;
-        })[0];
+        })[0];  
     }
 
     //Returns all the dishes on the menu.

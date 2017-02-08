@@ -1,108 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Dinner Overview</title>
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
-    <link rel="stylesheet" text="text/css" href="CSS/superCSS.css">
-  </head>
-  <body>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dinner Overview</title>
 
-    <!-- Header for the page -->
-    <div class="jumbotron text-center" id="title">
-      <h1>Healthy Dinner Planner</h1>
-      <p>Welcome to the healthy dinner planner which takes care of both your time and body!</p>
-    </div>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+  <link rel="stylesheet" text="text/css" href="CSS/superCSS.css">
+</head>
 
-    <!-- Second bar -->
-    <hr>
-    <div class="jumbotron" id="no-margin">
-      <div class="modal-body row">
-        <div class="col-md-6">
-          <h2 style="margin-top:0">My Dinner: <span id="numberOfGuests">4</span> people</h2>
-        </div>
-        <div class="col-md-6">
-          <button type="button" class="btn btn-default btn-lg" style="float:right">
+<body>
+
+  <!-- Header for the page -->
+  <div class="jumbotron text-center" id="title">
+    <h1>Healthy Dinner Planner</h1>
+    <p>Welcome to the healthy dinner planner which takes care of both your time and body!</p>
+  </div>
+
+  <!-- Second bar -->
+  <hr>
+  <div class="jumbotron" id="no-margin">
+    <div class="modal-body row">
+      <div class="col-md-6">
+        <h2 style="margin-top:0">My Dinner: <span id="numberOfGuests">4</span> people</h2>
+      </div>
+      <div class="col-md-6">
+        <button type="button" class="btn btn-default btn-lg" style="float:right">
             <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Back
           </button>
-        </div>
       </div>
     </div>
-    <hr>
+  </div>
+  <hr>
 
-    <!-- Courses  -->
-    <div class="row text-center" style="margin-top: 20px;background-color:#00FF00;text-align:center">
-      <div class="col-md-2">
+  <!-- Courses  -->
+  <div class="row text-center" style="margin-top: 20px;background-color:#00FF00;text-align:center">
+    <div class="col-md-2">
+    </div>
+    <div class="col-md-2 col-sm-2 frame">
+      <div class="thumbnail">
+        <a href="#">
+          <img id="starterImage" src="images/bakedbrie.jpg" style="width:100%" />
+          <div class="caption">
+            <h3 id="starterTitle">Baked Brie</h3>
+            <h3>Price: <span id="starterPrice">450</span> SEK</h3>
+          </div>
+        </a>
       </div>
-      <div class="col-md-2 col-sm-2 frame">
-        <div class="thumbnail">
-          <a href="#">
-            <img id="starterImage" src="images/bakedbrie.jpg" style="width:100%"/>
-            <div class="caption">
-              <h3 id="starterTitle">Baked Brie</h3>
-              <h3>Price: <span id="starterPrice">450</span> SEK</h3>
-            </div>
-            </a>
-        </div>
+    </div>
+    <div class="col-md-2 col-sm-2 frame">
+      <div class="thumbnail">
+        <a href="#">
+          <img id="mainCourseImage" src="images/icecream.jpg" style="width:100%" />
+          <div class="caption">
+            <h3 id="mainCourseTitle">Ice Cream</h3>
+            <h3>Price: <span id="mainCoursePrice">450</span> SEK</h3>
+          </div>
+        </a>
       </div>
-      <div class="col-md-2 col-sm-2 frame">
-        <div class="thumbnail">
-          <a href="#">
-            <img id="mainCourseImage" src="images/icecream.jpg" style="width:100%"/>
-            <div class="caption">
-              <h3 id="mainCourseTitle">Ice Cream</h3>
-              <h3>Price: <span id="mainCoursePrice">450</span> SEK</h3>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="col-md-2 col-sm-2 frame">
-        <div class="thumbnail">
-          <a href="#">
-            <img src="images/meatballs.jpg" alt="Meatballs" style="width:100%">
-            <div class="caption">
-              <h3>Meatballs</h3>
-              <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam.</p>
-              <h3>Price: 450 SEK</h3>
-            </div>
-          </a>
-        </div>
-      </div>
-
-      <div class="col-md-2 col-sm-2 frame" id="container" style="background-color:#FF0000">
-          <h3>Total: 1 mil SEK</h3>
-      </div>
-      <div class="col-md-2">
+    </div>
+    <div class="col-md-2 col-sm-2 frame">
+      <div class="thumbnail">
+        <a href="#">
+          <img src="images/meatballs.jpg" alt="Meatballs" style="width:100%">
+          <div class="caption">
+            <h3>Meatballs</h3>
+            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam.</p>
+            <h3>Price: 450 SEK</h3>
+          </div>
+        </a>
       </div>
     </div>
 
+    <div class="col-md-2 col-sm-2 frame" id="container" style="background-color:#FF0000">
+      <h3>Total: 1 mil SEK</h3>
+    </div>
+    <div class="col-md-2">
+    </div>
+  </div>
 
-    <hr class="padding">
 
-    <div class="row">
-      <div class="col-md-12 text-center">
-        <button type="button" class="btn btn-default btn-lg" id="specialButton"><font size="4"> Print Full Recipe </font></button>
-      </div>
+  <hr class="padding">
 
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <button type="button" class="btn btn-default btn-lg" id="specialButton"><font size="4"> Print Full Recipe </font></button>
     </div>
 
+  </div>
 
 
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <!-- Bootstrap JavaScript, needed if you want for instance tabs, models, popovers etc. -->
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery.js"></script>
-    <!-- Bootstrap JavaScript, needed if you want for instance tabs, models, popovers etc. -->
-    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-
-	<!-- The application JavaScript code -->
-	<script src="js/app.js"></script>
-	<script src="js/model/dinnerModel.js"></script>
-	<script src="js/view/exampleView.js"></script>
-	<script src="js/view/exampleViewController.js"></script>
+  <!-- The application JavaScript code -->
+  <script src="js/app.js"></script>
+  <script src="js/model/dinnerModel.js"></script>
+  <script src="js/view/exampleView.js"></script>
   <script src="js/view/dinnerOverview.js"></script>
-  </body>
+  <script src="js/view/SelectDishesView.js"></script>
+  <script src="js/view/View2_SelectedDishesView.js"></script>
+  <script src="js/view/View4_DishOverview.js"></script>
+</body>
+
 </html>

@@ -13,6 +13,7 @@ $(function() {
   //Send away with #selectDishView as root element
   var selectDishView = new SelectDishesView($("#selectDishesView"), model);
   var view2 = new View2_SelectedDishesView($("#sidebar"), model);
+  var view4 = new View4_DishOverview($("#dishOverview"), model);
 
   var dinnerOverview = new DinnerOverview(model);
 });

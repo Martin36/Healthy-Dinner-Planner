@@ -172,6 +172,10 @@ hr.padding {
   background-color: orange;
 }
 
+.frame.noHilight:hover {
+  background-color: white;
+}
+
 .frame h3 {
   margin-top: 0px;
 }
