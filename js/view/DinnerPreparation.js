@@ -16,87 +16,59 @@ var DinnerPreparation = function(container, model){
           .append($("<div>").attr("class", "center-content")
             .append($("<img>").attr("class", "img-responsive center-block border").attr("id", "starterImage"))))
         .append($("<div>").attr("class", "col-md-5 col-sm-5")
-          .append($("<h1><span id='starterTitle'></span></h1>")))
-          .append($("<p>").attr("id", "starterDescription"))
+          .append($("<h1><span id='starterTitle'></span></h1>"))
+          .append($("<p>").attr("id", "starterDescription")))
         .append($("<div>").attr("class", "col-md-5 col-sm-5")
-          .append($("<h2>Preparation</h2>")))
-          .append($("<p>").attr("id", "starterPreparation")));
+          .append($("<h2>Preparation</h2>"))
+          .append($("<p>").attr("id", "starterPreparation"))));
+
+    //Add data
+    $("#starterTitle").html(starter.name);
+    $("#starterImage").attr("src", "images/" + starter.image);
+    $("#starterPreparation").html(starter.description);
   }
 
-  $("#starterTitle").html(starter.name);
-  $("#starterImage").attr("src", "images/" + starter.image);
-  $("#starterDescription").html(starter.description);
+  var mainCourse = model.getSelectedDish("main dish");
+  if(mainCourse != undefined){
+    //Create the row with starter
+    //Create cols containing image, dish name and description
+    container
+      .append($("<div>").attr("class", "row").attr("id", "preparationRow")
+        .append($("<div>").attr("class", "col-md-2 col-sm-2")
+          .append($("<div>").attr("class", "center-content")
+            .append($("<img>").attr("class", "img-responsive center-block border").attr("id", "mainCourseImage"))))
+        .append($("<div>").attr("class", "col-md-5 col-sm-5")
+          .append($("<h1><span id='mainCourseTitle'></span></h1>"))
+          .append($("<p>").attr("id", "mainCourseDescription")))
+        .append($("<div>").attr("class", "col-md-5 col-sm-5")
+          .append($("<h2>Preparation</h2>"))
+          .append($("<p>").attr("id", "mainCoursePreparation"))));
 
+    //Add data
+    $("#mainCourseTitle").html(mainCourse.name);
+    $("#mainCourseImage").attr("src", "images/" + mainCourse.image);
+    $("#mainCoursePreparation").html(mainCourse.description);
+  }
 
+  var dessert = model.getSelectedDish("dessert");
+  if(dessert != undefined){
+    //Create the row with dessert
+    //Create cols containing image, dish name and description
+    container
+      .append($("<div>").attr("class", "row").attr("id", "preparationRow")
+        .append($("<div>").attr("class", "col-md-2 col-sm-2")
+          .append($("<div>").attr("class", "center-content")
+            .append($("<img>").attr("class", "img-responsive center-block border").attr("id", "dessertImage"))))
+        .append($("<div>").attr("class", "col-md-5 col-sm-5")
+          .append($("<h1><span id='dessertTitle'></span></h1>"))
+          .append($("<p>").attr("id", "dessertDescription")))
+        .append($("<div>").attr("class", "col-md-5 col-sm-5")
+          .append($("<h2>Preparation</h2>"))
+          .append($("<p>").attr("id", "dessertPreparation"))));
 
-  /*
-  <div class="row" style="margin-top: 20px;display: flex;">
-
-    <div class="col-md-2">
-      <div class="center-content">
-        <img class="img-responsive center-block border" src="images/bakedbrie.jpg" />
-      </div>
-    </div>
-
-    <div class="col-md-5">
-      <h1>Dish 1</h1>
-      <p>
-        slifjsdlkgfjs.ldfgkmnb.,dafmnb.,adfnb.aj,mnbadfkbjadlkfbn
-      </p>
-    </div>
-
-    <div class="col-md-5">
-      <h2>Preparation</h2>
-      <p>
-        slifjsdlkgfjs.ldfgkmnb.,dafmnb.,adfnb.aj,mnbadfkbjadlkfbn
-      </p>
-    </div>
-  </div>
-  <!-- Second Dish -->
-  <div class="row" style="margin-top: 20px;display: flex;">
-
-    <div class="col-md-2">
-      <div class="center-content">
-        <img class="img-responsive center-block border" src="images/icecream.jpg" />
-      </div>
-    </div>
-
-    <div class="col-md-5">
-      <h1>Dish 2</h1>
-      <p>
-        slifjsdlkgfjs.ldfgkmnb.,dafmnb.,adfnb.aj,mnbadfkbjadlkfbn
-      </p>
-    </div>
-
-    <div class="col-md-5">
-      <h2>Preparation</h2>
-      <p>
-        slifjsdlkgfjs.ldfgkmnb.,dafmnb.,adfnb.aj,mnbadfkbjadlkfbn
-      </p>
-    </div>
-  </div>
-  <!-- Third Dish -->
-  <div class="row" style="margin-top: 20px;display: flex;">
-    <div class="col-md-2" >
-      <div class="center-content">
-        <img class="img-responsive center-block border" src="images/meatballs.jpg" />
-      </div>
-    </div>
-
-    <div class="col-md-5">
-      <h1>Dish 3</h1>
-      <p>
-        slifjsdlkgfjs.ldfgkmnb.,dafmnb.,adfnb.aj,mnbadfkbjadlkfbn
-      </p>
-    </div>
-
-    <div class="col-md-5">
-      <h2>Preparation</h2>
-      <p>
-        slifjsdlkgfjs.ldfgkmnb.,dafmnb.,adfnb.aj,mnbadfkbjadlkfbn
-      </p>
-    </div>
-
-  </div>
-*/
+    //Add data
+    $("#dessertTitle").html(dessert.name);
+    $("#dessertImage").attr("src", "images/" + dessert.image);
+    $("#dessertPreparation").html(dessert.description);
+  }
 }
