@@ -98,7 +98,7 @@ hr.padding {
 
 #container h3 {
   position: absolute;
-  bottom: 0;
+  top: 100%;
   left: 0;
 }
 

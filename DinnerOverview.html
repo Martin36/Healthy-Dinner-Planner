@@ -35,14 +35,15 @@
     <hr>
 
     <!-- Courses  -->
-    <div class="row text-center" style="margin-top: 20px;display: flex;">
-      <div class="col-md-2 col-sm-2 frame" style="margin-left:20%">
+    <div class="row text-center" style="margin-top: 20px;background-color:#00FF00;text-align:center">
+      <div class="col-md-2">
+      </div>
+      <div class="col-md-2 col-sm-2 frame">
         <div class="thumbnail">
           <a href="#">
             <img id="starterImage" src="images/bakedbrie.jpg" style="width:100%"/>
             <div class="caption">
               <h3 id="starterTitle">Baked Brie</h3>
-              <p id="starterDescription">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam.</p>
               <h3>Price: <span id="starterPrice">450</span> SEK</h3>
             </div>
             </a>
@@ -51,11 +52,10 @@
       <div class="col-md-2 col-sm-2 frame">
         <div class="thumbnail">
           <a href="#">
-            <img src="images/icecream.jpg" style="width:100%"/>
+            <img id="mainCourseImage" src="images/icecream.jpg" style="width:100%"/>
             <div class="caption">
-              <h3>Ice Cream</h3>
-              <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam.</p>
-              <h3>Price: 450 SEK</h3>
+              <h3 id="mainCourseTitle">Ice Cream</h3>
+              <h3>Price: <span id="mainCoursePrice">450</span> SEK</h3>
             </div>
           </a>
         </div>
@@ -73,10 +73,13 @@
         </div>
       </div>
 
-      <div class="col-md-2" id="container" style="text-align:right;">
+      <div class="col-md-2 col-sm-2 frame" id="container" style="background-color:#FF0000">
           <h3>Total: 1 mil SEK</h3>
       </div>
+      <div class="col-md-2">
+      </div>
     </div>
+
 
     <hr class="padding">
 
