@@ -248,3 +248,8 @@ button.circle {
 .foodImage {
   width: 100%;
 }
+
+#preparationRow {
+  margin-top: 20px;
+  display: flex;
+}
