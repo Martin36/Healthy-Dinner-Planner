@@ -19,7 +19,6 @@ var SelectDishesView = function(container, model) {
     var caption = $("<div>").addClass("caption");
     var title = $("<h4>").html(this.allDishes[i].name);
 
-
     caption.append(title);
     href.append(img);
     href.append(caption);

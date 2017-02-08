@@ -8,14 +8,14 @@ $(function() {
   model.getTotalMenuPrice();
 
   //And create the needed controllers and views
-  if($("#exampleView").length)
+  if ($("#exampleView").length)
     var exampleView = new ExampleView($("#exampleView"), model);
 
   //Send away with #selectDishView as root element
-  if($("#selectDishesView").length)
+  if ($("#selectDishesView").length)
     var selectDishView = new SelectDishesView($("#selectDishesView"), model);
 
-  if($("#sidebar").length)
+  if ($("#sidebar").length)
     var view2 = new View2_SelectedDishesView($("#sidebar"), model);
 
   if($("#coursesRow").length)
@@ -23,5 +23,8 @@ $(function() {
 
   if($("#preparationContainer").length)
     var dinnerPreparation = new DinnerPreparation($("#preparationContainer"), model);
+
+  if($("#dishOverview").length)
+    var view4 = new View4_DishOverview($("#dishOverview"), model);
 
 });
