@@ -18,13 +18,13 @@ $(function() {
   if ($("#sidebar").length)
     var view2 = new View2_SelectedDishesView($("#sidebar"), model);
 
-  if($("#coursesRow").length)
+  if ($("#coursesRow").length)
     var dinnerOverview = new DinnerOverview(model);
 
-  if($("#preparationContainer").length)
+  if ($("#preparationContainer").length)
     var dinnerPreparation = new DinnerPreparation($("#preparationContainer"), model);
 
-  if($("#dishOverview").length)
+  if ($("#dishOverview").length)
     var view4 = new View4_DishOverview($("#dishOverview"), model);
 
 });
