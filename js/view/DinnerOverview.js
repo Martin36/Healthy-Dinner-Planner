@@ -1,4 +1,4 @@
-var DinnerOverview = function(model){
+var DinnerOverview = function(model) {
 
   //Add the dishes
   model.addDishToMenu(1);
@@ -14,7 +14,7 @@ var DinnerOverview = function(model){
 
   //Set up view of starter
   var starter = model.getSelectedDish("starter");
-  if(starter != undefined){
+  if (starter != undefined) {
     $("#coursesRow")
       .append($("<div>").attr("class", "col-md-2 col-sm-2 frame")
         .append($("<div>").attr("class", "thumbnail")
@@ -32,7 +32,7 @@ var DinnerOverview = function(model){
 
   //Set up view of main course
   var mainCourse = model.getSelectedDish("main dish");
-  if(mainCourse != undefined){
+  if (mainCourse != undefined) {
     $("#coursesRow")
       .append($("<div>").attr("class", "col-md-2 col-sm-2 frame")
         .append($("<div>").attr("class", "thumbnail")
@@ -50,8 +50,8 @@ var DinnerOverview = function(model){
 
   //Set up view of dessert
   var dessert = model.getSelectedDish("dessert");
-  if(dessert != undefined){
-    console.log(dessert);
+  if (dessert != undefined) {
+    // console.log(dessert);
     $("#coursesRow")
       .append($("<div>").attr("class", "col-md-2 col-sm-2 frame")
         .append($("<div>").attr("class", "thumbnail")
