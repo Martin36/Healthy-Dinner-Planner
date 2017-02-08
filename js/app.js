@@ -3,6 +3,7 @@ $(function() {
   var model = new DinnerModel();
 
   model.addDishToMenu(2);
+  model.addDishToMenu(1);
   model.getAllIngredients();
   model.getTotalMenuPrice();
 
@@ -14,5 +15,4 @@ $(function() {
   var view2 = new View2_SelectedDishesView($("#sidebar"), model);
 
   var dinnerOverview = new DinnerOverview(model);
-
 });
