@@ -3,10 +3,22 @@ var DinnerModel = function() {
 
     var numberOfGuests = 5;
     var selectedDishes = [];
+    var observers = [];
+
+    var notifyObservers = function(obj) {
+      $.each(observers, function(index, observer){
+        observer.update(obj);
+      });
+    }
+
+    this.addObserver = function(observer) {
+      observers = observers.push(observer);
+    }
 
     this.setNumberOfGuests = function(num) {
         //don't use this.numberOfGuests to access class variable
         numberOfGuests = num;
+        notifyObservers("nrGuests");
     }
 
     // should return
@@ -18,7 +30,7 @@ var DinnerModel = function() {
     this.getSelectedDish = function(type) {
         return $(selectedDishes).filter(function(index, dish) {
             return dish.type == type;
-        })[0];  
+        })[0];
     }
 
     //Returns all the dishes on the menu.
@@ -60,6 +72,7 @@ var DinnerModel = function() {
         });
         //Append newDish to selectedDishes
         selectedDishes.push(newDish);
+        notifyObservers();
     }
 
     //Removes dish from menu
@@ -67,6 +80,7 @@ var DinnerModel = function() {
         selectedDishes = $(selectedDishes).filter(function(index, dish) {
             return dish.id !== id;
         });
+        notifyObservers();
     }
 
     //function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")

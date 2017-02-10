@@ -4,6 +4,7 @@ $(function() {
 
   model.addDishToMenu(2);
   model.addDishToMenu(1);
+  model.addDishToMenu(100);
   model.getAllIngredients();
   model.getTotalMenuPrice();
 
