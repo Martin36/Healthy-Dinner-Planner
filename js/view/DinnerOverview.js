@@ -15,8 +15,11 @@ var DinnerOverview = function(model) {
   //Set nr of guests
   $("#numberOfGuests").html(model.getNumberOfGuests());
 
-  var updateDish = function(dish){
-    var type = dish.type
+  //Add fisrt extra div
+  $("#coursesRow").append($("<div>").attr("class", "col-md-" + nrOfExtraDivCols + " col-sm-" + nrOfExtraDivCols + " frame"));
+
+  //Function for getting the name of dish type used the ids
+  var converDishType = function(type){
     var courseString = "";
     switch (type) {
       case "starter":
@@ -28,8 +31,14 @@ var DinnerOverview = function(model) {
         break;
       default:
     }
+    return courseString;
+  }
+  //Updates the dish's div with new values
+  var updateDish = function(dish){
 
-    //Check if starter div exists
+    var courseString = converDishType(dish.type);
+
+    //Check if the dish's div exists
     if($("#" + courseString + "Container").length){
       //Add data to view
       $("#" + courseString + "Title").html(dish.name);
@@ -37,55 +46,39 @@ var DinnerOverview = function(model) {
       $("#" + courseString + "Price").html(model.getDishPrice(dish.id));
     }
   }
+  //Function for initializing the divs for the dishes
+  var initDish = function(dish){
 
+    var courseString = converDishType(dish.type);
 
-  //Add fisrt extra div
-  $("#coursesRow").append($("<div>").attr("class", "col-md-" + nrOfExtraDivCols + " col-sm-" + nrOfExtraDivCols + " frame"));
-
+    $("#coursesRow")
+      .append($("<div>").attr("class", "col-md-2 col-sm-2 frame").attr("id", courseString + "Container").attr("style", "")
+        .append($("<div>").attr("class", "thumbnail")
+          .append($("<a>").attr("href", "#")
+            .append($("<img>").attr("class", "foodImage").attr("id", courseString + "Image"))
+            .append($("<div>").attr("class", "caption")
+              .append($("<h3>").attr("id", courseString + "Title"))
+              .append($("<h3>Price: <span id='" + courseString + "Price'></span> SEK</h3>"))))));
+  }
 
   //Set up view of starter
   var starter = model.getSelectedDish("starter");
   if (starter != undefined) {
-    $("#coursesRow")
-      .append($("<div>").attr("class", "col-md-2 col-sm-2 frame").attr("id", "starterContainer").attr("style", "")
-        .append($("<div>").attr("class", "thumbnail")
-          .append($("<a>").attr("href", "#")
-            .append($("<img>").attr("class", "foodImage").attr("id", "starterImage"))
-            .append($("<div>").attr("class", "caption")
-              .append($("<h3>").attr("id", "starterTitle"))
-              .append($("<h3>Price: <span id='starterPrice'></span> SEK</h3>"))))));
-
+    initDish(starter);
     updateDish(starter);
   }
-
 
   //Set up view of main course
   var mainCourse = model.getSelectedDish("main dish");
   if (mainCourse != undefined) {
-    $("#coursesRow")
-      .append($("<div>").attr("class", "col-md-2 col-sm-2 frame").attr("id", "mainCourseContainer")
-        .append($("<div>").attr("class", "thumbnail")
-          .append($("<a>").attr("href", "#")
-            .append($("<img>").attr("class", "foodImage").attr("id", "mainCourseImage"))
-            .append($("<div>").attr("class", "caption")
-              .append($("<h3>").attr("id", "mainCourseTitle"))
-              .append($("<h3>Price: <span id='mainCoursePrice'></span> SEK</h3>"))))));
-
+    initDish(mainCourse);
     updateDish(mainCourse);
   }
 
   //Set up view of dessert
   var dessert = model.getSelectedDish("dessert");
   if (dessert != undefined) {
-    $("#coursesRow")
-      .append($("<div>").attr("class", "col-md-2 col-sm-2 frame").attr("id", "dessertContainer")
-        .append($("<div>").attr("class", "thumbnail")
-          .append($("<a>").attr("href", "#")
-            .append($("<img>").attr("class", "foodImage").attr("id", "dessertImage"))
-            .append($("<div>").attr("class", "caption")
-              .append($("<h3>").attr("id", "dessertTitle"))
-              .append($("<h3>Price: <span id='dessertPrice'></span> SEK</h3>"))))));
-
+    initDish(dessert);
     updateDish(dessert);
   }
 
@@ -115,6 +108,4 @@ var DinnerOverview = function(model) {
         break;
     }
   }
-
-
 }
