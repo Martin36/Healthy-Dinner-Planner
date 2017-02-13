@@ -3,6 +3,7 @@ var View4_DishOverview = function(container, model) {
 
   // Add the view to the controller
   model.addObserver(this);
+  
   // Get all the relevant elements of the view (ones that show data
   // and/or ones that responed to interaction)
   var dishImage = container.find("img");
