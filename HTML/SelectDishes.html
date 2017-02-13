@@ -7,7 +7,7 @@
   <title>Healthy Dinnerplanner</title>
   <!--Bootstrap-->
   <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="CSS/superCSS.css">
+  <link rel="stylesheet" type="text/css" href="../CSS/superCSS.css">
 </head>
 
 <body>
@@ -38,10 +38,6 @@
             <p class="alignRight noMargin">Cost</p>
           </div>
         </div>
-
-        <!--This is filled with dishes via the view-->
-        <div id="selectedDishes"></div>
-
         <div class="row topMargin">
           <div class=" col-md-12">
             <p class="alignLeft">Pending</p>
@@ -51,17 +47,17 @@
         <hr>
         <div class="row topMargin">
           <div class="col-md-12 ">
-            <p class="alignRight" id="totalPrice">SEK 122.00</p>
+            <p class="alignRight " id="totalPrice">SEK 0.00</p>
           </div>
         </div>
         <button type="button" class="btn btn-primary btn-block" id="specialButton">Confirm Dinner</button>
       </div>
 
-      <!--Right column with info and stuff-->
+      <!--Right column with info and stuff (View 3)-->
       <div class="col-md-10" id="selectDishesView">
         <div class="row borderTBR" id="mainHeader">
           <div class="col-md-12">
-            <h2>Select dish</h2>
+            <h2 id="titleThing">Select dish</h2>
             <hr>
             <!--Search input, new row otherwise i couldn't select the text input-->
             <div class="row topMargin">
@@ -77,7 +73,7 @@
               </div>
 
               <!--Dish type drop down-->
-              <div class="col-md-2 ">
+              <div class="col-md-2">
                 <div class="dropdown">
                   <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="specialButton">Dish Type
                     <span class="caret"></span></button>
@@ -95,9 +91,10 @@
         <!--Grid layout with dishes and scroll functionality when overflow-->
         <div class="row outerFrame">
           <div class="col-md-12" id="listWithDishes">
-            <!--Meals, these should be added dynamically-->
+            <!--Meals-->
 
           </div>
+          <!--Dishes end-->
         </div>
       </div>
     </div>
@@ -108,13 +105,12 @@
   <!-- Bootstrap JavaScript, needed if you want for instance tabs, models, popovers etc. -->
   <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js "></script>
 
-  <script src="js/app.js"></script>
-  <script src="js/model/dinnerModel.js"></script>
-  <script src="js/view/exampleView.js"></script>
-  <script src="js/view/SelectDishesView.js"></script>
-  <script src="js/view/View2_SelectedDishesView.js"></script>
-
-
+  <!-- The application JavaScript code -->
+  <script src="../js/app.js"></script>
+  <script src="../js/model/dinnerModel.js"></script>
+  <script src="../js/view/DinnerOverview.js"></script>
+  <script src="../js/view/SelectDishesView.js"></script>
+  <script src="../js/view/View2_SelectedDishesView.js"></script>
 </body>
 
 </html>
