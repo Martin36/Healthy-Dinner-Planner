@@ -15,7 +15,7 @@ var View4_DishOverview = function(container, model) {
     var selectedDish = model.getDish(1); // This should be the dish you clicked on
     var nr = model.getNumberOfGuests();
 
-    dishImage.attr("src", "images/" + selectedDish.image);
+    dishImage.attr("src", "../images/" + selectedDish.image);
     dishTitle.html(selectedDish.name);
     prepIns.html(selectedDish.description);
     listTitle.html("Ingredients for " + nr + " People");

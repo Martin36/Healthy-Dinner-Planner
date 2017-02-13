@@ -55,7 +55,7 @@ var DinnerOverview = function(model) {
       .append($("<div>").attr("class", "col-md-2 col-sm-2 frame").attr("id", courseString + "Container").attr("style", "")
         .append($("<div>").attr("class", "thumbnail")
           .append($("<a>").attr("href", "#")
-            .append($("<img>").attr("class", "foodImage").attr("id", courseString + "Image"))
+            .append($("<img>").attr("class", "foodImage").attr("id","../"+ courseString + "Image"))
             .append($("<div>").attr("class", "caption")
               .append($("<h3>").attr("id", courseString + "Title"))
               .append($("<h3>Price: <span id='" + courseString + "Price'></span> SEK</h3>"))))));

@@ -14,7 +14,7 @@ var SelectDishesView = function(container, model) {
     var dish = $("<div>").addClass("col-md-2 frame");
     var thumb = $("<div>").addClass("thumbnail fixedHeight")
     var href = $("<a>").attr("href", "#")
-    var img = $("<img>").attr("src", "images/" + this.allDishes[i].image);
+    var img = $("<img>").attr("src", "../images/" + this.allDishes[i].image);
     img.attr("style", "width: 100%")
     var caption = $("<div>").addClass("caption");
     var title = $("<h4>").html(this.allDishes[i].name);

@@ -24,7 +24,7 @@ var DinnerPreparation = function(container, model){
 
     //Add data
     $("#starterTitle").html(starter.name);
-    $("#starterImage").attr("src", "images/" + starter.image);
+    $("#starterImage").attr("src", "../images/" + starter.image);
     $("#starterPreparation").html(starter.description);
   }
 
@@ -46,7 +46,7 @@ var DinnerPreparation = function(container, model){
 
     //Add data
     $("#mainCourseTitle").html(mainCourse.name);
-    $("#mainCourseImage").attr("src", "images/" + mainCourse.image);
+    $("#mainCourseImage").attr("src", "../images/" + mainCourse.image);
     $("#mainCoursePreparation").html(mainCourse.description);
   }
 
@@ -68,7 +68,7 @@ var DinnerPreparation = function(container, model){
 
     //Add data
     $("#dessertTitle").html(dessert.name);
-    $("#dessertImage").attr("src", "images/" + dessert.image);
+    $("#dessertImage").attr("src", "../images/" + dessert.image);
     $("#dessertPreparation").html(dessert.description);
   }
 }
