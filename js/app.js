@@ -12,11 +12,15 @@ $(function() {
   }
 
   //Send away with #selectDishView as root element
-  if ($("#selectDishesView").length)
-    var selectableDishesView = new View3_SelectableDishes($("#selectDishesView"), model);
+  if ($("#selectDishesView").length){
+    var selectDishesView = new SelectDishesView($("#selectDishesView"), model);
+    var selectDishesController = new SelectDishesController(selectDishesView, model);
+  }
 
-  if ($("#sidebar").length)
-    var sidebar = new View2_Sidebar($("#sidebar"), model);
+  if ($("#sidebar").length){
+    var sidebarView = new SidebarView($("#sidebar"), model);
+    var sidebarController = new SidebarController(sidebarView, model);
+  }
 
   if ($("#dinnerOverview").length){
     var dinnerOverview = new DinnerOverview($("#dinnerOverview"), model);
@@ -29,7 +33,7 @@ $(function() {
   }
 
   if ($("#dishOverview").length)
-    var view4 = new View4_DishOverview($("#dishOverview"), model);
+    var view4 = new DishOverviewView($("#dishOverview"), model);
 
 
 
