@@ -42,7 +42,7 @@ var DinnerOverview = function(model) {
     if($("#" + courseString + "Container").length){
       //Add data to view
       $("#" + courseString + "Title").html(dish.name);
-      $("#" + courseString + "Image").attr("src", "images/" + dish.image);
+      $("#" + courseString + "Image").attr("src", "../images/" + dish.image);
       $("#" + courseString + "Price").html(model.getDishPrice(dish.id));
     }
   }
@@ -55,7 +55,7 @@ var DinnerOverview = function(model) {
       .append($("<div>").attr("class", "col-md-2 col-sm-2 frame").attr("id", courseString + "Container").attr("style", "")
         .append($("<div>").attr("class", "thumbnail")
           .append($("<a>").attr("href", "#")
-            .append($("<img>").attr("class", "foodImage").attr("id","../"+ courseString + "Image"))
+            .append($("<img>").attr("class", "foodImage").attr("id",courseString + "Image"))
             .append($("<div>").attr("class", "caption")
               .append($("<h3>").attr("id", courseString + "Title"))
               .append($("<h3>Price: <span id='" + courseString + "Price'></span> SEK</h3>"))))));
@@ -101,9 +101,11 @@ var DinnerOverview = function(model) {
         $("#numberOfGuests").html(model.getNumberOfGuests());
         break;
       case "starter":
-        updateStarter();
-
+      case "main dish":
+      case "dessert":
+        updateDish(obj);
         break;
+
       default:
         break;
     }
