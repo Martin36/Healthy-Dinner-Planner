@@ -1,5 +1,5 @@
 //ExampleView Object constructor
-var SelectDishesView = function(container, model) {
+var View3_SelectableDishes = function(container, model) {
 
   // Add this as observer
   model.addObserver(this);
