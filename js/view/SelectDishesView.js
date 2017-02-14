@@ -23,7 +23,6 @@ var SelectDishesView = function(container, model) {
     else{
       allDishes = model.getAllDishes("starter",filter);
     }
-    console.log(allDishes.length);
     for (var i = 0; i < allDishes.length; i++) {
       dishList
         .append($("<div>").addClass("col-md-2 frame")

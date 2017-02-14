@@ -7,10 +7,11 @@ var DinnerOverview = function(container, model) {
   model.setNumberOfGuests(10);
   //Add this view as observer
   model.addObserver(this);
-  console.log(container);
 
   //this.printRecipeButton = $("#specialButton");
   this.printRecipeButton = container.find("#specialButton");
+
+  this.backButton = container.find("#backButton");
 
   this.toggleButton = $("#toggleButton");
 

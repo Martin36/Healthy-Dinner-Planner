@@ -18,8 +18,8 @@ $(function() {
   }
 
   if ($("#sidebar").length){
-    var sidebarView = new SidebarView($("#sidebar"), model);
-    var sidebarController = new SidebarController(sidebarView, model);
+    var sidebar = new SidebarView($("#sidebar"), model);
+    var sidebarController = new SidebarController(sidebar, model);
   }
 
   if ($("#dinnerOverview").length){
@@ -32,9 +32,8 @@ $(function() {
     var dinnerPreparationController = new DinnerPreparationController(dinnerPreparation, model);
   }
 
-  if ($("#dishOverview").length)
-    var view4 = new DishOverviewView($("#dishOverview"), model);
-
-
-
+  if ($("#dishOverview").length){
+    var dishOverview = new DishOverviewView($("#dishOverview"), model);
+    var dishOverviewController = new DishOverviewController(dishOverview, model);
+  }
 });

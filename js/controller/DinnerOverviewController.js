@@ -11,4 +11,9 @@ var DinnerOverviewController = function(view, model) {
     view.toggleButton.toggle();
   });
 
+  view.backButton.click(function(){
+    $("#dinnerOverview").toggle();
+    $("#selectDishes").toggle();
+  })
+
 }

@@ -8,7 +8,6 @@ var DinnerPreparation = function(container, model){
 
   //Find buttons
   this.backButton = container.find("#backButton");
-  console.log(this.backButton);
   //Set the number of guests
   var nrGuests = container.find("#nrGuests").html(model.getNumberOfGuests());
 
