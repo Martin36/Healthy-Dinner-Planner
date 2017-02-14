@@ -7,8 +7,6 @@ var View2_Sidebar = function(container, model) {
 
   // Get all the relevant elements of the view (ones that show data
   // and/or ones that responed to interaction)
-  this.deleteButton = container.find("#deleteDish");
-
   var dishContainer = container.find("#selectedDishes");
   var selectedDishes = model.getFullMenu();
   var totalPrice = container.find("#totalPrice");
@@ -24,13 +22,14 @@ var View2_Sidebar = function(container, model) {
             .append($("<div>").addClass("well margin")
               .append($("<p>").addClass("alignLeft").html(dish.name))
               .append($("<p>").addClass("alignRight").html(model.getDishPrice(dish.id)))
-              .append($("<button>").addClass("btn btn-danger circle").attr("id", "deleteDish")
+              .append($("<button>").attr("id", "deleteDish").addClass("btn btn-danger circle").attr("type", "button")
                 .append($("<span>").addClass("glyphicon glyphicon-remove"))))));
-                console.log("Dish Added!");
     }
   }
 
   refreshSelectedDishes();
+  this.deleteButton = container.find("#deleteDish");
+
   var clearSelectedDishes = function() {}
 
   this.update = function() {

@@ -13,8 +13,10 @@ $(function() {
   if ($("#selectDishesView").length)
     var selectableDishesView = new View3_SelectableDishes($("#selectDishesView"), model);
 
-  if ($("#sidebar").length)
-    var sidebar = new View2_Sidebar($("#sidebar"), model);
+  if ($("#sidebar").length){
+    var sidebarView = new View2_Sidebar($("#sidebar"), model);
+    var sidebarController = new SidebarController(sidebarView, model);  
+  }
 
   if ($("#coursesRow").length)
     var dinnerOverview = new DinnerOverview(model);
