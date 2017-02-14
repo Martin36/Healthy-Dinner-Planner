@@ -8,6 +8,11 @@ var DinnerOverview = function(model) {
   //Add this view as observer
   model.addObserver(this);
 
+  //this.printRecipeButton = $("#specialButton");
+  this.printRecipeButton = $("body").find("#specialButton");
+
+  console.log(this.printRecipeButton);
+
   var nrOfExtraDivCols = 5 - model.getFullMenu().length;
   //Select if animation should be used
   var animate = false;

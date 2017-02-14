@@ -6,8 +6,10 @@ $(function() {
   model.getTotalMenuPrice();
 
   //And create the needed controllers and views
-  if ($("#exampleView").length)
+  if ($("#exampleView").length){
     var exampleView = new ExampleView($("#exampleView"), model);
+    var exampleViewController = new ExampleViewController(exampleView,model);
+  }
 
   //Send away with #selectDishView as root element
   if ($("#selectDishesView").length)
@@ -18,6 +20,7 @@ $(function() {
 
   if ($("#coursesRow").length){
     var dinnerOverview = new DinnerOverview(model);
+    var dinnerOverviewController = new DinnerOverviewController(dinnerOverview, model);
   }
 
   if ($("#preparationContainer").length)
