@@ -2,9 +2,6 @@ $(function() {
   //We instantiate our model
   var model = new DinnerModel();
 
-//  model.addDishToMenu(2);
-//  model.addDishToMenu(1);
-//  model.addDishToMenu(100);
   model.getAllIngredients();
   model.getTotalMenuPrice();
 
@@ -14,10 +11,10 @@ $(function() {
 
   //Send away with #selectDishView as root element
   if ($("#selectDishesView").length)
-    var selectDishView = new SelectDishesView($("#selectDishesView"), model);
+    var selectableDishesView = new View3_SelectableDishes($("#selectDishesView"), model);
 
   if ($("#sidebar").length)
-    var view2 = new View2_SelectedDishesView($("#sidebar"), model);
+    var sidebar = new View2_Sidebar($("#sidebar"), model);
 
   if ($("#coursesRow").length){
     var dinnerOverview = new DinnerOverview(model);
