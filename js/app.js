@@ -18,8 +18,8 @@ $(function() {
   if ($("#sidebar").length)
     var sidebar = new View2_Sidebar($("#sidebar"), model);
 
-  if ($("#coursesRow").length){
-    var dinnerOverview = new DinnerOverview(model);
+  if ($("#dinnerOverview").length){
+    var dinnerOverview = new DinnerOverview($("dinnerOverview"), model);
     var dinnerOverviewController = new DinnerOverviewController(dinnerOverview, model);
   }
 

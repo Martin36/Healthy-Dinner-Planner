@@ -8,12 +8,19 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
-
+    <link rel="stylesheet" href="../CSS/superCSS.css">
   </head>
   <body>
-	<div class="container">
-		<h1>Dinner planner</h1>
-		<div id="exampleView">
+
+    <!-- Header for the page -->
+    <div class="jumbotron text-center" id="title">
+      <h1>Healthy Dinner Planner</h1>
+      <p>Welcome to the healthy dinner planner which takes care of both your time and body!</p>
+    </div>
+
+    <button id="toggleButton" class="btn">Toggle!</button>
+
+		<div id="exampleView" class="container" style="display:none">
 			<div>
 				Number of guests: <span id="numberOfGuests"></span>
 			</div>
@@ -22,8 +29,58 @@
 				<button id="plusGuest" class="btn"><span class="glyphicon glyphicon-plus"></span></button>
 			</div>
 		</div>
-	</div>
 
+    <div id="dinnerOverview" style="display:none; width:100%">
+      <!-- Second bar -->
+      <hr>
+      <div class="jumbotron" id="no-margin">
+        <div class="modal-body row">
+          <div class="col-md-6">
+            <h2 style="margin-top:0">My Dinner: <span id="numberOfGuests">4</span> people</h2>
+          </div>
+          <div class="col-md-6">
+            <button type="button" class="btn btn-default btn-lg" style="float:right">
+                <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Back
+              </button>
+          </div>
+        </div>
+      </div>
+      <hr>
+
+      <!-- Courses  -->
+      <div class="row text-center" id="coursesRow" style="margin-top: 20px;text-align:center"></div>
+
+      <div class="row">
+        <hr class="padding">
+        <div class="col-md-12 text-center">
+          <button type="button" class="btn btn-default btn-lg" id="specialButton"><font size="4"> Print Full Recipe </font></button>
+        </div>
+      </div>
+
+    </div>
+
+    <div id="dinnerPreparation" style="display:none">
+
+      <!-- Second bar -->
+      <hr>
+      <div class="jumbotron" id="no-margin">
+        <div class="modal-body row">
+          <div class="col-md-6">
+            <h2 style="margin-top:0">My Dinner: 4 people</h2>
+          </div>
+          <div class="col-md-6">
+            <button type="button" class="btn btn-default btn-lg" style="float:right">
+              <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Back
+            </button>
+          </div>
+        </div>
+      </div>
+      <hr>
+
+      <!-- Dishes -->
+      <div id="preparationContainer"></div>
+
+    </div>
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery.js"></script>
     <!-- Bootstrap JavaScript, needed if you want for instance tabs, models, popovers etc. -->
@@ -33,6 +90,10 @@
 	<script src="../js/app.js"></script>
 	<script src="../js/model/dinnerModel.js"></script>
 	<script src="../js/view/exampleView.js"></script>
+  <script src="../js/view/DinnerOverview.js"></script>
+  <script src="../js/view/DinnerPreparation.js"></script>
 	<script src="../js/controller/exampleViewController.js"></script>
+  <script src="../js/controller/DinnerOverviewController.js"></script>
+
   </body>
 </html>

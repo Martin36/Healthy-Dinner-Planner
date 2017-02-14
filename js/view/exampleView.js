@@ -8,6 +8,7 @@ var ExampleView = function(container, model) {
   this.plusButton = container.find("#plusGuest");
   console.log(this.plusButton);
   this.minusButton = container.find("#minusGuest");
+  this.toggleButton = $("body").find("#toggleButton");
 
   this.numberOfGuests.html(model.getNumberOfGuests());
   //this.numberOfGuests.html("FJORTON");

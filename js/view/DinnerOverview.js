@@ -1,4 +1,4 @@
-var DinnerOverview = function(model) {
+var DinnerOverview = function(container, model) {
 
   //Add the dishes
   model.addDishToMenu(1);
@@ -8,10 +8,12 @@ var DinnerOverview = function(model) {
   //Add this view as observer
   model.addObserver(this);
 
+
   //this.printRecipeButton = $("#specialButton");
   this.printRecipeButton = $("body").find("#specialButton");
 
-  console.log(this.printRecipeButton);
+  this.toggleButton = $("#toggleButton");
+  console.log(this.toggleButton);
 
   var nrOfExtraDivCols = 5 - model.getFullMenu().length;
   //Select if animation should be used
