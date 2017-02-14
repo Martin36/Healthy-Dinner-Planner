@@ -1,5 +1,5 @@
 //ExampleView Object constructor
-var View2_Sidebar = function(container, model) {
+var SidebarView = function(container, model) {
 
   model.addDishToMenu(2);
 
