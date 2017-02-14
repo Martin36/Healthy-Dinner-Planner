@@ -1,7 +1,8 @@
 var SidebarController = function(view, model){
 
   // When a selected dish is deleted from the sidebar
-  view.deleteButton.click(function(){
-    console.log("Hej:");
+  view.deleteButton.click(function(eventObject){
+    console.log(eventObject);
+    model.removeDishFromMenu(view.deleteButton.attr("dishid"));
   });
-}
+  }
