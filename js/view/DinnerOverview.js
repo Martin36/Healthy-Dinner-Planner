@@ -7,23 +7,22 @@ var DinnerOverview = function(container, model) {
   model.setNumberOfGuests(10);
   //Add this view as observer
   model.addObserver(this);
-
+  console.log(container);
 
   //this.printRecipeButton = $("#specialButton");
-  this.printRecipeButton = $("body").find("#specialButton");
+  this.printRecipeButton = container.find("#specialButton");
 
   this.toggleButton = $("#toggleButton");
-  console.log(this.toggleButton);
 
   var nrOfExtraDivCols = 5 - model.getFullMenu().length;
   //Select if animation should be used
   var animate = false;
 
   //Set nr of guests
-  $("#numberOfGuests").html(model.getNumberOfGuests());
+  container.find("#numberOfGuests").html(model.getNumberOfGuests());
 
   //Add fisrt extra div
-  $("#coursesRow").append($("<div>").attr("class", "col-md-" + nrOfExtraDivCols + " col-sm-" + nrOfExtraDivCols + " frame"));
+  container.find("#coursesRow").append($("<div>").attr("class", "col-md-" + nrOfExtraDivCols + " col-sm-" + nrOfExtraDivCols + " frame"));
 
   //Function for getting the name of dish type used the ids
   var converDishType = function(type){
@@ -58,7 +57,7 @@ var DinnerOverview = function(container, model) {
 
     var courseString = converDishType(dish.type);
 
-    $("#coursesRow")
+    container.find("#coursesRow")
       .append($("<div>").attr("class", "col-md-2 col-sm-2 frame").attr("id", courseString + "Container").attr("style", "")
         .append($("<div>").attr("class", "thumbnail")
           .append($("<a>").attr("href", "#")
@@ -90,22 +89,22 @@ var DinnerOverview = function(container, model) {
   }
 
   //Set up view of total price
-  $("#coursesRow")
+  container.find("#coursesRow")
     .append($("<div>").attr("class", "col-md-2 col-sm-2 frame noHilight").attr("id", "container")
       .append($("<h3>Total: <span id='totalPrice'></span> SEK</h3>")));
 
-  $("#totalPrice").html(model.getTotalMenuPrice());
+  container.find("#totalPrice").html(model.getTotalMenuPrice());
   if(animate){
     //Animate the starter button
-    $("#starterContainer").hide();
-    $("#starterContainer").show(5000);
+    container.find("#starterContainer").hide();
+    container.find("#starterContainer").show(5000);
   }
 
   this.update = function(obj){
     switch (obj) {
       case "nrGuests":
         //Set nr of guests
-        $("#numberOfGuests").html(model.getNumberOfGuests());
+        container.find("#numberOfGuests").html(model.getNumberOfGuests());
         break;
       case "starter":
       case "main dish":

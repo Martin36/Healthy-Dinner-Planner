@@ -19,12 +19,14 @@ $(function() {
     var sidebar = new View2_Sidebar($("#sidebar"), model);
 
   if ($("#dinnerOverview").length){
-    var dinnerOverview = new DinnerOverview($("dinnerOverview"), model);
+    var dinnerOverview = new DinnerOverview($("#dinnerOverview"), model);
     var dinnerOverviewController = new DinnerOverviewController(dinnerOverview, model);
   }
 
-  if ($("#preparationContainer").length)
-    var dinnerPreparation = new DinnerPreparation($("#preparationContainer"), model);
+  if ($("#dinnerPreparation").length){
+    var dinnerPreparation = new DinnerPreparation($("#dinnerPreparation"), model);
+    var dinnerPreparationController = new DinnerPreparationController(dinnerPreparation, model);
+  }
 
   if ($("#dishOverview").length)
     var view4 = new View4_DishOverview($("#dishOverview"), model);

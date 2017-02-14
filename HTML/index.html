@@ -66,10 +66,10 @@
       <div class="jumbotron" id="no-margin">
         <div class="modal-body row">
           <div class="col-md-6">
-            <h2 style="margin-top:0">My Dinner: 4 people</h2>
+            <h2 style="margin-top:0">My Dinner: <span id="nrGuests"></span> people</h2>
           </div>
           <div class="col-md-6">
-            <button type="button" class="btn btn-default btn-lg" style="float:right">
+            <button id="backButton" type="button" class="btn btn-default btn-lg" style="float:right">
               <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Back
             </button>
           </div>
@@ -92,8 +92,10 @@
 	<script src="../js/view/exampleView.js"></script>
   <script src="../js/view/DinnerOverview.js"></script>
   <script src="../js/view/DinnerPreparation.js"></script>
-	<script src="../js/controller/exampleViewController.js"></script>
+  <script src="../js/controller/exampleViewController.js"></script>
   <script src="../js/controller/DinnerOverviewController.js"></script>
+  <script src="../js/controller/DinnerPreparationController.js"></script>
+
 
   </body>
 </html>

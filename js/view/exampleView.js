@@ -6,7 +6,6 @@ var ExampleView = function(container, model) {
   // and/or ones that responed to interaction)
   this.numberOfGuests = container.find("#numberOfGuests");
   this.plusButton = container.find("#plusGuest");
-  console.log(this.plusButton);
   this.minusButton = container.find("#minusGuest");
   this.toggleButton = $("body").find("#toggleButton");
 
