@@ -13,4 +13,9 @@ var SidebarController = function(view, model){
     view.dessertContainer.toggle();
   });
 
+  view.confirmButton.click(function(){
+    $("#selectDishes").toggle();
+    $("#dinnerOverview").toggle();
+  });
+  
   }

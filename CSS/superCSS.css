@@ -38,6 +38,11 @@ hr.padding {
   margin-bottom: 10px;
 }
 
+.specialButton {
+  background-color: #f39c12;
+  margin-bottom: 10px;
+}
+
 .row {
   height: 100%;
 }

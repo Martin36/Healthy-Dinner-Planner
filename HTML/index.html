@@ -20,6 +20,22 @@
 
     <button id="toggleButton" class="btn" style="display:none">Toggle!</button>
 
+    <div class="container-fluid" id="startView">
+        <div class="modal-body row">
+        <div class="col-md-3" id="info-box">
+          <!-- Your first column here -->
+          <h1 style="center">A home dinner service</h1>
+          <hr style="margin-top:10px;margin-bottom:10px">
+          <p>Some text.... blalblalblalblalblalbalbabla</p>
+          <button type="button" id="newDinnerButton" class="btn specialButton">Create New Dinner</button>
+        </div>
+        <div class="col-md-4">
+          <!-- Your second column here -->
+        </div>
+      </div>
+    </div>
+
+
 		<div id="exampleView" class="container" style="display:none">
 			<div>
 				Number of guests: <span id="numberOfGuests"></span>
@@ -67,7 +83,7 @@
                 <p class="alignRight" id="totalPrice">SEK 122.00</p>
               </div>
             </div>
-            <button type="button" class="btn btn-primary btn-block" id="specialButton">Confirm Dinner</button>
+            <button type="button" class="btn btn-primary btn-block specialButton" id="confirmButton">Confirm Dinner</button>
           </div>
 
           <!--Right column with info and stuff (View 3)-->
@@ -92,12 +108,13 @@
                   <!--Dish type drop down-->
                   <div class="col-md-2">
                     <div class="dropdown">
-                      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="specialButton">Dish Type
+                      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="specialButton">
+                        <span id="selectedDropdown">Starter</span>
                         <span class="caret"></span></button>
                       <ul class="dropdown-menu">
-                        <li><a href="#">Starter</a></li>
-                        <li><a href="#">Main</a></li>
-                        <li><a href="#">Desert</a></li>
+                        <li><a href="#" id="filterStarter">Starter</a></li>
+                        <li><a href="#" id="filterMain">Main</a></li>
+                        <li><a href="#" id="filterDesert">Desert</a></li>
                       </ul>
                     </div>
                   </div>
@@ -174,7 +191,7 @@
 
 
 
-    <div id="dinnerOverview" style="width:100%">
+    <div id="dinnerOverview" style="width:100%; display:none">
       <!-- Second bar -->
       <hr>
       <div class="jumbotron" id="no-margin">
@@ -248,6 +265,7 @@
   <script src="../js/controller/SelectDishesController.js"></script>
   <script src="../js/controller/SidebarController.js"></script>
   <script src="../js/controller/DishOverviewController.js"></script>
+  <script src="../js/controller/StartViewController.js"></script>
 
 
   </body>
