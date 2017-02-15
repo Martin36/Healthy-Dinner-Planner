@@ -1,9 +1,7 @@
 //ExampleView Object constructor
 var SidebarView = function(container, model) {
 
-  model.addDishToMenu(2);
 
-  model.addObserver(this);
 
   this.confirmButton = container.find("#confirmButton");
 
@@ -22,7 +20,7 @@ var SidebarView = function(container, model) {
         dishID = dishTypes[dish];
 
       dishContainer
-      .append($("<div>").addClass("row").attr("id", dishID+"Container").attr("style", "display:none")
+      .append($("<div>").addClass("row").attr("id", dishID+"Container")//.attr("style", "display:none")
         .append($("<div>").addClass("col-md-12")
           .append($("<div>").addClass("well margin")
             .append($("<p>").addClass("alignLeft").attr("id", dishID+"Name"))
@@ -47,26 +45,30 @@ var SidebarView = function(container, model) {
   this.dessertName = container.find("#dessertName");
 
   // Update content of selected dishes
-  var addSelectedDishes = function() {
+  this.addSelectedDishes = function() {
     totalPrice.html("SEK " + model.getTotalMenuPrice().toString());
-    for(dish in model.getFullMenu()){
-      switch (dish.type) {
+    var dishes = model.getFullMenu();
+    for(i = 0; i < dishes.length; i++){
+      switch (dishes[i].type) {
         case "starter":
-            this.starterName.html(dish.name);
-            this.starterName.attr("dishID", dish.id);
-            if(starterContainer.attr("style") == "display:none")
-              starterContainer.toggle();
+            this.starterName.html(dishes[i].name);
+            this.starterName.attr("dishID", dishes[i].id);
+            if(this.starterContainer.attr("style") == "display: none;"){
+              this.starterContainer.toggle();
+              console.log("SHOW STARTER");
+            }
+
           break;
         case "main course":
-            this.mainCourseName.html(dish.name);
-            this.mainCourseName.attr("dishID", dish.id);
-            if(mainCourseContainer.attr("style") == "display:none")
+            this.mainCourseName.html(dishes[i].name);
+            this.mainCourseName.attr("dishID", dishes[i].id);
+            if(mainCourseContainer.attr("style") == "display: none")
               mainCourseContainer.toggle();
           break;
         case "dessert":
-            this.dessertName.html(dish.name);
-            this.dessertName.attr("dishID", dish.id);
-            if(dessertContainer.attr("style") == "display:none")
+            this.dessertName.html(dishes[i].name);
+            this.dessertName.attr("dishID", dishes[i].id);
+            if(dessertContainer.attr("style") == "display: none")
               dessertContainer.toggle();
           break;
         default:
@@ -97,25 +99,20 @@ var SidebarView = function(container, model) {
     totalPrice.html(totalPrice);
   }
 
-  this.deleteDishFromModel = function(type){
-    switch (type) {
-      case "starter":
-
-        break;
-      default:
-
-    }
-  }
-
   // Update each sidebar button depending on what type of dish was added.
   this.update = function(obj) {
     switch (obj) {
       case "nrGuests":
 
         break;
+      case "starter" || "main course" || "dessert":
+        this.addSelectedDishes();
       default:
 
     }
-    addSelectedDishes();
+
   }
+
+  model.addObserver(this);
+  model.addDishToMenu(1);
 }

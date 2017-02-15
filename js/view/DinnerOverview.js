@@ -1,9 +1,9 @@
 var DinnerOverview = function(container, model) {
 
   //Add the dishes
-  model.addDishToMenu(1);
-  model.addDishToMenu(100);
-  model.addDishToMenu(200);
+  //model.addDishToMenu(1);
+  //model.addDishToMenu(100);
+  //model.addDishToMenu(200);
   model.setNumberOfGuests(10);
   //Add this view as observer
   model.addObserver(this);
