@@ -17,5 +17,5 @@ var SidebarController = function(view, model){
     $("#selectDishes").toggle();
     $("#dinnerOverview").toggle();
   });
-  
+
   }
