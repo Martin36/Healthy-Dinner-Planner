@@ -31,7 +31,6 @@ var SelectDishesController = function(view, model) {
   for(let button in view.dishButtons){
 
     view.dishButtons[button].on("click", function(event){
-      console.log(button);
       model.inspectedDish(view.dishButtons[button].attr("id"));
       $("#selectDishesView").toggle();
       $("#dishOverview").toggle();

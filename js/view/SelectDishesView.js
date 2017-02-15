@@ -52,7 +52,6 @@ var SelectDishesView = function(container, model) {
         dishList.append(clearFix);
       }
       //Add buttons
-      console.log(container.find("a#" + allDishes[0].id));
       this.dishButtons.push(container.find("a#" + allDishes[i].id));
     }
   }

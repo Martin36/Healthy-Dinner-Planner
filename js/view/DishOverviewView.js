@@ -14,9 +14,12 @@ var DishOverviewView = function(container, model) {
   var listTitle = container.find("#listTitle");
   var totalCost = container.find("#totalCost");
 
+  this.confirmDishButton = container.find("#confirmDishButton");
+  this.backButton = container.find("#backButton");
+
   var updateDishToShow = function() {
     var selectedDish = model.inspectedDish(); // This should be the dish you clicked on
-    selectedDish = (selectedDish == undefined) ? model.getDish(1) : selectedDish;   
+    selectedDish = (selectedDish == undefined) ? model.getDish(1) : selectedDish;
     var nr = model.getNumberOfGuests();
 
     dishImage.attr("src", "../images/" + selectedDish.image);
