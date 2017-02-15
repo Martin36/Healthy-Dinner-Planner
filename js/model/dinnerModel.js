@@ -72,7 +72,7 @@ var DinnerModel = function() {
         });
         //Append newDish to selectedDishes
         selectedDishes.push(newDish);
-        notifyObservers();
+        notifyObservers(newDish.type);
     }
 
     //Removes dish from menu

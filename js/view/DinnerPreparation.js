@@ -6,11 +6,18 @@ var DinnerPreparation = function(container, model){
   model.addDishToMenu(200);
   model.setNumberOfGuests(10);
 
+  //Find buttons
+  this.backButton = container.find("#backButton");
+  //Set the number of guests
+  var nrGuests = container.find("#nrGuests").html(model.getNumberOfGuests());
+
+  var preparationContainer = container.find("#preparationContainer");
+
   var starter = model.getSelectedDish("starter");
   if(starter != undefined){
     //Create the row with starter
     //Create cols containing image, dish name and description
-    container
+    preparationContainer
       .append($("<div>").attr("class", "row").attr("id", "preparationRow")
         .append($("<div>").attr("class", "col-md-2 col-sm-2")
           .append($("<div>").attr("class", "center-content")
@@ -23,16 +30,16 @@ var DinnerPreparation = function(container, model){
           .append($("<p>").attr("id", "starterPreparation"))));
 
     //Add data
-    $("#starterTitle").html(starter.name);
-    $("#starterImage").attr("src", "../images/" + starter.image);
-    $("#starterPreparation").html(starter.description);
+    preparationContainer.find("#starterTitle").html(starter.name);
+    container.find("#starterImage").attr("src", "../images/" + starter.image);
+    container.find("#starterPreparation").html(starter.description);
   }
 
   var mainCourse = model.getSelectedDish("main dish");
   if(mainCourse != undefined){
     //Create the row with starter
     //Create cols containing image, dish name and description
-    container
+    preparationContainer
       .append($("<div>").attr("class", "row").attr("id", "preparationRow")
         .append($("<div>").attr("class", "col-md-2 col-sm-2")
           .append($("<div>").attr("class", "center-content")
@@ -45,16 +52,16 @@ var DinnerPreparation = function(container, model){
           .append($("<p>").attr("id", "mainCoursePreparation"))));
 
     //Add data
-    $("#mainCourseTitle").html(mainCourse.name);
-    $("#mainCourseImage").attr("src", "../images/" + mainCourse.image);
-    $("#mainCoursePreparation").html(mainCourse.description);
+    container.find("#mainCourseTitle").html(mainCourse.name);
+    container.find("#mainCourseImage").attr("src", "../images/" + mainCourse.image);
+    container.find("#mainCoursePreparation").html(mainCourse.description);
   }
 
   var dessert = model.getSelectedDish("dessert");
   if(dessert != undefined){
     //Create the row with dessert
     //Create cols containing image, dish name and description
-    container
+    preparationContainer
       .append($("<div>").attr("class", "row").attr("id", "preparationRow")
         .append($("<div>").attr("class", "col-md-2 col-sm-2")
           .append($("<div>").attr("class", "center-content")
@@ -67,8 +74,8 @@ var DinnerPreparation = function(container, model){
           .append($("<p>").attr("id", "dessertPreparation"))));
 
     //Add data
-    $("#dessertTitle").html(dessert.name);
-    $("#dessertImage").attr("src", "../images/" + dessert.image);
-    $("#dessertPreparation").html(dessert.description);
+    container.find("#dessertTitle").html(dessert.name);
+    container.find("#dessertImage").attr("src", "../images/" + dessert.image);
+    container.find("#dessertPreparation").html(dessert.description);
   }
 }

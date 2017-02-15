@@ -6,8 +6,10 @@ $(function() {
   model.getTotalMenuPrice();
 
   //And create the needed controllers and views
-  if ($("#exampleView").length)
+  if ($("#exampleView").length){
     var exampleView = new ExampleView($("#exampleView"), model);
+    var exampleViewController = new ExampleViewController(exampleView,model);
+  }
 
   //Send away with #selectDishView as root element
   if ($("#selectDishesView").length){
@@ -16,17 +18,22 @@ $(function() {
   }
 
   if ($("#sidebar").length){
-    var sidebarView = new SidebarView($("#sidebar"), model);
-    var sidebarController = new SidebarController(sidebarView, model);
+    var sidebar = new SidebarView($("#sidebar"), model);
+    var sidebarController = new SidebarController(sidebar, model);
   }
 
-  if ($("#coursesRow").length)
-    var dinnerOverview = new DinnerOverview(model);
+  if ($("#dinnerOverview").length){
+    var dinnerOverview = new DinnerOverview($("#dinnerOverview"), model);
+    var dinnerOverviewController = new DinnerOverviewController(dinnerOverview, model);
+  }
 
-  if ($("#preparationContainer").length)
-    var dinnerPreparation = new DinnerPreparation($("#preparationContainer"), model);
+  if ($("#dinnerPreparation").length){
+    var dinnerPreparation = new DinnerPreparation($("#dinnerPreparation"), model);
+    var dinnerPreparationController = new DinnerPreparationController(dinnerPreparation, model);
+  }
 
-  if ($("#dishOverview").length)
-    var view4 = new DishOverviewView($("#dishOverview"), model);
-
+  if ($("#dishOverview").length){
+    var dishOverview = new DishOverviewView($("#dishOverview"), model);
+    var dishOverviewController = new DishOverviewController(dishOverview, model);
+  }
 });

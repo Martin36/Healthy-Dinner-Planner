@@ -8,12 +8,19 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
-
+    <link rel="stylesheet" href="../CSS/superCSS.css">
   </head>
   <body>
-	<div class="container">
-		<h1>Dinner planner</h1>
-		<div id="exampleView">
+
+    <!-- Header for the page -->
+    <div class="jumbotron text-center" id="title">
+      <h1>Healthy Dinner Planner</h1>
+      <p>Welcome to the healthy dinner planner which takes care of both your time and body!</p>
+    </div>
+
+    <button id="toggleButton" class="btn" style="display:none">Toggle!</button>
+
+		<div id="exampleView" class="container" style="display:none">
 			<div>
 				Number of guests: <span id="numberOfGuests"></span>
 			</div>
@@ -22,17 +29,222 @@
 				<button id="plusGuest" class="btn"><span class="glyphicon glyphicon-plus"></span></button>
 			</div>
 		</div>
-	</div>
 
+    <div id="selectDishes" style="display:none">
+      <!--Container that holds the entire view below the jumbotron-->
+      <div class="container-fluid">
+        <div class="row">
+          <!--Left column/sidebar with stuff-->
+          <div class="col-md-2 border" id="sidebar">
+            <h2>My Dinner</h2>
+            <p>People
+              <select class="form-controll ">
+                <option value="1 ">1</option>
+                <option value="2 ">2</option>
+                <option value="3 ">3</option>
+                <option value="4 ">4</option>
+              </select>
+            </p>
+            <div class="row header1">
+              <div class="col-md-12">
+                <p class="alignLeft noMargin">Dish Name</p>
+                <p class="alignRight noMargin">Cost</p>
+              </div>
+            </div>
+            <div class="row topMargin">
+              <div class=" col-md-12">
+                <p class="alignLeft">Pending</p>
+                <p class="alignRight">0.00</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row topMargin">
+              <div class="col-md-12 ">
+                <p class="alignRight " id="totalPrice">SEK 0.00</p>
+              </div>
+            </div>
+            <button type="button" class="btn btn-primary btn-block" id="specialButton">Confirm Dinner</button>
+          </div>
+
+          <!--Right column with info and stuff (View 3)-->
+          <div class="col-md-10" id="selectDishesView">
+            <div class="row borderTBR" id="mainHeader">
+              <div class="col-md-12">
+                <h2 id="titleThing">Select dish</h2>
+                <hr>
+                <!--Search input, new row otherwise i couldn't select the text input-->
+                <div class="row topMargin">
+                  <div class=" col-md-5 ">
+                    <div class="input-group ">
+                      <input type="text" class="form-control" id="searchDishInput">
+                      <span class="input-group-btn ">
+                        <button type="button" class="btn btn-primary" id="searchDishButton">
+                      <span class="glyphicon glyphicon-search "></span> Search
+                      </button>
+                      </span>
+                    </div>
+                  </div>
+
+                  <!--Dish type drop down-->
+                  <div class="col-md-2">
+                    <div class="dropdown">
+                      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="specialButton">Dish Type
+                        <span class="caret"></span></button>
+                      <ul class="dropdown-menu">
+                        <li><a href="#">Starter</a></li>
+                        <li><a href="#">Main</a></li>
+                        <li><a href="#">Desert</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!--Grid layout with dishes and scroll functionality when overflow-->
+            <div class="row outerFrame">
+              <div class="col-md-12" id="listWithDishes">
+                <!--Meals-->
+
+              </div>
+              <!--Dishes end-->
+            </div>
+          </div>
+
+          <!--Right column with info and stuff-->
+          <div class="col-md-10" id="dishOverview" style="display:none">
+
+            <!--Grid layout with dishes and scroll functionality when overflow-->
+            <div class="row outerFrame2">
+              <div class="col-md-12" id="dishOverview">
+
+                <!--Meal with more info and back button-->
+                <div class="col-md-4 col-sm-4 frame noHilight">
+                  <div class="thumbnail noBorder">
+                    <h3 id="dishTitle">Ice cream</h3>
+                    <div class="cropper">
+                      <img src="images/icecream.jpg" alt="IceCream">
+                    </div>
+                    <div class="caption">
+                      <!--Model has no description of dishes-->
+                    </div>
+                    <button type="button" class="btn btn-info">
+                      <span class="glyphicon glyphicon-chevron-left"></span>
+                      Back to Select Dish
+                      </button>
+                  </div>
+                  <div class="col-md-12" id="preparations">
+                    <h1>Preparations</h1>
+                    <!--Preparation instructions-->
+                    <p></p>
+                  </div>
+                </div>
+
+                <div class="col-md-5 col-sm-5 ingredients">
+                  <div class="row" id="ingredientList">
+                    <h3 id="listTitle"></h3>
+                    <hr>
+                    <!--All ingredients will go here-->
+                  </div>
+                  <!--row end-->
+                  <hr>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <button type="button" class="btn btn-success">
+                    <span class="glyphicon glyphicon-ok"></span>
+                    Confirm Dish</button>
+                    </div>
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                      <p class="alignRight" id="totalCost" style="padding-top: 20px;">SEK 100</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+
+    <div id="dinnerOverview" style="width:100%">
+      <!-- Second bar -->
+      <hr>
+      <div class="jumbotron" id="no-margin">
+        <div class="modal-body row">
+          <div class="col-md-6">
+            <h2 style="margin-top:0">My Dinner: <span id="numberOfGuests"></span> people</h2>
+          </div>
+          <div class="col-md-6">
+            <button id="backButton" type="button" class="btn btn-default btn-lg" style="float:right">
+                <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Back
+              </button>
+          </div>
+        </div>
+      </div>
+      <hr>
+
+      <!-- Courses  -->
+      <div class="row text-center" id="coursesRow" style="margin-top: 20px;text-align:center"></div>
+
+      <div class="row">
+        <hr class="padding">
+        <div class="col-md-12 text-center">
+          <button type="button" class="btn btn-default btn-lg" id="specialButton"><font size="4"> Print Full Recipe </font></button>
+        </div>
+      </div>
+
+    </div>
+
+    <div id="dinnerPreparation" style="display:none">
+
+      <!-- Second bar -->
+      <hr>
+      <div class="jumbotron" id="no-margin">
+        <div class="modal-body row">
+          <div class="col-md-6">
+            <h2 style="margin-top:0">My Dinner: <span id="nrGuests"></span> people</h2>
+          </div>
+          <div class="col-md-6">
+            <button id="backButton" type="button" class="btn btn-default btn-lg" style="float:right">
+              <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Back
+            </button>
+          </div>
+        </div>
+      </div>
+      <hr>
+
+      <!-- Dishes -->
+      <div id="preparationContainer"></div>
+
+    </div>
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery.js"></script>
     <!-- Bootstrap JavaScript, needed if you want for instance tabs, models, popovers etc. -->
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 
 	<!-- The application JavaScript code -->
-	<script src="js/app.js"></script>
-	<script src="js/model/dinnerModel.js"></script>
-	<script src="js/view/exampleView.js"></script>
-	<script src="js/view/exampleViewController.js"></script>
+	<script src="../js/app.js"></script>
+	<script src="../js/model/dinnerModel.js"></script>
+  <!-- Load the view scripts -->
+  <script src="../js/view/exampleView.js"></script>
+  <script src="../js/view/DinnerOverview.js"></script>
+  <script src="../js/view/DinnerPreparation.js"></script>
+  <script src="../js/view/DishOverviewView.js"></script>
+  <script src="../js/view/SelectDishesView.js"></script>
+  <script src="../js/view/SidebarView.js"></script>
+  <script src="../js/view/StartView.js"></script>
+  <!-- Load the controller scripts -->
+  <script src="../js/controller/exampleViewController.js"></script>
+  <script src="../js/controller/DinnerOverviewController.js"></script>
+  <script src="../js/controller/DinnerPreparationController.js"></script>
+  <script src="../js/controller/SelectDishesController.js"></script>
+  <script src="../js/controller/SidebarController.js"></script>
+  <script src="../js/controller/DishOverviewController.js"></script>
+
+
   </body>
 </html>

@@ -20,6 +20,7 @@
     <p>Welcome to the healthy dinner planner which takes care of both your time and body!</p>
   </div>
 
+  <div id="dinnerOverview">
   <!-- Second bar -->
   <hr>
   <div class="jumbotron" id="no-margin">
@@ -36,12 +37,8 @@
   </div>
   <hr>
 
-    <!-- Courses  -->
-    <div class="row text-center" id="coursesRow" style="margin-top: 20px;text-align:center"></div>
-
-
-
-
+  <!-- Courses  -->
+  <div class="row text-center" id="coursesRow" style="margin-top: 20px;text-align:center"></div>
 
   <div class="row">
     <hr class="padding">
@@ -51,16 +48,17 @@
 
   </div>
 
+</div>
 
-
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery.js"></script>
-    <!-- Bootstrap JavaScript, needed if you want for instance tabs, models, popovers etc. -->
-    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <!-- Bootstrap JavaScript, needed if you want for instance tabs, models, popovers etc. -->
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 
 	<!-- The application JavaScript code -->
 	<script src="../js/app.js"></script>
 	<script src="../js/model/dinnerModel.js"></script>
   <script src="../js/view/DinnerOverview.js"></script>
+  <script src="../js/controller/DinnerOverviewController.js"></script>
   </body>
 </html>

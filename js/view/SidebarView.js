@@ -38,7 +38,6 @@ var SidebarView = function(container, model) {
 
   this.update = function() {
     this.deleteButton = container.find("#deleteDish");
-    console.log("nr of buttons: " + this.deleteButton.length);
     clearSelectedDishes();
     addSelectedDishes();
   }

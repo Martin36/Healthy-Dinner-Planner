@@ -1,4 +1,4 @@
-var DinnerOverview = function(model) {
+var DinnerOverview = function(container, model) {
 
   //Add the dishes
   model.addDishToMenu(1);
@@ -8,15 +8,22 @@ var DinnerOverview = function(model) {
   //Add this view as observer
   model.addObserver(this);
 
+  //this.printRecipeButton = $("#specialButton");
+  this.printRecipeButton = container.find("#specialButton");
+
+  this.backButton = container.find("#backButton");
+
+  this.toggleButton = $("#toggleButton");
+
   var nrOfExtraDivCols = 5 - model.getFullMenu().length;
   //Select if animation should be used
   var animate = false;
 
   //Set nr of guests
-  $("#numberOfGuests").html(model.getNumberOfGuests());
+  container.find("#numberOfGuests").html(model.getNumberOfGuests());
 
   //Add fisrt extra div
-  $("#coursesRow").append($("<div>").attr("class", "col-md-" + nrOfExtraDivCols + " col-sm-" + nrOfExtraDivCols + " frame"));
+  container.find("#coursesRow").append($("<div>").attr("class", "col-md-" + nrOfExtraDivCols + " col-sm-" + nrOfExtraDivCols + " frame"));
 
   //Function for getting the name of dish type used the ids
   var converDishType = function(type){
@@ -42,7 +49,7 @@ var DinnerOverview = function(model) {
     if($("#" + courseString + "Container").length){
       //Add data to view
       $("#" + courseString + "Title").html(dish.name);
-      $("#" + courseString + "Image").attr("src", "images/" + dish.image);
+      $("#" + courseString + "Image").attr("src", "../images/" + dish.image);
       $("#" + courseString + "Price").html(model.getDishPrice(dish.id));
     }
   }
@@ -51,11 +58,11 @@ var DinnerOverview = function(model) {
 
     var courseString = converDishType(dish.type);
 
-    $("#coursesRow")
+    container.find("#coursesRow")
       .append($("<div>").attr("class", "col-md-2 col-sm-2 frame").attr("id", courseString + "Container").attr("style", "")
         .append($("<div>").attr("class", "thumbnail")
           .append($("<a>").attr("href", "#")
-            .append($("<img>").attr("class", "foodImage").attr("id","../"+ courseString + "Image"))
+            .append($("<img>").attr("class", "foodImage").attr("id",courseString + "Image"))
             .append($("<div>").attr("class", "caption")
               .append($("<h3>").attr("id", courseString + "Title"))
               .append($("<h3>Price: <span id='" + courseString + "Price'></span> SEK</h3>"))))));
@@ -83,27 +90,29 @@ var DinnerOverview = function(model) {
   }
 
   //Set up view of total price
-  $("#coursesRow")
+  container.find("#coursesRow")
     .append($("<div>").attr("class", "col-md-2 col-sm-2 frame noHilight").attr("id", "container")
       .append($("<h3>Total: <span id='totalPrice'></span> SEK</h3>")));
 
-  $("#totalPrice").html(model.getTotalMenuPrice());
+  container.find("#totalPrice").html(model.getTotalMenuPrice());
   if(animate){
     //Animate the starter button
-    $("#starterContainer").hide();
-    $("#starterContainer").show(5000);
+    container.find("#starterContainer").hide();
+    container.find("#starterContainer").show(5000);
   }
 
   this.update = function(obj){
     switch (obj) {
       case "nrGuests":
         //Set nr of guests
-        $("#numberOfGuests").html(model.getNumberOfGuests());
+        container.find("#numberOfGuests").html(model.getNumberOfGuests());
         break;
       case "starter":
-        updateStarter();
-
+      case "main dish":
+      case "dessert":
+        updateDish(obj);
         break;
+
       default:
         break;
     }
