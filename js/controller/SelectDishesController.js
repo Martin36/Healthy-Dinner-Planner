@@ -28,7 +28,6 @@ var SelectDishesController = function(view, model) {
     view.showDishesWithFilter();
   });
 
-
   var filterDish = function(){
     view.showDishesWithFilter(view.searchDishInput.val());
   }

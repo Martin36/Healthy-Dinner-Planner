@@ -53,7 +53,7 @@ var SelectDishesView = function(container, model) {
   this.showDishesWithFilter();
   // Changes the dishes shown if new ones are added to database.
   // Also change when filter is applied.
-  this.update = function(){
+  this.update = function(obj){
 
   }
 }
