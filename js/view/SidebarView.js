@@ -1,9 +1,11 @@
 //ExampleView Object constructor
 var SidebarView = function(container, model) {
 
-
-
+  //Buttons
   this.confirmButton = container.find("#confirmButton");
+  this.plusButton = container.find("#plusGuest");
+  this.minusButton = container.find("#minusGuest");
+
 
   // Get all the relevant elements of the view (ones that show data
   // and/or ones that responed to interaction)
@@ -46,6 +48,7 @@ var SidebarView = function(container, model) {
 
   // Update content of selected dishes
   this.addSelectedDishes = function() {
+    //numberOfGuestsChanged();
     totalPrice.html("SEK " + model.getTotalMenuPrice().toString());
     var dishes = model.getFullMenu();
     for(i = 0; i < dishes.length; i++){
@@ -103,7 +106,7 @@ var SidebarView = function(container, model) {
   this.update = function(obj) {
     switch (obj) {
       case "nrGuests":
-
+        container.find($("#nrGuests")).html(model.getNumberOfGuests());
         break;
       case "starter" || "main course" || "dessert":
         this.addSelectedDishes();
