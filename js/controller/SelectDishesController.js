@@ -28,6 +28,15 @@ var SelectDishesController = function(view, model) {
     view.showDishesWithFilter();
   });
 
+  for(let button in view.dishButtons){
+
+    view.dishButtons[button].on("click", function(event){
+      model.inspectedDish(view.dishButtons[button].attr("id"));
+      $("#selectDishesView").toggle();
+      $("#dishOverview").toggle();
+    });
+  };
+
   var filterDish = function(){
     view.showDishesWithFilter(view.searchDishInput.val());
   }

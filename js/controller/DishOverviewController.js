@@ -1,9 +1,14 @@
 var DishOverviewController = function(view, model){
 
-  view.confirmDishButton.on("click", function(event){
-    console.log("Button clicked! Adding id " + view.getDishID());
-    model.addDishToMenu(view.getDishID());
-
+  view.confirmDishButton.click(function(){
+    model.addDishToMenu(model.inspectedDish().id);
+    $("#dishOverview").toggle();
+    $("#selectDishesView").toggle();
   });
+
+  view.backButton.click(function() {
+    $("#dishOverview").toggle();
+    $("#selectDishesView").toggle();
+  })
 
 }
