@@ -18,7 +18,7 @@ var DinnerModel = function() {
 
     this.setNumberOfGuests = function(num) {
         //don't use this.numberOfGuests to access class variable
-        numberOfGuests = num;
+        numberOfGuests = (num <= 0) ? 0 : num;
         notifyObservers("nrGuests");
     }
 
