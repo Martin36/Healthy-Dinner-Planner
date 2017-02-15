@@ -22,11 +22,11 @@ var SidebarView = function(container, model) {
         dishID = dishTypes[dish];
 
       dishContainer
-      .append($("<div>").addClass("row").attr("id", dishID+"Container")//.attr("style", "display:none")
+      .append($("<div>").addClass("row").attr("id", dishID+"Container").attr("style", "display: none;")
         .append($("<div>").addClass("col-md-12")
           .append($("<div>").addClass("well margin")
             .append($("<p>").addClass("alignLeft").attr("id", dishID+"Name"))
-            .append($("<p>").addClass("alignRight").attr("id", dishID+"Price"))//.html(model.getDishPrice(dish.id)))
+            .append($("<p>").addClass("alignRight").attr("id", dishID+"Cost"))//.html(model.getDishPrice(dish.id)))
             .append($("<button>").addClass("btn btn-danger circle")
             .attr("type", "button").attr("id", "delete"+dishID+"Button")
               .append($("<span>").addClass("glyphicon glyphicon-remove"))))));
@@ -46,6 +46,10 @@ var SidebarView = function(container, model) {
   this.mainCourseName = container.find("#maincourseName");
   this.dessertName = container.find("#dessertName");
 
+  this.starterCost = container.find("#starterCost");
+  this.mainCourseCost = container.find("#maincourseCost");
+  this.dessertCost = container.find("#dessertCost");
+
   // Update content of selected dishes
   this.addSelectedDishes = function() {
     //numberOfGuestsChanged();
@@ -56,23 +60,23 @@ var SidebarView = function(container, model) {
         case "starter":
             this.starterName.html(dishes[i].name);
             this.starterName.attr("dishID", dishes[i].id);
-            if(this.starterContainer.attr("style") == "display: none;"){
+            this.starterCost.html(model.getDishPrice(dishes[i].id));
+            if(this.starterContainer.attr("style") == "display: none;")
               this.starterContainer.toggle();
-              console.log("SHOW STARTER");
-            }
-
           break;
-        case "main course":
+        case "main dish":
             this.mainCourseName.html(dishes[i].name);
             this.mainCourseName.attr("dishID", dishes[i].id);
-            if(mainCourseContainer.attr("style") == "display: none")
-              mainCourseContainer.toggle();
+            this.mainCourseCost.html(model.getDishPrice(dishes[i].id));
+            if(this.mainCourseContainer.attr("style") == "display: none;")
+              this.mainCourseContainer.toggle();
           break;
         case "dessert":
             this.dessertName.html(dishes[i].name);
             this.dessertName.attr("dishID", dishes[i].id);
-            if(dessertContainer.attr("style") == "display: none")
-              dessertContainer.toggle();
+            this.dessertCost.html(model.getDishPrice(dishes[i].id));
+            if(this.dessertContainer.attr("style") == "display: none;")
+              this.dessertContainer.toggle();
           break;
         default:
       }
@@ -104,12 +108,20 @@ var SidebarView = function(container, model) {
 
   // Update each sidebar button depending on what type of dish was added.
   this.update = function(obj) {
+    console.log("UPDATE: "+obj);
     switch (obj) {
       case "nrGuests":
         container.find($("#nrGuests")).html(model.getNumberOfGuests());
         break;
-      case "starter" || "main course" || "dessert":
+      case "starter":
         this.addSelectedDishes();
+        break;
+      case "main dish":
+        this.addSelectedDishes();
+      break;
+      case "dessert":
+          this.addSelectedDishes();
+        break;
       default:
 
     }
