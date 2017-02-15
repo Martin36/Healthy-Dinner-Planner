@@ -53,19 +53,22 @@ var SidebarView = function(container, model) {
         case "starter":
             this.starterName.html(dishes[i].name);
             this.starterName.attr("dishID", dishes[i].id);
-            if(this.starterContainer.attr("style") == "display:none")
-              starterContainer.toggle();
+            if(this.starterContainer.attr("style") == "display: none;"){
+              this.starterContainer.toggle();
+              console.log("SHOW STARTER");
+            }
+
           break;
         case "main course":
             this.mainCourseName.html(dishes[i].name);
             this.mainCourseName.attr("dishID", dishes[i].id);
-            if(mainCourseContainer.attr("style") == "display:none")
+            if(mainCourseContainer.attr("style") == "display: none")
               mainCourseContainer.toggle();
           break;
         case "dessert":
             this.dessertName.html(dishes[i].name);
             this.dessertName.attr("dishID", dishes[i].id);
-            if(dessertContainer.attr("style") == "display:none")
+            if(dessertContainer.attr("style") == "display: none")
               dessertContainer.toggle();
           break;
         default:
@@ -103,10 +106,11 @@ var SidebarView = function(container, model) {
 
         break;
       case "starter" || "main course" || "dessert":
+        this.addSelectedDishes();
       default:
 
     }
-    this.addSelectedDishes();
+
   }
 
   model.addObserver(this);
