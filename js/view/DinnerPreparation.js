@@ -1,11 +1,5 @@
 var DinnerPreparation = function(container, model){
 
-  //Add the dishes
-  //model.addDishToMenu(1);
-  //model.addDishToMenu(100);
-  //model.addDishToMenu(200);
-  model.setNumberOfGuests(10);
-
   //Find buttons
   this.backButton = container.find("#backButton");
   //Set the number of guests
