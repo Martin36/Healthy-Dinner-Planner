@@ -7,7 +7,6 @@ var DishOverviewView = function(container, model) {
   // Get all the relevant elements of the view (ones that show data
   // and/or ones that responed to interaction)
 
-
   var dishImage = container.find("img");
   var dishTitle = container.find("#dishTitle");
   var prepIns = container.find("#preparations p");
@@ -18,8 +17,9 @@ var DishOverviewView = function(container, model) {
   this.backButton = container.find("#backButton");
 
   var updateDishToShow = function() {
-    var selectedDish = model.inspectedDish(); // This should be the dish you clicked on
-    selectedDish = (selectedDish == undefined) ? model.getDish(1) : selectedDish;
+
+    var selectedDish = model.inspectedDish(); //This is the dish that has been clicked on
+    selectedDish = (selectedDish == undefined) ? model.getDish(1) : selectedDish; //Check that dish is not undefined
     var nr = model.getNumberOfGuests();
 
     dishImage.attr("src", "../images/" + selectedDish.image);
