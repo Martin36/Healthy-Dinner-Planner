@@ -8,20 +8,28 @@ var SelectDishesView = function(container, model) {
   // and/or ones that responed to interaction)
   this.searchDishInput = container.find("#searchDishInput");
   this.searchDishButton = container.find("#searchDishButton");
+  this.selectedDropdown = container.find("#selectedDropdown");
+  this.filterStarter = container.find("#filterStarter");
+  this.filterMain = container.find("#filterMain");
+  this.filterDesert = container.find("#filterDesert");
+  this.courseFilter = "starter";
+
   var dishes = container.find("#selectableDishes");
   var dishList = container.find("#listWithDishes");
-
   var allDishes = model.getAllDishes().prevObject;
   var filter = "";
-  this.clearAllDishes = function(){
+
+  var clearAllDishes = function(){
     dishList.empty();
   }
 
   this.showDishesWithFilter = function(filter){
+    clearAllDishes();
+
     if(filter == "")
-        allDishes = model.getAllDishes("starter");
+        allDishes = model.getAllDishes(this.courseFilter);
     else{
-      allDishes = model.getAllDishes("starter",filter);
+      allDishes = model.getAllDishes(this.courseFilter,filter);
     }
     for (var i = 0; i < allDishes.length; i++) {
       dishList
