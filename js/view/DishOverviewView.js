@@ -29,10 +29,14 @@ var DishOverviewView = function(container, model) {
 
     // Go through all the ingredients
     var totalPrice = 0;
+    //container.find("#ingredientList").empty();
+    //Empty the list of ingredients before adding new ones
+    container.find("#ingredients").empty();
+
     for (var i = 0; i < selectedDish.ingredients.length; i++) {
       var ingredient = selectedDish.ingredients[i];
       var piecePrice = parseFloat(ingredient.price) * nr;
-      container.find("#ingredientList")
+      container.find("#ingredients")
         .append($("<div>").addClass("col-md-3 space")
           .html((parseFloat(ingredient.quantity) * nr).toString() + " " + ingredient.unit))
         .append($("<div>").addClass("col-md-5 space").html(ingredient.name))
@@ -47,6 +51,4 @@ var DishOverviewView = function(container, model) {
     updateDishToShow();
   }
 
-  /// Add stuff down here for testing
-  model.addDishToMenu(1);
 }
