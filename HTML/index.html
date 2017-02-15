@@ -20,6 +20,22 @@
 
     <button id="toggleButton" class="btn" style="display:none">Toggle!</button>
 
+    <div class="container-fluid" id="startView">
+        <div class="modal-body row">
+        <div class="col-md-3" id="info-box">
+          <!-- Your first column here -->
+          <h1 style="center">A home dinner service</h1>
+          <hr style="margin-top:10px;margin-bottom:10px">
+          <p>Some text.... blalblalblalblalblalbalbabla</p>
+          <button type="button" id="specialButton" class="btn">Create New Dinner</button>
+        </div>
+        <div class="col-md-4">
+          <!-- Your second column here -->
+        </div>
+      </div>
+    </div>
+
+
 		<div id="exampleView" class="container" style="display:none">
 			<div>
 				Number of guests: <span id="numberOfGuests"></span>
@@ -170,7 +186,7 @@
 
 
 
-    <div id="dinnerOverview" style="width:100%">
+    <div id="dinnerOverview" style="width:100%; display:none">
       <!-- Second bar -->
       <hr>
       <div class="jumbotron" id="no-margin">

@@ -11,6 +11,11 @@ $(function() {
     var exampleViewController = new ExampleViewController(exampleView,model);
   }
 
+  if($("#startView").length){
+    var startView = new StartView($("#startView"), model);
+    var startViewController = new StartViewController(startView, model);
+  }
+
   //Send away with #selectDishView as root element
   if ($("#selectDishesView").length){
     var selectDishesView = new SelectDishesView($("#selectDishesView"), model);
