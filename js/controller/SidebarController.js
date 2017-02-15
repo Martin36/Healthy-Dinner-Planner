@@ -5,4 +5,9 @@ var SidebarController = function(view, model){
     console.log(eventObject);
     model.removeDishFromMenu(view.deleteButton.attr("dishid"));
   });
+
+  view.confirmButton.click(function(){
+    $("#selectDishes").toggle();
+    $("#dinnerOverview").toggle();
+  })
   }
