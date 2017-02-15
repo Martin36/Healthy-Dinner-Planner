@@ -3,6 +3,7 @@ var SidebarController = function(view, model){
   view.deleteStarterButton.on("click", function(){
     console.log("DELETE STARTER!");
     view.starterContainer.toggle();
+    
   });
   view.deleteMainCourseButton.on("click", function(){
     console.log("DELETE MAIN COURSE!");

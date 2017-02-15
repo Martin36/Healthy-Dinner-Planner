@@ -33,7 +33,7 @@ var SidebarView = function(container, model) {
     }
   }
   initSelectedDishes();
-  
+
   this.deleteStarterButton = container.find("#deletestarterButton");
   this.deleteMainCourseButton = container.find("#deletemaincourseButton");
   this.deleteDessertButton = container.find("#deletedessertButton");
@@ -42,9 +42,9 @@ var SidebarView = function(container, model) {
   this.mainCourseContainer = container.find("#maincourseContainer");
   this.dessertContainer = container.find("#dessertContainer");
 
-  var starterName = container.find("#starterName");
-  var mainCourseName = container.find("#maincourseName");
-  var dessertName = container.find("#dessertName");
+  this.starterName = container.find("#starterName");
+  this.mainCourseName = container.find("#maincourseName");
+  this.dessertName = container.find("#dessertName");
 
   // Update content of selected dishes
   var addSelectedDishes = function() {
@@ -52,17 +52,20 @@ var SidebarView = function(container, model) {
     for(dish in model.getFullMenu()){
       switch (dish.type) {
         case "starter":
-            starterName.html(dish.name);
+            this.starterName.html(dish.name);
+            this.starterName.attr("dishID", dish.id);
             if(starterContainer.attr("style") == "display:none")
               starterContainer.toggle();
           break;
         case "main course":
-            mainCourseName.html(dish.name);
+            this.mainCourseName.html(dish.name);
+            this.mainCourseName.attr("dishID", dish.id);
             if(mainCourseContainer.attr("style") == "display:none")
               mainCourseContainer.toggle();
           break;
         case "dessert":
-            dessertName.html(dish.name);
+            this.dessertName.html(dish.name);
+            this.dessertName.attr("dishID", dish.id);
             if(dessertContainer.attr("style") == "display:none")
               dessertContainer.toggle();
           break;
@@ -92,6 +95,16 @@ var SidebarView = function(container, model) {
       }
     }
     totalPrice.html(totalPrice);
+  }
+
+  this.deleteDishFromModel = function(type){
+    switch (type) {
+      case "starter":
+
+        break;
+      default:
+
+    }
   }
 
   // Update each sidebar button depending on what type of dish was added.
