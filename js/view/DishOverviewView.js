@@ -6,6 +6,8 @@ var DishOverviewView = function(container, model) {
 
   // Get all the relevant elements of the view (ones that show data
   // and/or ones that responed to interaction)
+  
+
   var dishImage = container.find("img");
   var dishTitle = container.find("#dishTitle");
   var prepIns = container.find("#preparations p");
@@ -40,4 +42,7 @@ var DishOverviewView = function(container, model) {
   this.update = function(obj) {
     updateDishToShow();
   }
+
+  /// Add stuff down here for testing
+  model.addDishToMenu(1);
 }
