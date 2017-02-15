@@ -14,17 +14,21 @@ var SelectDishesView = function(container, model) {
   this.filterDesert = container.find("#filterDesert");
   this.courseFilter = "starter";
 
+  //Buttons
+  this.dishButtons = [];
+
   var dishes = container.find("#selectableDishes");
   var dishList = container.find("#listWithDishes");
   var allDishes = model.getAllDishes().prevObject;
   var filter = "";
 
-  var clearAllDishes = function(){
+  var clearAllDishes = function(dishButtons){
     dishList.empty();
+    dishButtons = [];
   }
 
   this.showDishesWithFilter = function(filter){
-    clearAllDishes();
+    clearAllDishes(this.dishButtons);
 
     if(filter == "")
         allDishes = model.getAllDishes(this.courseFilter);
@@ -35,7 +39,7 @@ var SelectDishesView = function(container, model) {
       dishList
         .append($("<div>").addClass("col-md-2 frame")
           .append($("<div>").addClass("thumbnail fixedHeight")
-            .append($("<a>").attr("href", "#")
+            .append($("<a>").attr("href", "#").attr("id", allDishes[i].id)
               .append($("<img>").attr("src", "../images/" + allDishes[i].image)
                 .attr("style", "width: 100%"))
               .append($("<div>").addClass("caption")
@@ -47,6 +51,9 @@ var SelectDishesView = function(container, model) {
         var clearFix = $("<div>").addClass("clearfix visible-md visible-lg");
         dishList.append(clearFix);
       }
+      //Add buttons
+      console.log(container.find("a#" + allDishes[0].id));
+      this.dishButtons.push(container.find("a#" + allDishes[i].id));
     }
   }
 

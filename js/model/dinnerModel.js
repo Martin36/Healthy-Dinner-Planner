@@ -4,6 +4,7 @@ var DinnerModel = function() {
     var numberOfGuests = 5;
     var selectedDishes = [];
     var observers = [];
+    var inspectedDish;
 
     var notifyObservers = function(obj) {
       $.each(observers, function(index, observer){
@@ -123,6 +124,15 @@ var DinnerModel = function() {
       return totalPrice;
     }
 
+    //Get and set function for inspectedDish
+    this.inspectedDish = function(id){
+      if(id == undefined)
+        return inspectedDish;
+      else {
+        inspectedDish = this.getDish(id);
+        notifyObservers();
+      }
+    }
 
     // the dishes variable contains an array of all the
     // dishes in the database. each dish has id, name, type,
