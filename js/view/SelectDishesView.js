@@ -37,7 +37,7 @@ var SelectDishesView = function(container, model) {
     }
     for (var i = 0; i < allDishes.length; i++) {
       dishList
-        .append($("<div>").addClass("col-md-2 frame")
+      .append($("<div>").addClass("col-md-2 frame").attr("style", "display:none").slideDown(500)
           .append($("<div>").addClass("thumbnail fixedHeight")
             .append($("<a>").attr("href", "#").attr("id", allDishes[i].id)
               .append($("<img>").attr("src", "../images/" + allDishes[i].image)
@@ -53,7 +53,10 @@ var SelectDishesView = function(container, model) {
       }
       //Add buttons
       this.dishButtons.push(container.find("a#" + allDishes[i].id));
+      //Animate dishes
+
     }
+
   }
 
   this.showDishesWithFilter();
