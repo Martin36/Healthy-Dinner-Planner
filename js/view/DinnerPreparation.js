@@ -23,8 +23,7 @@ var DinnerPreparation = function(container, model){
     }
     return courseString;
   }
-
-
+  //Function for initializing the dish of type "type"
   var initDish = function(type){
 
     var courseString = converDishType(type);
@@ -45,7 +44,7 @@ var DinnerPreparation = function(container, model){
     //Add data to the row
     updateDish(type);
   };
-
+  //Function for updating the dish of type "type"
   var updateDish = function(type){
     var dish = model.getSelectedDish(type);
     var courseString = converDishType(type);
@@ -55,9 +54,9 @@ var DinnerPreparation = function(container, model){
     container.find("#" + courseString + "Preparation").html(dish.description);
 
   }
-
+  //When a dish is removed or added the whole layout needs to be updated
   var updateLayout = function(){
-    container.find("#preparationContainer").empty();
+    preparationContainer.empty();
 
     var starter = model.getSelectedDish("starter");
     if(starter != undefined){

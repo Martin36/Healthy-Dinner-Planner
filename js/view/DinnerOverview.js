@@ -1,23 +1,12 @@
 var DinnerOverview = function(container, model) {
-
   //Add this view as observer
   model.addObserver(this);
-
   //Find the buttons on the view
   this.printRecipeButton = container.find("#specialButton");
   this.backButton = container.find("#backButton");
   this.toggleButton = $("#toggleButton");
-
-  var nrOfExtraDivCols = 5 - model.getFullMenu().length;
   //Select if animation should be used
   var animate = false;
-
-  //Set nr of guests
-  container.find("#numberOfGuests").html(model.getNumberOfGuests());
-
-  //Add fisrt extra div
-  container.find("#coursesRow").append($("<div>").attr("class", "col-md-" + nrOfExtraDivCols + " col-sm-" + nrOfExtraDivCols + " frame"));
-
   //Function for getting the name of dish type used the ids
   var converDishType = function(type){
     var courseString = "";
@@ -41,36 +30,20 @@ var DinnerOverview = function(container, model) {
     var nrOfExtraDivCols = 5 - model.getFullMenu().length;
     container.find("#coursesRow").append($("<div>").attr("class", "col-md-" + nrOfExtraDivCols + " col-sm-" + nrOfExtraDivCols + " frame"));
     //Then add the dishes
-    //Set up view of starter
-    var starter = model.getSelectedDish("starter");
-    if (starter != undefined) {
-      initDish(starter.type);
-      updateDish(starter.type);
+    var dishTypes = ["starter", "main dish", "dessert"];
+    for(i in dishTypes){
+      var dish = model.getSelectedDish(dishTypes[i]);
+      if(dish != undefined){
+        initDish(dish.type);
+        updateDish(dish.type);
+      }
     }
-
-    //Set up view of main course
-    var mainCourse = model.getSelectedDish("main dish");
-    if (mainCourse != undefined) {
-      initDish(mainCourse.type);
-      updateDish(mainCourse.type);
-    }
-
-    //Set up view of dessert
-    var dessert = model.getSelectedDish("dessert");
-    if (dessert != undefined) {
-      initDish(dessert.type);
-      updateDish(dessert.type);
-    }
-
     //Set up view of total price
     container.find("#coursesRow")
       .append($("<div>").attr("class", "col-md-2 col-sm-2 frame noHilight").attr("id", "container")
         .append($("<h3>Total: <span id='totalPrice'></span> SEK</h3>")));
-
+    //Set total price to the one contained in the model
     container.find("#totalPrice").html(model.getTotalMenuPrice());
-
-
-
   }
   //Updates the dish's div with new values
   var updateDish = function(type){
@@ -120,40 +93,9 @@ var DinnerOverview = function(container, model) {
     //Update total price
     container.find("#totalPrice").html(model.getTotalMenuPrice());
   }
-
-  //Set up view of starter
-  var starter = model.getSelectedDish("starter");
-  if (starter != undefined) {
-    initDish(starter);
-    updateDish(starter);
-  }
-
-  //Set up view of main course
-  var mainCourse = model.getSelectedDish("main dish");
-  if (mainCourse != undefined) {
-    initDish(mainCourse);
-    updateDish(mainCourse);
-  }
-
-  //Set up view of dessert
-  var dessert = model.getSelectedDish("dessert");
-  if (dessert != undefined) {
-    initDish(dessert);
-    updateDish(dessert);
-  }
-
-  //Set up view of total price
-  container.find("#coursesRow")
-    .append($("<div>").attr("class", "col-md-2 col-sm-2 frame noHilight").attr("id", "container")
-      .append($("<h3>Total: <span id='totalPrice'></span> SEK</h3>")));
-
-  container.find("#totalPrice").html(model.getTotalMenuPrice());
-  if(animate){
-    //Animate the starter button
-    container.find("#starterContainer").hide();
-    container.find("#starterContainer").show(5000);
-  }
-
+  //Run initial update to create the elements (only needed if the model contains dishes from the start)
+  updateLayout();
+  //Function called by the observable
   this.update = function(obj){
     switch (obj) {
       case "nrGuests":

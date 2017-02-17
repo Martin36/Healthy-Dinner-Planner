@@ -11,40 +11,24 @@
     <link rel="stylesheet" href="../CSS/superCSS.css">
   </head>
   <body>
-
     <!-- Header for the page -->
-    <div class="jumbotron text-center" id="title">
+    <div id="title" class="jumbotron text-center">
       <h1>Healthy Dinner Planner</h1>
       <p>Welcome to the healthy dinner planner which takes care of both your time and body!</p>
     </div>
 
-    <button id="toggleButton" class="btn" style="display:none">Toggle!</button>
-
-    <div class="container-fluid" id="startView">
+    <div id="startView" class="container-fluid">
         <div class="modal-body row">
         <div class="col-md-3" id="info-box">
-          <!-- Your first column here -->
           <h1 style="center">A home dinner service</h1>
           <hr style="margin-top:10px;margin-bottom:10px">
           <p>Some text.... blalblalblalblalblalbalbabla</p>
           <button type="button" id="newDinnerButton" class="btn specialButton">Create New Dinner</button>
         </div>
         <div class="col-md-4">
-          <!-- Your second column here -->
         </div>
       </div>
     </div>
-
-
-		<div id="exampleView" class="container" style="display:none">
-			<div>
-				Number of guests: <span id="numberOfGuests"></span>
-			</div>
-			<div>
-          <button id="minusGuest" class="btn"><span class="glyphicon glyphicon-minus"></span></button>
-				<button id="plusGuest" class="btn"><span class="glyphicon glyphicon-plus"></span></button>
-			</div>
-		</div>
 
     <div id="selectDishes" style="display:none">
       <!--Container that holds the entire view below the jumbotron-->
@@ -58,14 +42,6 @@
                 <button id="minusGuest" class="btn"><span class="glyphicon glyphicon-minus"></span></button>
                 <button id="plusGuest" class="btn"><span class="glyphicon glyphicon-plus"></span></button>
               </div>
-              <!--
-              <select class="form-controll ">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-              </select>
-            -->
             </p>
             <div class="row header1">
               <div class="col-md-12">
@@ -193,12 +169,9 @@
           </div>
         </div>
       </div>
-
     </div>
 
-
-
-    <div id="dinnerOverview" style="width:100%; display:none">
+    <div id="dinnerOverview" style="display:none">
       <!-- Second bar -->
       <hr>
       <div class="jumbotron" id="no-margin">
@@ -249,31 +222,29 @@
       <div id="preparationContainer"></div>
 
     </div>
+
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery.js"></script>
     <!-- Bootstrap JavaScript, needed if you want for instance tabs, models, popovers etc. -->
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-
-	<!-- The application JavaScript code -->
-	<script src="../js/app.js"></script>
-	<script src="../js/model/dinnerModel.js"></script>
-  <!-- Load the view scripts -->
-  <script src="../js/view/exampleView.js"></script>
-  <script src="../js/view/DinnerOverview.js"></script>
-  <script src="../js/view/DinnerPreparation.js"></script>
-  <script src="../js/view/DishOverviewView.js"></script>
-  <script src="../js/view/SelectDishesView.js"></script>
-  <script src="../js/view/SidebarView.js"></script>
-  <script src="../js/view/StartView.js"></script>
-  <!-- Load the controller scripts -->
-  <script src="../js/controller/exampleViewController.js"></script>
-  <script src="../js/controller/DinnerOverviewController.js"></script>
-  <script src="../js/controller/DinnerPreparationController.js"></script>
-  <script src="../js/controller/SelectDishesController.js"></script>
-  <script src="../js/controller/SidebarController.js"></script>
-  <script src="../js/controller/DishOverviewController.js"></script>
-  <script src="../js/controller/StartViewController.js"></script>
-
-
+  	<!-- The application JavaScript code -->
+  	<script src="../js/app.js"></script>
+  	<script src="../js/model/dinnerModel.js"></script>
+    <!-- Load the view scripts -->
+    <script src="../js/view/exampleView.js"></script>
+    <script src="../js/view/DinnerOverview.js"></script>
+    <script src="../js/view/DinnerPreparation.js"></script>
+    <script src="../js/view/DishOverviewView.js"></script>
+    <script src="../js/view/SelectDishesView.js"></script>
+    <script src="../js/view/SidebarView.js"></script>
+    <script src="../js/view/StartView.js"></script>
+    <!-- Load the controller scripts -->
+    <script src="../js/controller/exampleViewController.js"></script>
+    <script src="../js/controller/DinnerOverviewController.js"></script>
+    <script src="../js/controller/DinnerPreparationController.js"></script>
+    <script src="../js/controller/SelectDishesController.js"></script>
+    <script src="../js/controller/SidebarController.js"></script>
+    <script src="../js/controller/DishOverviewController.js"></script>
+    <script src="../js/controller/StartViewController.js"></script>
   </body>
 </html>
