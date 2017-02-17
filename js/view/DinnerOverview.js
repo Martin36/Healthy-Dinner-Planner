@@ -84,7 +84,7 @@ var DinnerOverview = function(container, model) {
       //Add data to view
       $("#" + courseString + "Title").html(dish.name);
       $("#" + courseString + "Image").attr("src", "../images/" + dish.image);
-      $("#" + courseString + "Price").html(model.getDishPrice(dish.id));
+      $("#" + courseString + "Price").html(model.getDishPrice(dish.id) * model.getNumberOfGuests());
     }
   }
   //Function for initializing the divs for the dishes
@@ -102,6 +102,21 @@ var DinnerOverview = function(container, model) {
             .append($("<div>").attr("class", "caption")
               .append($("<h3>").attr("id", courseString + "Title"))
               .append($("<h3>Price: <span id='" + courseString + "Price'></span> SEK</h3>"))))));
+  }
+  //Function for updating the price of everything
+  var updatePrice = function(){
+    //Update price of the dishes
+    var dishTypes = ["starter", "main dish", "dessert"];
+    for(i in dishTypes){
+      //Check if model contains that dish type
+      if(model.getSelectedDish(dishTypes[i]) != undefined){
+        //Get the price element
+        var priceTag = container.find("#" + converDishType(dishTypes[i]) + "Price");
+        if(priceTag != undefined){
+          priceTag.html(model.getDishPrice(model.getSelectedDish(dishTypes[i]).id) * model.getNumberOfGuests())
+        }
+      }
+    }
   }
 
   //Set up view of starter
@@ -142,6 +157,7 @@ var DinnerOverview = function(container, model) {
       case "nrGuests":
         //Set nr of guests
         container.find("#numberOfGuests").html(model.getNumberOfGuests());
+        updatePrice();
         break;
       case "starter":
       case "main dish":

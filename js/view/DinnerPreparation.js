@@ -1,5 +1,6 @@
 var DinnerPreparation = function(container, model){
 
+  model.addObserver(this);
   //Find buttons
   this.backButton = container.find("#backButton");
   //Set the number of guests
@@ -7,69 +8,93 @@ var DinnerPreparation = function(container, model){
 
   var preparationContainer = container.find("#preparationContainer");
 
-  var starter = model.getSelectedDish("starter");
-  if(starter != undefined){
-    //Create the row with starter
-    //Create cols containing image, dish name and description
-    preparationContainer
-      .append($("<div>").attr("class", "row").attr("id", "preparationRow")
-        .append($("<div>").attr("class", "col-md-2 col-sm-2")
-          .append($("<div>").attr("class", "center-content")
-            .append($("<img>").attr("class", "img-responsive center-block border").attr("id", "starterImage"))))
-        .append($("<div>").attr("class", "col-md-5 col-sm-5")
-          .append($("<h1><span id='starterTitle'></span></h1>"))
-          .append($("<p>").attr("id", "starterDescription")))
-        .append($("<div>").attr("class", "col-md-5 col-sm-5")
-          .append($("<h2>Preparation</h2>"))
-          .append($("<p>").attr("id", "starterPreparation"))));
-
-    //Add data
-    preparationContainer.find("#starterTitle").html(starter.name);
-    container.find("#starterImage").attr("src", "../images/" + starter.image);
-    container.find("#starterPreparation").html(starter.description);
+  //Function for getting the name of dish type used the ids
+  var converDishType = function(type){
+    var courseString = "";
+    switch (type) {
+      case "starter":
+      case "dessert":
+        courseString = type;
+        break;
+      case "main dish":
+        courseString = "mainCourse";
+        break;
+      default:
+    }
+    return courseString;
   }
 
-  var mainCourse = model.getSelectedDish("main dish");
-  if(mainCourse != undefined){
-    //Create the row with starter
+
+  var initDish = function(type){
+
+    var courseString = converDishType(type);
+
     //Create cols containing image, dish name and description
     preparationContainer
       .append($("<div>").attr("class", "row").attr("id", "preparationRow")
         .append($("<div>").attr("class", "col-md-2 col-sm-2")
           .append($("<div>").attr("class", "center-content")
-            .append($("<img>").attr("class", "img-responsive center-block border").attr("id", "mainCourseImage"))))
+            .append($("<img>").attr("class", "img-responsive center-block border").attr("id", courseString + "Image"))))
         .append($("<div>").attr("class", "col-md-5 col-sm-5")
-          .append($("<h1><span id='mainCourseTitle'></span></h1>"))
-          .append($("<p>").attr("id", "mainCourseDescription")))
+          .append($("<h1><span id='" + courseString + "Title'></span></h1>"))
+          .append($("<p>").attr("id", courseString + "Description")))
         .append($("<div>").attr("class", "col-md-5 col-sm-5")
           .append($("<h2>Preparation</h2>"))
-          .append($("<p>").attr("id", "mainCoursePreparation"))));
+          .append($("<p>").attr("id", courseString + "Preparation"))));
 
+    //Add data to the row
+    updateDish(type);
+  };
+
+  var updateDish = function(type){
+    var dish = model.getSelectedDish(type);
+    var courseString = converDishType(type);
     //Add data
-    container.find("#mainCourseTitle").html(mainCourse.name);
-    container.find("#mainCourseImage").attr("src", "../images/" + mainCourse.image);
-    container.find("#mainCoursePreparation").html(mainCourse.description);
+    container.find("#" + courseString + "Title").html(dish.name);
+    container.find("#" + courseString + "Image").attr("src", "../images/" + dish.image);
+    container.find("#" + courseString + "Preparation").html(dish.description);
+
   }
 
-  var dessert = model.getSelectedDish("dessert");
-  if(dessert != undefined){
-    //Create the row with dessert
-    //Create cols containing image, dish name and description
-    preparationContainer
-      .append($("<div>").attr("class", "row").attr("id", "preparationRow")
-        .append($("<div>").attr("class", "col-md-2 col-sm-2")
-          .append($("<div>").attr("class", "center-content")
-            .append($("<img>").attr("class", "img-responsive center-block border").attr("id", "dessertImage"))))
-        .append($("<div>").attr("class", "col-md-5 col-sm-5")
-          .append($("<h1><span id='dessertTitle'></span></h1>"))
-          .append($("<p>").attr("id", "dessertDescription")))
-        .append($("<div>").attr("class", "col-md-5 col-sm-5")
-          .append($("<h2>Preparation</h2>"))
-          .append($("<p>").attr("id", "dessertPreparation"))));
+  var updateLayout = function(){
+    container.find("#preparationContainer").empty();
 
-    //Add data
-    container.find("#dessertTitle").html(dessert.name);
-    container.find("#dessertImage").attr("src", "../images/" + dessert.image);
-    container.find("#dessertPreparation").html(dessert.description);
+    var starter = model.getSelectedDish("starter");
+    if(starter != undefined){
+      initDish(starter.type);
+    }
+
+    var mainCourse = model.getSelectedDish("main dish");
+    if(mainCourse != undefined){
+      initDish(mainCourse.type);
+    }
+
+    var dessert = model.getSelectedDish("dessert");
+    if(dessert != undefined){
+      initDish(dessert.type);
+    }
+  }
+
+  this.update = function(obj){
+    switch (obj) {
+      case "nrGuests":
+        //Set nr of guests
+        nrGuests.html(model.getNumberOfGuests());
+        break;
+      case "starter":
+      case "main dish":
+      case "dessert":
+        //Check if div exists
+        if(container.find("#" + converDishType(obj) + "Container").length == 0){
+          updateLayout();
+        }
+        updateDish(obj);
+        break;
+      case "dishRemoved":
+        updateLayout();
+        break;
+      default:
+        break;
+    }
   }
 }
