@@ -34,6 +34,7 @@ var SidebarView = function(container, model) {
   }
   initSelectedDishes();
 
+  /// Get all buttons and textareas from the sidebar
   this.deleteStarterButton = container.find("#deletestarterButton");
   this.deleteMainCourseButton = container.find("#deletemaincourseButton");
   this.deleteDessertButton = container.find("#deletedessertButton");
@@ -50,6 +51,7 @@ var SidebarView = function(container, model) {
   this.mainCourseCost = container.find("#maincourseCost");
   this.dessertCost = container.find("#dessertCost");
 
+  // Changes the cost shown
   this.changeTotalCost = function(){
     totalCost.html("SEK " + model.getTotalMenuPrice().toString());
     pendingCost.html(model.getTotalMenuPrice().toString());
@@ -90,21 +92,21 @@ var SidebarView = function(container, model) {
         case "starter":
             this.starterName.html(dishes[i].name);
             this.deleteStarterButton.attr("dishID", dishes[i].id);
-            this.starterCost.html(model.getDishPrice(dishes[i].id));
+            this.starterCost.html(model.getDishPrice(dishes[i].id) + " /each");
             if(this.starterContainer.attr("style") == "display: none;")
               this.starterContainer.toggle();
           break;
         case "main dish":
             this.mainCourseName.html(dishes[i].name);
             this.deleteMainCourseButton.attr("dishID", dishes[i].id);
-            this.mainCourseCost.html(model.getDishPrice(dishes[i].id));
+            this.mainCourseCost.html(model.getDishPrice(dishes[i].id) + " /each");
             if(this.mainCourseContainer.attr("style") == "display: none;")
               this.mainCourseContainer.toggle();
           break;
         case "dessert":
             this.dessertName.html(dishes[i].name);
             this.deleteDessertButton.attr("dishID", dishes[i].id);
-            this.dessertCost.html(model.getDishPrice(dishes[i].id));
+            this.dessertCost.html(model.getDishPrice(dishes[i].id) + " /each");
             if(this.dessertContainer.attr("style") == "display: none;")
               this.dessertContainer.toggle();
           break;
