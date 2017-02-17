@@ -1,10 +1,7 @@
 //ExampleView Object constructor
 var SidebarView = function(container, model) {
 
-  //Buttons
-  this.confirmButton = container.find("#confirmButton");
-  this.plusButton = container.find("#plusGuest");
-  this.minusButton = container.find("#minusGuest");
+  model.addObserver(this);
 
   // Get all the relevant elements of the view (ones that show data
   // and/or ones that responed to interaction)
@@ -13,6 +10,7 @@ var SidebarView = function(container, model) {
   var dishTypes = ["starter", "main course", "dessert"];
   var pendingCost = container.find("#pendingCost");
 
+  // Initialize all 3 different dishtypes in the sidebar
   var initSelectedDishes = function(){
     var dishID = ""
     for (dish in dishTypes){
@@ -34,10 +32,16 @@ var SidebarView = function(container, model) {
   }
   initSelectedDishes();
 
+  // Buttons
+  this.confirmButton = container.find("#confirmButton");
+  this.plusButton = container.find("#plusGuest");
+  this.minusButton = container.find("#minusGuest");
+
   this.deleteStarterButton = container.find("#deletestarterButton");
   this.deleteMainCourseButton = container.find("#deletemaincourseButton");
   this.deleteDessertButton = container.find("#deletedessertButton");
 
+  // Text containers
   this.starterContainer = container.find("#starterContainer");
   this.mainCourseContainer = container.find("#maincourseContainer");
   this.dessertContainer = container.find("#dessertContainer");
@@ -50,6 +54,7 @@ var SidebarView = function(container, model) {
   this.mainCourseCost = container.find("#maincourseCost");
   this.dessertCost = container.find("#dessertCost");
 
+  // Changes the cost shown
   this.changeTotalCost = function(){
     totalCost.html("SEK " + model.getTotalMenuPrice().toString());
     pendingCost.html(model.getTotalMenuPrice().toString());
@@ -83,30 +88,36 @@ var SidebarView = function(container, model) {
   }
 
   // Update content of selected dishes
-  this.addSelectedDishes = function() {
+  this.addSelectedDishes = function(type) {
     var dishes = model.getFullMenu();
     for(i = 0; i < dishes.length; i++){
       switch (dishes[i].type) {
         case "starter":
             this.starterName.html(dishes[i].name);
             this.deleteStarterButton.attr("dishID", dishes[i].id);
-            this.starterCost.html(model.getDishPrice(dishes[i].id));
+            this.starterCost.html(model.getDishPrice(dishes[i].id) + " /each");
             if(this.starterContainer.attr("style") == "display: none;")
-              this.starterContainer.toggle();
+              this.starterContainer.slideDown(500);
+            else if (dishes[i].type == type)
+              this.starterContainer.fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
           break;
         case "main dish":
             this.mainCourseName.html(dishes[i].name);
             this.deleteMainCourseButton.attr("dishID", dishes[i].id);
-            this.mainCourseCost.html(model.getDishPrice(dishes[i].id));
+            this.mainCourseCost.html(model.getDishPrice(dishes[i].id) + " /each");
             if(this.mainCourseContainer.attr("style") == "display: none;")
-              this.mainCourseContainer.toggle();
+              this.mainCourseContainer.slideDown(500);
+            else if (dishes[i].type == type)
+              this.mainCourseContainer.fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
           break;
         case "dessert":
             this.dessertName.html(dishes[i].name);
             this.deleteDessertButton.attr("dishID", dishes[i].id);
-            this.dessertCost.html(model.getDishPrice(dishes[i].id));
+            this.dessertCost.html(model.getDishPrice(dishes[i].id) + " /each");
             if(this.dessertContainer.attr("style") == "display: none;")
-              this.dessertContainer.toggle();
+              this.dessertContainer.slideDown(500);
+            else if (dishes[i].type == type)
+              this.dessertContainer.fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
           break;
         default:
       }
@@ -120,13 +131,13 @@ var SidebarView = function(container, model) {
         this.numberOfGuestsChanged();
         break;
       case "starter":
-        this.addSelectedDishes();
+        this.addSelectedDishes(obj);
         break;
       case "main dish":
-        this.addSelectedDishes();
+        this.addSelectedDishes(obj);
       break;
       case "dessert":
-          this.addSelectedDishes();
+          this.addSelectedDishes(obj);
         break;
       case "dishRemoved":
           this.changeTotalCost();
@@ -135,5 +146,4 @@ var SidebarView = function(container, model) {
     }
     this.changeTotalCost();
   }
-  model.addObserver(this);
 }

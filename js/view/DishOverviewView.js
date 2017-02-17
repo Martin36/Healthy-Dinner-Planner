@@ -36,11 +36,11 @@ var DishOverviewView = function(container, model) {
     for (var i = 0; i < selectedDish.ingredients.length; i++) {
       var ingredient = selectedDish.ingredients[i];
       var piecePrice = parseFloat(ingredient.price) * nr;
-      container.find("#ingredients")
+      container.find("#ingredients").append($("<div>").addClass("<row>")
         .append($("<div>").addClass("col-md-3 space")
           .html((parseFloat(ingredient.quantity) * nr).toString() + " " + ingredient.unit))
         .append($("<div>").addClass("col-md-5 space").html(ingredient.name))
-        .append($("<div>").addClass("col-md-4 space").append($("<p>").addClass("alignRight").html("SEK " + piecePrice)));
+        .append($("<div>").addClass("col-md-4 space").append($("<p>").addClass("alignRight").html("SEK " + piecePrice))));
       totalPrice += piecePrice;
     }
     totalCost.html("SEK " + totalPrice.toString());
