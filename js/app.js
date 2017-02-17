@@ -39,5 +39,4 @@ $(function() {
     var dishOverviewController = new DishOverviewController(dishOverview, model);
   }
   model.setNumberOfGuests(0);
-  console.log(model.getFullMenu()); 
 });

@@ -1,17 +1,11 @@
 var DinnerOverview = function(container, model) {
 
-  //Add the dishes
-  //model.addDishToMenu(1);
-  //model.addDishToMenu(100);
-  //model.addDishToMenu(200);
   //Add this view as observer
   model.addObserver(this);
 
-  //this.printRecipeButton = $("#specialButton");
+  //Find the buttons on the view
   this.printRecipeButton = container.find("#specialButton");
-
   this.backButton = container.find("#backButton");
-
   this.toggleButton = $("#toggleButton");
 
   var nrOfExtraDivCols = 5 - model.getFullMenu().length;
@@ -39,8 +33,20 @@ var DinnerOverview = function(container, model) {
     }
     return courseString;
   }
+  //Fixes the layout when a new dish type is added
+  var updateLayout = function(){
+    //Clear the row
+    container.find("#coursesRow").empty();
+    //First add the empty column to center dishes
+    var nrOfExtraDivCols = 5 - model.getFullMenu().length;
+    container.find("#coursesRow").append($("<div>").attr("class", "col-md-" + nrOfExtraDivCols + " col-sm-" + nrOfExtraDivCols + " frame"));
+
+
+  }
   //Updates the dish's div with new values
-  var updateDish = function(dish){
+  var updateDish = function(type){
+
+    var dish = model.getSelectedDish(type);
 
     var courseString = converDishType(dish.type);
 
@@ -53,7 +59,12 @@ var DinnerOverview = function(container, model) {
     }
   }
   //Function for initializing the divs for the dishes
-  var initDish = function(dish){
+  var initDish = function(type){
+    //First add the empty column for centering
+    var nrOfExtraDivCols = 5 - model.getFullMenu().length;
+
+
+    var dish = model.getSelectedDish(type);
 
     var courseString = converDishType(dish.type);
 
@@ -109,11 +120,11 @@ var DinnerOverview = function(container, model) {
       case "starter":
       case "main dish":
       case "dessert":
-        console.log(model.getFullMenu());
-        console.log(obj);
         //Check if div exists
-        if($("#" + converDishType(obj) + "Container").length != 0)
+        console.log();
+        if(container.find("#" + converDishType(obj) + "Container").length == 0){
           initDish(obj);
+        }
         updateDish(obj);
         break;
 
