@@ -88,7 +88,7 @@ var SidebarView = function(container, model) {
   }
 
   // Update content of selected dishes
-  this.addSelectedDishes = function() {
+  this.addSelectedDishes = function(type) {
     var dishes = model.getFullMenu();
     for(i = 0; i < dishes.length; i++){
       switch (dishes[i].type) {
@@ -98,6 +98,8 @@ var SidebarView = function(container, model) {
             this.starterCost.html(model.getDishPrice(dishes[i].id) + " /each");
             if(this.starterContainer.attr("style") == "display: none;")
               this.starterContainer.slideDown(500);
+            else if (dishes[i].type == type)
+              this.starterContainer.fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
           break;
         case "main dish":
             this.mainCourseName.html(dishes[i].name);
@@ -105,6 +107,8 @@ var SidebarView = function(container, model) {
             this.mainCourseCost.html(model.getDishPrice(dishes[i].id) + " /each");
             if(this.mainCourseContainer.attr("style") == "display: none;")
               this.mainCourseContainer.slideDown(500);
+            else if (dishes[i].type == type)
+              this.mainCourseContainer.fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
           break;
         case "dessert":
             this.dessertName.html(dishes[i].name);
@@ -112,6 +116,8 @@ var SidebarView = function(container, model) {
             this.dessertCost.html(model.getDishPrice(dishes[i].id) + " /each");
             if(this.dessertContainer.attr("style") == "display: none;")
               this.dessertContainer.slideDown(500);
+            else if (dishes[i].type == type)
+              this.dessertContainer.fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
           break;
         default:
       }
@@ -125,13 +131,13 @@ var SidebarView = function(container, model) {
         this.numberOfGuestsChanged();
         break;
       case "starter":
-        this.addSelectedDishes();
+        this.addSelectedDishes(obj);
         break;
       case "main dish":
-        this.addSelectedDishes();
+        this.addSelectedDishes(obj);
       break;
       case "dessert":
-          this.addSelectedDishes();
+          this.addSelectedDishes(obj);
         break;
       case "dishRemoved":
           this.changeTotalCost();
