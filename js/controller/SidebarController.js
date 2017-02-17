@@ -11,7 +11,7 @@ var SidebarController = function(view, model){
   view.deleteStarterButton.on("click", function(){
     view.starterContainer.toggle();
     var dishID = view.deleteStarterButton.attr("dishID");
-    model.removeDishFromMenu(dishID);
+    model.removeDishFromMenu(+dishID); // Convert to int
   });
   view.deleteMainCourseButton.on("click", function(){
     view.mainCourseContainer.toggle();

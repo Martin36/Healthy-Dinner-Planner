@@ -11,7 +11,7 @@ var SidebarView = function(container, model) {
   var dishContainer = container.find("#selectedDishes");
   var totalCost = container.find("#totalCost").html("SEK 0");
   var dishTypes = ["starter", "main course", "dessert"];
-  var pendingPrice = container.find("#pendingCost");
+  var pendingCost = container.find("#pendingCost");
 
   var initSelectedDishes = function(){
     var dishID = ""
@@ -50,9 +50,40 @@ var SidebarView = function(container, model) {
   this.mainCourseCost = container.find("#maincourseCost");
   this.dessertCost = container.find("#dessertCost");
 
+  this.changeTotalCost = function(){
+    totalCost.html("SEK " + model.getTotalMenuPrice().toString());
+    pendingCost.html(model.getTotalMenuPrice().toString());
+  }
+
+  // Change the cost on each dish and update total cost
+  this.numberOfGuestsChanged = function(){
+    container.find("#nrGuests").html(model.getNumberOfGuests());
+    this.changeTotalCost();
+    //var totalPrice = 0;
+    var nrOfGuests = model.getNumberOfGuests();
+    /*
+    for(dish in model.getFullMenu()){
+      var dishCost = model.getDishPrice(dish.id) * nrOfGuests;
+      totalPrice += dishCost;
+      switch (dish.type) {
+        case "starter":
+          container.find("#starterPrice").html(dishCost);
+          break;
+        case "main course":
+            container.find("#maincoursePrice").html(dishCost);
+          break;
+        case "dessert":
+            container.find("#dessertPrice").html(dishCost);
+          break;
+        default:
+      }
+    }
+    */
+    //totalCost.html(totalPrice);
+  }
+
   // Update content of selected dishes
   this.addSelectedDishes = function() {
-
     var dishes = model.getFullMenu();
     for(i = 0; i < dishes.length; i++){
       switch (dishes[i].type) {
@@ -82,42 +113,11 @@ var SidebarView = function(container, model) {
     }
   }
 
-  // Change the cost on each dish and update total cost
-  var numberOfGuestsChanged = function(){
-    container.find("#nrGuests").html(model.getNumberOfGuests());
-    //var totalPrice = 0;
-    var nrOfGuests = model.getNumberOfGuests();
-    /*
-    for(dish in model.getFullMenu()){
-      var dishCost = model.getDishPrice(dish.id) * nrOfGuests;
-      totalPrice += dishCost;
-      switch (dish.type) {
-        case "starter":
-          container.find("#starterPrice").html(dishCost);
-          break;
-        case "main course":
-            container.find("#maincoursePrice").html(dishCost);
-          break;
-        case "dessert":
-            container.find("#dessertPrice").html(dishCost);
-          break;
-        default:
-      }
-    }
-    */
-    //totalCost.html(totalPrice);
-  }
-
-  this.changeTotalCost = function(){
-    totalCost.html("SEK " + model.getTotalMenuPrice().toString());
-
-  }
-
   // Update each sidebar button depending on what type of dish was added.
   this.update = function(obj) {
     switch (obj) {
       case "nrGuests":
-        numberOfGuestsChanged();
+        this.numberOfGuestsChanged();
         break;
       case "starter":
         this.addSelectedDishes();
@@ -133,6 +133,7 @@ var SidebarView = function(container, model) {
         break;
       default:
     }
+    this.changeTotalCost();
   }
   model.addObserver(this);
 }
