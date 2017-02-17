@@ -1,10 +1,7 @@
 //ExampleView Object constructor
 var SidebarView = function(container, model) {
 
-  //Buttons
-  this.confirmButton = container.find("#confirmButton");
-  this.plusButton = container.find("#plusGuest");
-  this.minusButton = container.find("#minusGuest");
+  model.addObserver(this);
 
   // Get all the relevant elements of the view (ones that show data
   // and/or ones that responed to interaction)
@@ -13,6 +10,7 @@ var SidebarView = function(container, model) {
   var dishTypes = ["starter", "main course", "dessert"];
   var pendingCost = container.find("#pendingCost");
 
+  // Initialize all 3 different dishtypes in the sidebar
   var initSelectedDishes = function(){
     var dishID = ""
     for (dish in dishTypes){
@@ -34,11 +32,16 @@ var SidebarView = function(container, model) {
   }
   initSelectedDishes();
 
-  /// Get all buttons and textareas from the sidebar
+  // Buttons
+  this.confirmButton = container.find("#confirmButton");
+  this.plusButton = container.find("#plusGuest");
+  this.minusButton = container.find("#minusGuest");
+
   this.deleteStarterButton = container.find("#deletestarterButton");
   this.deleteMainCourseButton = container.find("#deletemaincourseButton");
   this.deleteDessertButton = container.find("#deletedessertButton");
 
+  // Text containers
   this.starterContainer = container.find("#starterContainer");
   this.mainCourseContainer = container.find("#maincourseContainer");
   this.dessertContainer = container.find("#dessertContainer");
@@ -94,21 +97,21 @@ var SidebarView = function(container, model) {
             this.deleteStarterButton.attr("dishID", dishes[i].id);
             this.starterCost.html(model.getDishPrice(dishes[i].id) + " /each");
             if(this.starterContainer.attr("style") == "display: none;")
-              this.starterContainer.toggle();
+              this.starterContainer.slideDown(500);
           break;
         case "main dish":
             this.mainCourseName.html(dishes[i].name);
             this.deleteMainCourseButton.attr("dishID", dishes[i].id);
             this.mainCourseCost.html(model.getDishPrice(dishes[i].id) + " /each");
             if(this.mainCourseContainer.attr("style") == "display: none;")
-              this.mainCourseContainer.toggle();
+              this.mainCourseContainer.slideDown(500);
           break;
         case "dessert":
             this.dessertName.html(dishes[i].name);
             this.deleteDessertButton.attr("dishID", dishes[i].id);
             this.dessertCost.html(model.getDishPrice(dishes[i].id) + " /each");
             if(this.dessertContainer.attr("style") == "display: none;")
-              this.dessertContainer.toggle();
+              this.dessertContainer.slideDown(500);
           break;
         default:
       }
@@ -137,5 +140,4 @@ var SidebarView = function(container, model) {
     }
     this.changeTotalCost();
   }
-  model.addObserver(this);
 }
