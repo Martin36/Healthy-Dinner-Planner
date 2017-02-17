@@ -9,17 +9,19 @@ var SidebarController = function(view, model){
   });
 
   view.deleteStarterButton.on("click", function(){
-    console.log("DELETE STARTER!");
     view.starterContainer.toggle();
-
+    var dishID = view.deleteStarterButton.attr("dishID");
+    model.removeDishFromMenu(dishID);
   });
   view.deleteMainCourseButton.on("click", function(){
-    console.log("DELETE MAIN COURSE!");
     view.mainCourseContainer.toggle();
+    var dishID = view.deleteMainCourseButton.attr("dishID");
+    model.removeDishFromMenu(dishID);
   });
   view.deleteDessertButton.on("click", function(){
-    console.log("DELETE DESSERT!");
     view.dessertContainer.toggle();
+    var dishID = view.deleteDessertButton.attr("dishID");
+    model.removeDishFromMenu(dishID);
   });
 
   view.confirmButton.click(function(){

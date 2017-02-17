@@ -52,28 +52,27 @@ var SidebarView = function(container, model) {
 
   // Update content of selected dishes
   this.addSelectedDishes = function() {
-    //numberOfGuestsChanged();
-    totalPrice.html("SEK " + model.getTotalMenuPrice().toString());
+
     var dishes = model.getFullMenu();
     for(i = 0; i < dishes.length; i++){
       switch (dishes[i].type) {
         case "starter":
             this.starterName.html(dishes[i].name);
-            this.starterName.attr("dishID", dishes[i].id);
+            this.deleteStarterButton.attr("dishID", dishes[i].id);
             this.starterCost.html(model.getDishPrice(dishes[i].id));
             if(this.starterContainer.attr("style") == "display: none;")
               this.starterContainer.toggle();
           break;
         case "main dish":
             this.mainCourseName.html(dishes[i].name);
-            this.mainCourseName.attr("dishID", dishes[i].id);
+            this.deleteMainCourseButton.attr("dishID", dishes[i].id);
             this.mainCourseCost.html(model.getDishPrice(dishes[i].id));
             if(this.mainCourseContainer.attr("style") == "display: none;")
               this.mainCourseContainer.toggle();
           break;
         case "dessert":
             this.dessertName.html(dishes[i].name);
-            this.dessertName.attr("dishID", dishes[i].id);
+            this.deleteDessertButton.attr("dishID", dishes[i].id);
             this.dessertCost.html(model.getDishPrice(dishes[i].id));
             if(this.dessertContainer.attr("style") == "display: none;")
               this.dessertContainer.toggle();
@@ -106,6 +105,10 @@ var SidebarView = function(container, model) {
     totalPrice.html(totalPrice);
   }
 
+  this.changeTotalPrice = function(){
+    totalPrice.html("SEK " + model.getTotalMenuPrice().toString());
+  }
+
   // Update each sidebar button depending on what type of dish was added.
   this.update = function(obj) {
     console.log("UPDATE: "+obj);
@@ -122,12 +125,11 @@ var SidebarView = function(container, model) {
       case "dessert":
           this.addSelectedDishes();
         break;
+      case "dishRemoved":
+          this.changeTotalPrice();
+        break;
       default:
-
     }
-
   }
-
   model.addObserver(this);
-  model.addDishToMenu(1);
 }

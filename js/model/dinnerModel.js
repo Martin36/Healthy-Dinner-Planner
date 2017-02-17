@@ -81,7 +81,7 @@ var DinnerModel = function() {
         selectedDishes = $(selectedDishes).filter(function(index, dish) {
             return dish.id !== id;
         });
-        notifyObservers();
+        notifyObservers("dishRemoved");
     }
 
     //function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
