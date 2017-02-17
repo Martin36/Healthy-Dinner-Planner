@@ -40,6 +40,35 @@ var DinnerOverview = function(container, model) {
     //First add the empty column to center dishes
     var nrOfExtraDivCols = 5 - model.getFullMenu().length;
     container.find("#coursesRow").append($("<div>").attr("class", "col-md-" + nrOfExtraDivCols + " col-sm-" + nrOfExtraDivCols + " frame"));
+    //Then add the dishes
+    //Set up view of starter
+    var starter = model.getSelectedDish("starter");
+    if (starter != undefined) {
+      initDish(starter.type);
+      updateDish(starter.type);
+    }
+
+    //Set up view of main course
+    var mainCourse = model.getSelectedDish("main dish");
+    if (mainCourse != undefined) {
+      initDish(mainCourse.type);
+      updateDish(mainCourse.type);
+    }
+
+    //Set up view of dessert
+    var dessert = model.getSelectedDish("dessert");
+    if (dessert != undefined) {
+      initDish(dessert.type);
+      updateDish(dessert.type);
+    }
+
+    //Set up view of total price
+    container.find("#coursesRow")
+      .append($("<div>").attr("class", "col-md-2 col-sm-2 frame noHilight").attr("id", "container")
+        .append($("<h3>Total: <span id='totalPrice'></span> SEK</h3>")));
+
+    container.find("#totalPrice").html(model.getTotalMenuPrice());
+
 
 
   }
@@ -60,9 +89,6 @@ var DinnerOverview = function(container, model) {
   }
   //Function for initializing the divs for the dishes
   var initDish = function(type){
-    //First add the empty column for centering
-    var nrOfExtraDivCols = 5 - model.getFullMenu().length;
-
 
     var dish = model.getSelectedDish(type);
 
@@ -121,9 +147,8 @@ var DinnerOverview = function(container, model) {
       case "main dish":
       case "dessert":
         //Check if div exists
-        console.log();
         if(container.find("#" + converDishType(obj) + "Container").length == 0){
-          initDish(obj);
+          updateLayout();
         }
         updateDish(obj);
         break;
