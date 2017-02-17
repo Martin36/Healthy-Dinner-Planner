@@ -152,7 +152,9 @@ var DinnerOverview = function(container, model) {
         }
         updateDish(obj);
         break;
-
+      case "dishRemoved":
+        updateLayout();
+        break;
       default:
         break;
     }
