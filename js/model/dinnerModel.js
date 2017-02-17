@@ -40,7 +40,6 @@ var DinnerModel = function() {
         $.each(selectedDishes, function(key, value){
           array.push(value);
         })
-        console.log(array);
 
         return array;
     }
