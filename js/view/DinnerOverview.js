@@ -4,7 +4,6 @@ var DinnerOverview = function(container, model) {
   //model.addDishToMenu(1);
   //model.addDishToMenu(100);
   //model.addDishToMenu(200);
-  model.setNumberOfGuests(10);
   //Add this view as observer
   model.addObserver(this);
 
@@ -110,6 +109,11 @@ var DinnerOverview = function(container, model) {
       case "starter":
       case "main dish":
       case "dessert":
+        console.log(model.getFullMenu());
+        console.log(obj);
+        //Check if div exists
+        if($("#" + converDishType(obj) + "Container").length != 0)
+          initDish(obj);
         updateDish(obj);
         break;
 

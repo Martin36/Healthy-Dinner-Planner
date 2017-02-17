@@ -1,7 +1,7 @@
 //DinnerModel Object constructor
 var DinnerModel = function() {
 
-    var numberOfGuests = 5;
+    var numberOfGuests;
     var selectedDishes = [];
     var observers = [];
     var inspectedDish;
@@ -36,7 +36,13 @@ var DinnerModel = function() {
 
     //Returns all the dishes on the menu.
     this.getFullMenu = function() {
-        return selectedDishes;
+        var array = [];
+        $.each(selectedDishes, function(key, value){
+          array.push(value);
+        })
+        console.log(array);
+
+        return array;
     }
 
     //Returns all ingredients for all the dishes on the menu.

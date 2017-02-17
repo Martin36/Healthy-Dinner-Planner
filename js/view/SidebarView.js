@@ -10,7 +10,7 @@ var SidebarView = function(container, model) {
   // Get all the relevant elements of the view (ones that show data
   // and/or ones that responed to interaction)
   var dishContainer = container.find("#selectedDishes");
-  var totalPrice = container.find("#totalPrice");
+  var totalPrice = container.find("#totalPrice").html("SEK 0");
   var dishTypes = ["starter", "main course", "dessert"];
 
   var initSelectedDishes = function(){
@@ -111,7 +111,6 @@ var SidebarView = function(container, model) {
 
   // Update each sidebar button depending on what type of dish was added.
   this.update = function(obj) {
-    console.log("UPDATE: "+obj);
     switch (obj) {
       case "nrGuests":
         container.find($("#nrGuests")).html(model.getNumberOfGuests());

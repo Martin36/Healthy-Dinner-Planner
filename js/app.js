@@ -2,9 +2,6 @@ $(function() {
   //We instantiate our model
   var model = new DinnerModel();
 
-  model.getAllIngredients();
-  model.getTotalMenuPrice();
-
   //And create the needed controllers and views
   if ($("#exampleView").length){
     var exampleView = new ExampleView($("#exampleView"), model);
@@ -41,4 +38,6 @@ $(function() {
     var dishOverview = new DishOverviewView($("#dishOverview"), model);
     var dishOverviewController = new DishOverviewController(dishOverview, model);
   }
+  model.setNumberOfGuests(0);
+  console.log(model.getFullMenu()); 
 });
