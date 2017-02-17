@@ -117,6 +117,8 @@ var DinnerOverview = function(container, model) {
         }
       }
     }
+    //Update total price
+    container.find("#totalPrice").html(model.getTotalMenuPrice());
   }
 
   //Set up view of starter
