@@ -31,13 +31,13 @@ var SelectDishesView = function(container, model) {
     clearAllDishes(this.dishButtons);
 
     if(filter == "")
-        allDishes = model.getAllDishes(this.courseFilter);
+      allDishes = model.getAllDishes(this.courseFilter);
     else{
       allDishes = model.getAllDishes(this.courseFilter,filter);
     }
     for (var i = 0; i < allDishes.length; i++) {
       dishList
-      .append($("<div>").addClass("col-md-2 frame").attr("style", "display:none").slideDown(500)
+      .append($("<div>").addClass("col-md-2 frame")
           .append($("<div>").addClass("thumbnail fixedHeight")
             .append($("<a>").attr("href", "#").attr("id", allDishes[i].id)
               .append($("<img>").attr("src", "../images/" + allDishes[i].image)
