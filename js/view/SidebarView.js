@@ -6,12 +6,12 @@ var SidebarView = function(container, model) {
   this.plusButton = container.find("#plusGuest");
   this.minusButton = container.find("#minusGuest");
 
-
   // Get all the relevant elements of the view (ones that show data
   // and/or ones that responed to interaction)
   var dishContainer = container.find("#selectedDishes");
-  var totalPrice = container.find("#totalPrice").html("SEK 0");
+  var totalCost = container.find("#totalCost").html("SEK 0");
   var dishTypes = ["starter", "main course", "dessert"];
+  var pendingPrice = container.find("#pendingCost");
 
   var initSelectedDishes = function(){
     var dishID = ""
@@ -84,8 +84,10 @@ var SidebarView = function(container, model) {
 
   // Change the cost on each dish and update total cost
   var numberOfGuestsChanged = function(){
-    var totalPrice = 0;
+    container.find("#nrGuests").html(model.getNumberOfGuests());
+    //var totalPrice = 0;
     var nrOfGuests = model.getNumberOfGuests();
+    /*
     for(dish in model.getFullMenu()){
       var dishCost = model.getDishPrice(dish.id) * nrOfGuests;
       totalPrice += dishCost;
@@ -102,18 +104,20 @@ var SidebarView = function(container, model) {
         default:
       }
     }
-    totalPrice.html(totalPrice);
+    */
+    //totalCost.html(totalPrice);
   }
 
-  this.changeTotalPrice = function(){
-    totalPrice.html("SEK " + model.getTotalMenuPrice().toString());
+  this.changeTotalCost = function(){
+    totalCost.html("SEK " + model.getTotalMenuPrice().toString());
+
   }
 
   // Update each sidebar button depending on what type of dish was added.
   this.update = function(obj) {
     switch (obj) {
       case "nrGuests":
-        container.find($("#nrGuests")).html(model.getNumberOfGuests());
+        numberOfGuestsChanged();
         break;
       case "starter":
         this.addSelectedDishes();
@@ -125,7 +129,7 @@ var SidebarView = function(container, model) {
           this.addSelectedDishes();
         break;
       case "dishRemoved":
-          this.changeTotalPrice();
+          this.changeTotalCost();
         break;
       default:
     }
