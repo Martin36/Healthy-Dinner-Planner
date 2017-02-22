@@ -41,7 +41,6 @@ var SelectDishesController = function(view, model) {
         $("#dishOverview").toggle();
       });
     };
-    console.log("Buttons updated!");
   };
 
   this.update = function(obj){

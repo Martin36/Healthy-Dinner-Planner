@@ -35,18 +35,18 @@ var DishOverviewView = function(container, model) {
     //container.find("#ingredientList").empty();
     //Empty the list of ingredients before adding new ones
     container.find("#ingredients").empty();
-/*
-    for (var i = 0; i < selectedDish.ingredients.length; i++) {
-      var ingredient = selectedDish.ingredients[i];
-      var piecePrice = parseFloat(ingredient.price) * nr;
+
+    for (var i = 0; i < selectedDish.extendedIngredients.length; i++) {
+      var ingredient = selectedDish.extendedIngredients[i];
+      var piecePrice = parseFloat(1) * nr;
       container.find("#ingredients").append($("<div>").addClass("<row>")
         .append($("<div>").addClass("col-md-3 space")
-          .html((parseFloat(ingredient.quantity) * nr).toString() + " " + ingredient.unit))
+          .html((parseFloat(ingredient.amount) * nr).toString() + " " + ingredient.unit))
         .append($("<div>").addClass("col-md-5 space").html(ingredient.name))
         .append($("<div>").addClass("col-md-4 space").append($("<p>").addClass("alignRight").html("SEK " + piecePrice))));
       totalPrice += piecePrice;
     }
-    */
+    
     totalCost.html("SEK " + totalPrice.toString());
   }
   // Maybe only update ingredient amount and cost if only nr of guests are changed.
