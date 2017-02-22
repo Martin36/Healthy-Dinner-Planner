@@ -37,7 +37,7 @@ var SelectDishesView = function(container, model) {
       .append($("<div>").addClass("col-md-2 frame")
           .append($("<div>").addClass("thumbnail fixedHeight")
             .append($("<a>").attr("href", "#").attr("id", allDishes[i].id)
-              .append($("<img>").attr("src", "../images/" + allDishes[i].image)
+              .append($("<img>").attr("src", allDishes[i].image)
                 .attr("style", "width: 100%"))
               .append($("<div>").addClass("caption")
                 .append($("<h4>").html(allDishes[i].title))))));
@@ -53,7 +53,7 @@ var SelectDishesView = function(container, model) {
       //Animate dishes
 
     }
-
+    model.buttonsLoaded();
   }
 
   model.getAllDishes(undefined, filter, function(data){

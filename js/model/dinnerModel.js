@@ -6,6 +6,7 @@ var DinnerModel = function() {
     var observers = [];
     var inspectedDish;
     var dataLoaded = false;
+    var dataLoading = false;
 
     var notifyObservers = function(obj) {
       $.each(observers, function(index, observer){
@@ -49,7 +50,7 @@ var DinnerModel = function() {
     this.getAllIngredients = function() {
         var ingredients = [];
         $.each(selectedDishes, function(index, dish) {
-            $.each(dish.ingredients, function(index, ingredient) {
+            $.each(dish.extendedIngredients, function(index, ingredient) {
                 ingredients.push(ingredient);
             });
         });
@@ -73,10 +74,12 @@ var DinnerModel = function() {
         var newDish = $(dishes).filter(function(index, dish) {
             return dish.id == id;
         })[0];
+        /*
         //Check if there is another dish of the same type
         selectedDishes = $(selectedDishes).filter(function(index, dish) {
             return dish.type !== newDish.type;
         });
+        */
         //Append newDish to selectedDishes
         selectedDishes.push(newDish);
         notifyObservers(newDish.type);
@@ -95,22 +98,31 @@ var DinnerModel = function() {
     //if you don't pass any filter all the dishes will be returned
     this.getAllDishes = function(type, filter, cb, cbObj) {
 
-      var APIDishes = [];
-      $.ajax( {
-         url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search',
-         headers: {
-           'X-Mashape-Key': 'Qu9grxVNWpmshA4Kl9pTwyiJxVGUp1lKzrZjsnghQMkFkfA4LB'
-         },
-         success: function(data) {
-           APIDishes = data.results;
-           dataLoaded = true;
-           //When data is loaded call the callback function
-           cb.apply(cbObj, [APIDishes]);
-         },
-         error: function(data) {
-           console.log(data)
-         }
-       });
+      if(!dataLoading && !dataLoaded){
+        dataLoading = true;
+        var APIDishes = [];
+        $.ajax( {
+           url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/random?limitLicense=false&number=10&tags=meat',
+           headers: {
+             'X-Mashape-Key': 'Qu9grxVNWpmshA4Kl9pTwyiJxVGUp1lKzrZjsnghQMkFkfA4LB'
+           },
+           success: function(data) {
+             console.log(data);
+             console.log(dataLoading);
+             APIDishes = data.recipes;
+             dishes = APIDishes;
+             dataLoaded = true;
+             notifyObservers("data loaded");
+             //When data is loaded call the callback function
+             cb.apply(cbObj, [APIDishes]);
+           },
+           error: function(data) {
+             console.log(data)
+           }
+         });
+      }else if(dataLoaded){
+        cb.apply(cbObj, [dishes]);
+      }
 
        /*
       return $(dishes).filter(function(index, dish) {
@@ -133,9 +145,9 @@ var DinnerModel = function() {
 
     //function that returns a dish of specific ID
     this.getDish = function(id) {
-        for (key in dishes) {
-            if (dishes[key].id == id) {
-                return dishes[key];
+        for (var i = 0; i < dishes.length; i++) {
+            if (dishes[i].id == id) {
+                return dishes[i];
             }
         }
     }
@@ -162,6 +174,10 @@ var DinnerModel = function() {
 
     this.dataLoaded = function(){
       return dataLoaded;
+    }
+
+    this.buttonsLoaded = function(){
+      notifyObservers("buttons loaded");
     }
     // the dishes variable contains an array of all the
     // dishes in the database. each dish has id, name, type,

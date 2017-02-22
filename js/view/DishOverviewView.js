@@ -19,12 +19,15 @@ var DishOverviewView = function(container, model) {
   var updateDishToShow = function() {
 
     var selectedDish = model.inspectedDish(); //This is the dish that has been clicked on
-    selectedDish = (selectedDish == undefined) ? model.getDish(1) : selectedDish; //Check that dish is not undefined
+    if(selectedDish == undefined){
+      return;
+    }
+  //  selectedDish = (selectedDish == undefined) ? model.getDish(1) : selectedDish; //Check that dish is not undefined
     var nr = model.getNumberOfGuests();
 
-    dishImage.attr("src", "../images/" + selectedDish.image);
-    dishTitle.html(selectedDish.name);
-    prepIns.html(selectedDish.description);
+    dishImage.attr("src", selectedDish.image);
+    dishTitle.html(selectedDish.title);
+    prepIns.html(selectedDish.instructions);
     listTitle.html("Ingredients for " + nr + " People");
 
     // Go through all the ingredients
@@ -32,7 +35,7 @@ var DishOverviewView = function(container, model) {
     //container.find("#ingredientList").empty();
     //Empty the list of ingredients before adding new ones
     container.find("#ingredients").empty();
-
+/*
     for (var i = 0; i < selectedDish.ingredients.length; i++) {
       var ingredient = selectedDish.ingredients[i];
       var piecePrice = parseFloat(ingredient.price) * nr;
@@ -43,9 +46,9 @@ var DishOverviewView = function(container, model) {
         .append($("<div>").addClass("col-md-4 space").append($("<p>").addClass("alignRight").html("SEK " + piecePrice))));
       totalPrice += piecePrice;
     }
+    */
     totalCost.html("SEK " + totalPrice.toString());
   }
-
   // Maybe only update ingredient amount and cost if only nr of guests are changed.
   this.update = function(obj) {
     updateDishToShow();
