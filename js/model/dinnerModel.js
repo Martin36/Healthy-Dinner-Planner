@@ -63,7 +63,7 @@ var DinnerModel = function() {
         var totalCost = 0;
         var nrGuests = this.getNumberOfGuests();
         $.each(this.getAllIngredients(), function(index, ingredient) {
-            totalCost += ingredient.price * numberOfGuests;
+            totalCost += ingredient.amount * numberOfGuests;
         });
         return totalCost;
     }
@@ -89,7 +89,7 @@ var DinnerModel = function() {
           }
         }
         //If there isnt a match
-        var type = newDish.dishTypes[0];
+        var type = "starter";
         newDish.type = type;
         console.log(newDish.type);
         //Append newDish to selectedDishes
@@ -163,10 +163,9 @@ var DinnerModel = function() {
     //Function that returns price of selected dish of type
     this.getDishPrice = function(id){
       var totalPrice = 0;
-      var ingredients = this.getDish(id).ingredients;
+      var ingredients = this.getDish(id).extendedIngredients;
       for(index in ingredients){
-        totalPrice += ingredients[index].price;
-        //console.log(ingredient);
+        totalPrice += ingredients[index].amount;
       }
       return totalPrice;
     }
@@ -188,6 +187,8 @@ var DinnerModel = function() {
     this.buttonsLoaded = function(){
       notifyObservers("buttons loaded");
     }
+
+    
     // the dishes variable contains an array of all the
     // dishes in the database. each dish has id, name, type,
     // image (name of the image file), description and

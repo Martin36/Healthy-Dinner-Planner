@@ -116,6 +116,7 @@ var DinnerOverview = function(container, model) {
         updateLayout();
         break;
       default:
+
         break;
     }
   }

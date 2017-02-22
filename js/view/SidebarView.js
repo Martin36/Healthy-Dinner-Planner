@@ -74,7 +74,7 @@ var SidebarView = function(container, model) {
         case "starter":
             this.starterName.html(dishes[i].title);
             this.deleteStarterButton.attr("dishID", dishes[i].id);
-            this.starterCost.html(model.getDishPrice(dishes[i].id) + " /each");
+            this.starterCost.html(model.getDishPrice(dishes[i].id).toFixed(1) + " /each");
             if(this.starterContainer.attr("style") == "display: none;")
               this.starterContainer.slideDown(500);
             else if (dishes[i].type == type)
@@ -83,7 +83,7 @@ var SidebarView = function(container, model) {
         case "main dish":
             this.mainCourseName.html(dishes[i].title);
             this.deleteMainCourseButton.attr("dishID", dishes[i].id);
-            this.mainCourseCost.html(model.getDishPrice(dishes[i].id) + " /each");
+            this.mainCourseCost.html(model.getDishPrice(dishes[i].id).toFixed(1) + " /each");
             if(this.mainCourseContainer.attr("style") == "display: none;")
               this.mainCourseContainer.slideDown(500);
             else if (dishes[i].type == type)
@@ -92,7 +92,7 @@ var SidebarView = function(container, model) {
         case "dessert":
             this.dessertName.html(dishes[i].title);
             this.deleteDessertButton.attr("dishID", dishes[i].id);
-            this.dessertCost.html(model.getDishPrice(dishes[i].id) + " /each");
+            this.dessertCost.html(model.getDishPrice(dishes[i].id).toFixed(1) + " /each");
             if(this.dessertContainer.attr("style") == "display: none;")
               this.dessertContainer.slideDown(500);
             else if (dishes[i].type == type)
