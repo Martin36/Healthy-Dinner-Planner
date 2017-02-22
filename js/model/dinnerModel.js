@@ -5,6 +5,9 @@ var DinnerModel = function() {
     var selectedDishes = [];
     var observers = [];
     var inspectedDish;
+    var dataLoaded = false;
+    var dataLoading = false;
+    var dishTypes = ["starter", "main dish", "dessert"];
 
     var notifyObservers = function(obj) {
       $.each(observers, function(index, observer){
@@ -48,7 +51,7 @@ var DinnerModel = function() {
     this.getAllIngredients = function() {
         var ingredients = [];
         $.each(selectedDishes, function(index, dish) {
-            $.each(dish.ingredients, function(index, ingredient) {
+            $.each(dish.extendedIngredients, function(index, ingredient) {
                 ingredients.push(ingredient);
             });
         });
@@ -72,13 +75,26 @@ var DinnerModel = function() {
         var newDish = $(dishes).filter(function(index, dish) {
             return dish.id == id;
         })[0];
+
         //Check if there is another dish of the same type
-        selectedDishes = $(selectedDishes).filter(function(index, dish) {
-            return dish.type !== newDish.type;
-        });
+        for(var i = 0; i < newDish.dishTypes.length; i++){
+          for(var j = 0; j < dishTypes.length; j++){
+            if(newDish.dishTypes[i] == dishTypes[j]){
+              var type = dishTypes[j];
+              var selectedDishOfType = this.getSelectedDish(dishTypes[j]);
+              if(selectedDishOfType != undefined){
+                this.removeDishFromMenu(selectedDishOfType.id);
+              }
+            }
+          }
+        }
+        //If there isnt a match
+        var type = newDish.dishTypes[0];
+        newDish.type = type;
+        console.log(newDish.type);
         //Append newDish to selectedDishes
         selectedDishes.push(newDish);
-        notifyObservers(newDish.type);
+        notifyObservers("starter");
     }
 
     //Removes dish from menu
@@ -92,23 +108,31 @@ var DinnerModel = function() {
     //function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
     //you can use the filter argument to filter out the dish by name or ingredient (use for search)
     //if you don't pass any filter all the dishes will be returned
-    this.getAllDishes = function(type, filter) {
       
-      var APIDishes;
-      $.ajax( {
-         url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search',
-         headers: {
-           'X-Mashape-Key': 'Qu9grxVNWpmshA4Kl9pTwyiJxVGUp1lKzrZjsnghQMkFkfA4LB'
-         },
-         success: function(data) {
-           console.log(data.results);
-           APIDishes = data.results;
-         },
-         error: function(data) {
-           console.log(data)
-         }
-       });
-       
+    this.getAllDishes = function(type, filter, cb, cbObj) {
+
+      if(!dataLoading && !dataLoaded){
+        dataLoading = true;
+        var APIDishes = [];
+        $.ajax( {
+           url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/random?limitLicense=false&number=10&tags=meat',
+           headers: {
+             'X-Mashape-Key': 'Qu9grxVNWpmshA4Kl9pTwyiJxVGUp1lKzrZjsnghQMkFkfA4LB'
+           },
+           success: function(data) {
+             console.log(data);
+             APIDishes = data.recipes;
+             dishes = APIDishes;
+             dataLoaded = true;
+             notifyObservers("data loaded");
+             //When data is loaded call the callback function
+             cb.apply(cbObj, [APIDishes]);
+           },
+           error: function(data) {
+             console.log(data)
+           }
+         });
+      }else{
         return $(dishes).filter(function(index, dish) {
             var found = true;
             if (filter) {
@@ -124,14 +148,15 @@ var DinnerModel = function() {
             }
             return dish.type == type && found;
         });
+      }
 
     }
 
     //function that returns a dish of specific ID
     this.getDish = function(id) {
-        for (key in dishes) {
-            if (dishes[key].id == id) {
-                return dishes[key];
+        for (var i = 0; i < dishes.length; i++) {
+            if (dishes[i].id == id) {
+                return dishes[i];
             }
         }
     }
@@ -156,6 +181,13 @@ var DinnerModel = function() {
       }
     }
 
+    this.dataLoaded = function(){
+      return dataLoaded;
+    }
+
+    this.buttonsLoaded = function(){
+      notifyObservers("buttons loaded");
+    }
     // the dishes variable contains an array of all the
     // dishes in the database. each dish has id, name, type,
     // image (name of the image file), description and

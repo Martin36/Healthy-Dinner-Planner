@@ -19,31 +19,28 @@ var SelectDishesView = function(container, model) {
 
   var dishes = container.find("#selectableDishes");
   var dishList = container.find("#listWithDishes");
-  var allDishes = model.getAllDishes().prevObject;
+//  var allDishes = model.getAllDishes().prevObject;
   var filter = "";
-
-  var clearAllDishes = function(dishButtons){
-    dishList.empty();
-    dishButtons = [];
-  }
+  var allDishes = [];
 
   this.showDishesWithFilter = function(filter){
     clearAllDishes(this.dishButtons);
-
+/*
     if(filter == "")
       allDishes = model.getAllDishes(this.courseFilter);
     else{
       allDishes = model.getAllDishes(this.courseFilter,filter);
     }
+    */
     for (var i = 0; i < allDishes.length; i++) {
       dishList
       .append($("<div>").addClass("col-md-2 frame")
           .append($("<div>").addClass("thumbnail fixedHeight")
             .append($("<a>").attr("href", "#").attr("id", allDishes[i].id)
-              .append($("<img>").attr("src", "../images/" + allDishes[i].image)
+              .append($("<img>").attr("src", allDishes[i].image)
                 .attr("style", "width: 100%"))
               .append($("<div>").addClass("caption")
-                .append($("<h4>").html(allDishes[i].name))))));
+                .append($("<h4>").html(allDishes[i].title))))));
 
       // Clearfix to keep rows on the same level
       // Call some sort of update on this when screensize reach a sertain minimum
@@ -56,10 +53,21 @@ var SelectDishesView = function(container, model) {
       //Animate dishes
 
     }
-
+    model.buttonsLoaded();
   }
 
-  this.showDishesWithFilter();
+  model.getAllDishes(undefined, filter, function(data){
+      allDishes = data;
+      this.showDishesWithFilter(filter);
+    }, this);
+
+  var clearAllDishes = function(dishButtons){
+    dishList.empty();
+    dishButtons = [];
+  }
+
+
+//  this.showDishesWithFilter();
   // Changes the dishes shown if new ones are added to database.
   // Also change when filter is applied.
   this.update = function(obj){

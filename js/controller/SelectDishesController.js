@@ -1,5 +1,7 @@
 var SelectDishesController = function(view, model) {
 
+  model.addObserver(this);
+
   view.searchDishButton.click(function(event){
     filterDish();
   });
@@ -41,8 +43,11 @@ var SelectDishesController = function(view, model) {
     };
   };
 
-  updateButtons();
-
+  this.update = function(obj){
+    if(obj == "buttons loaded"){
+      updateButtons();
+    }
+  }
 
   var filterDish = function(){
     view.showDishesWithFilter(view.searchDishInput.val());
