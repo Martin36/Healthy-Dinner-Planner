@@ -55,8 +55,8 @@ var DinnerOverview = function(container, model) {
     //Check if the dish's div exists
     if($("#" + courseString + "Container").length){
       //Add data to view
-      $("#" + courseString + "Title").html(dish.name);
-      $("#" + courseString + "Image").attr("src", "../images/" + dish.image);
+      $("#" + courseString + "Title").html(dish.title);
+      $("#" + courseString + "Image").attr("src", dish.image);
       $("#" + courseString + "Price").html(model.getDishPrice(dish.id) * model.getNumberOfGuests());
     }
   }

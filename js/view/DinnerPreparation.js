@@ -49,8 +49,8 @@ var DinnerPreparation = function(container, model){
     var dish = model.getSelectedDish(type);
     var courseString = converDishType(type);
     //Add data
-    container.find("#" + courseString + "Title").html(dish.name);
-    container.find("#" + courseString + "Image").attr("src", "../images/" + dish.image);
+    container.find("#" + courseString + "Title").html(dish.title);
+    container.find("#" + courseString + "Image").attr("src", dish.image);
     container.find("#" + courseString + "Preparation").html(dish.description);
 
   }
