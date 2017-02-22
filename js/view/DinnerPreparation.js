@@ -51,7 +51,7 @@ var DinnerPreparation = function(container, model){
     //Add data
     container.find("#" + courseString + "Title").html(dish.title);
     container.find("#" + courseString + "Image").attr("src", dish.image);
-    container.find("#" + courseString + "Preparation").html(dish.description);
+    container.find("#" + courseString + "Preparation").html(dish.instructions);
 
   }
   //When a dish is removed or added the whole layout needs to be updated

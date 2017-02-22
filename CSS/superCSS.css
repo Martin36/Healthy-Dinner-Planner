@@ -256,6 +256,7 @@ button.circle {
 }
 
 #preparationRow {
+  margin-left: 20px;
   margin-top: 20px;
   display: flex;
 }
@@ -283,3 +284,4 @@ background-size:130% 100%;
 	background-attachment:fixed;
 
 }
+
