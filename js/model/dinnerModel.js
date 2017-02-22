@@ -7,6 +7,7 @@ var DinnerModel = function() {
     var inspectedDish;
     var dataLoaded = false;
     var dataLoading = false;
+    var dishTypes = ["starter", "main dish", "dessert"];
 
     var notifyObservers = function(obj) {
       $.each(observers, function(index, observer){
@@ -74,15 +75,26 @@ var DinnerModel = function() {
         var newDish = $(dishes).filter(function(index, dish) {
             return dish.id == id;
         })[0];
-        /*
+
         //Check if there is another dish of the same type
-        selectedDishes = $(selectedDishes).filter(function(index, dish) {
-            return dish.type !== newDish.type;
-        });
-        */
+        for(var i = 0; i < newDish.dishTypes.length; i++){
+          for(var j = 0; j < dishTypes.length; j++){
+            if(newDish.dishTypes[i] == dishTypes[j]){
+              var type = dishTypes[j];
+              var selectedDishOfType = this.getSelectedDish(dishTypes[j]);
+              if(selectedDishOfType != undefined){
+                this.removeDishFromMenu(selectedDishOfType.id);
+              }
+            }
+          }
+        }
+        //If there isnt a match
+        var type = newDish.dishTypes[0];
+        newDish.type = type;
+        console.log(newDish.type);
         //Append newDish to selectedDishes
         selectedDishes.push(newDish);
-        notifyObservers(newDish.type);
+        notifyObservers("starter");
     }
 
     //Removes dish from menu
@@ -108,7 +120,6 @@ var DinnerModel = function() {
            },
            success: function(data) {
              console.log(data);
-             console.log(dataLoading);
              APIDishes = data.recipes;
              dishes = APIDishes;
              dataLoaded = true;
@@ -120,27 +131,24 @@ var DinnerModel = function() {
              console.log(data)
            }
          });
-      }else if(dataLoaded){
-        cb.apply(cbObj, [dishes]);
+      }else{
+        return $(dishes).filter(function(index, dish) {
+            var found = true;
+            if (filter) {
+                found = false;
+                $.each(dish.ingredients, function(index, ingredient) {
+                    if (ingredient.name.indexOf(filter) != -1) {
+                        found = true;
+                    }
+                });
+                if (dish.name.indexOf(filter) != -1) {
+                    found = true;
+                }
+            }
+            return dish.type == type && found;
+        });
       }
 
-       /*
-      return $(dishes).filter(function(index, dish) {
-          var found = true;
-          if (filter) {
-              found = false;
-              $.each(dish.ingredients, function(index, ingredient) {
-                  if (ingredient.name.indexOf(filter) != -1) {
-                      found = true;
-                  }
-              });
-              if (dish.name.indexOf(filter) != -1) {
-                  found = true;
-              }
-          }
-          return dish.type == type && found;
-      });
-*/
     }
 
     //function that returns a dish of specific ID

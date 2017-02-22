@@ -93,7 +93,7 @@ var SidebarView = function(container, model) {
     for(i = 0; i < dishes.length; i++){
       switch (dishes[i].type) {
         case "starter":
-            this.starterName.html(dishes[i].name);
+            this.starterName.html(dishes[i].title);
             this.deleteStarterButton.attr("dishID", dishes[i].id);
             this.starterCost.html(model.getDishPrice(dishes[i].id) + " /each");
             if(this.starterContainer.attr("style") == "display: none;")
@@ -102,7 +102,7 @@ var SidebarView = function(container, model) {
               this.starterContainer.fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
           break;
         case "main dish":
-            this.mainCourseName.html(dishes[i].name);
+            this.mainCourseName.html(dishes[i].title);
             this.deleteMainCourseButton.attr("dishID", dishes[i].id);
             this.mainCourseCost.html(model.getDishPrice(dishes[i].id) + " /each");
             if(this.mainCourseContainer.attr("style") == "display: none;")
@@ -111,7 +111,7 @@ var SidebarView = function(container, model) {
               this.mainCourseContainer.fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
           break;
         case "dessert":
-            this.dessertName.html(dishes[i].name);
+            this.dessertName.html(dishes[i].title);
             this.deleteDessertButton.attr("dishID", dishes[i].id);
             this.dessertCost.html(model.getDishPrice(dishes[i].id) + " /each");
             if(this.dessertContainer.attr("style") == "display: none;")
