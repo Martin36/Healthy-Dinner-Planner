@@ -65,7 +65,7 @@ var DinnerModel = function() {
         $.each(this.getAllIngredients(), function(index, ingredient) {
             totalCost += ingredient.amount * numberOfGuests;
         });
-        return totalCost;
+        return totalCost.toFixed(1);
     }
 
     //Adds the passed dish to the menu. If the dish of that type already exists on the menu
@@ -167,7 +167,7 @@ var DinnerModel = function() {
       for(index in ingredients){
         totalPrice += ingredients[index].amount;
       }
-      return totalPrice;
+      return totalPrice.toFixed(1);
     }
 
     //Get and set function for inspectedDish
