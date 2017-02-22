@@ -1,7 +1,7 @@
 $(function() {
   //We instantiate our model
   var model = new DinnerModel();
-
+ // model.getAllDishes();
   //And create the needed controllers and views
   if ($("#exampleView").length){
     var exampleView = new ExampleView($("#exampleView"), model);
