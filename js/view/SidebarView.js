@@ -64,27 +64,6 @@ var SidebarView = function(container, model) {
   this.numberOfGuestsChanged = function(){
     container.find("#nrGuests").html(model.getNumberOfGuests());
     this.changeTotalCost();
-    //var totalPrice = 0;
-    var nrOfGuests = model.getNumberOfGuests();
-    /*
-    for(dish in model.getFullMenu()){
-      var dishCost = model.getDishPrice(dish.id) * nrOfGuests;
-      totalPrice += dishCost;
-      switch (dish.type) {
-        case "starter":
-          container.find("#starterPrice").html(dishCost);
-          break;
-        case "main course":
-            container.find("#maincoursePrice").html(dishCost);
-          break;
-        case "dessert":
-            container.find("#dessertPrice").html(dishCost);
-          break;
-        default:
-      }
-    }
-    */
-    //totalCost.html(totalPrice);
   }
 
   // Update content of selected dishes
