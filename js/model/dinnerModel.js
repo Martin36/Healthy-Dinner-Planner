@@ -71,30 +71,36 @@ var DinnerModel = function() {
     //Adds the passed dish to the menu. If the dish of that type already exists on the menu
     //it is removed from the menu and the new one added.
     this.addDishToMenu = function(id) {
-        //Get the dish (in an array) with the specified id
-        var newDish = $(dishes).filter(function(index, dish) {
-            return dish.id == id;
-        })[0];
-
-        //Check if there is another dish of the same type
-        for(var i = 0; i < newDish.dishTypes.length; i++){
-          for(var j = 0; j < dishTypes.length; j++){
-            if(newDish.dishTypes[i] == dishTypes[j]){
-              var type = dishTypes[j];
-              var selectedDishOfType = this.getSelectedDish(dishTypes[j]);
-              if(selectedDishOfType != undefined){
-                this.removeDishFromMenu(selectedDishOfType.id);
-              }
-            }
+      //Get the dish (in an array) with the specified id
+      var newDish = $(dishes).filter(function(index, dish) {
+          return dish.id == id;
+      })[0];
+      //Set type for dish
+      for (var i = 0; i < newDish.dishTypes.length; i++) {
+        if (dishTypes.indexOf(newDish.dishTypes[i]) > -1) {
+          newDish.type = newDish.dishTypes[i];
+          break;
+        } else if (newDish.dishTypes[i] == "main course") {
+          //Convert to "main dish"
+          newDish.type = "main dish";
+        }
+      }
+      //If there is no match
+      if (newDish.type == undefined) {
+        newDish.type = "main dish";
+      }
+      //Check if there is another dish of the same type
+      for(var i = 0; i < dishTypes.length; i++){
+        if(newDish.type == dishTypes[i]){
+          var selectedDishOfType = this.getSelectedDish(dishTypes[i]);
+          if(selectedDishOfType != undefined){
+            this.removeDishFromMenu(selectedDishOfType.id);
           }
         }
-        //If there isnt a match
-        var type = "starter";
-        newDish.type = type;
-        console.log(newDish.type);
-        //Append newDish to selectedDishes
-        selectedDishes.push(newDish);
-        notifyObservers("starter");
+      }
+      //Append newDish to selectedDishes
+      selectedDishes.push(newDish);
+      notifyObservers(newDish.type);
     }
 
     //Removes dish from menu
