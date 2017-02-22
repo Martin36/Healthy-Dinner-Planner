@@ -5,6 +5,7 @@ var DinnerModel = function() {
     var selectedDishes = [];
     var observers = [];
     var inspectedDish;
+    var dataLoaded = false;
 
     var notifyObservers = function(obj) {
       $.each(observers, function(index, observer){
@@ -92,39 +93,42 @@ var DinnerModel = function() {
     //function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
     //you can use the filter argument to filter out the dish by name or ingredient (use for search)
     //if you don't pass any filter all the dishes will be returned
-    this.getAllDishes = function(type, filter) {
-      /*
-      var APIDishes;
+    this.getAllDishes = function(type, filter, cb, cbObj) {
+
+      var APIDishes = [];
       $.ajax( {
          url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search',
          headers: {
            'X-Mashape-Key': 'Qu9grxVNWpmshA4Kl9pTwyiJxVGUp1lKzrZjsnghQMkFkfA4LB'
          },
          success: function(data) {
-           console.log(data.results);
            APIDishes = data.results;
+           dataLoaded = true;
+           //When data is loaded call the callback function
+           cb.apply(cbObj, [APIDishes]);
          },
          error: function(data) {
            console.log(data)
          }
        });
-       */
-        return $(dishes).filter(function(index, dish) {
-            var found = true;
-            if (filter) {
-                found = false;
-                $.each(dish.ingredients, function(index, ingredient) {
-                    if (ingredient.name.indexOf(filter) != -1) {
-                        found = true;
-                    }
-                });
-                if (dish.name.indexOf(filter) != -1) {
-                    found = true;
-                }
-            }
-            return dish.type == type && found;
-        });
 
+       /*
+      return $(dishes).filter(function(index, dish) {
+          var found = true;
+          if (filter) {
+              found = false;
+              $.each(dish.ingredients, function(index, ingredient) {
+                  if (ingredient.name.indexOf(filter) != -1) {
+                      found = true;
+                  }
+              });
+              if (dish.name.indexOf(filter) != -1) {
+                  found = true;
+              }
+          }
+          return dish.type == type && found;
+      });
+*/
     }
 
     //function that returns a dish of specific ID
@@ -156,6 +160,9 @@ var DinnerModel = function() {
       }
     }
 
+    this.dataLoaded = function(){
+      return dataLoaded;
+    }
     // the dishes variable contains an array of all the
     // dishes in the database. each dish has id, name, type,
     // image (name of the image file), description and

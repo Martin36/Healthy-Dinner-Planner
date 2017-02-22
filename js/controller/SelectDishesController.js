@@ -41,7 +41,7 @@ var SelectDishesController = function(view, model) {
     };
   };
 
-  updateButtons();
+  model.getAllDishes(undefined, undefined, updateButtons, this);
 
 
   var filterDish = function(){
