@@ -65,6 +65,7 @@ var DinnerModel = function() {
         $.each(this.getAllIngredients(), function(index, ingredient) {
             totalCost += ingredient.amount * numberOfGuests;
         });
+        console.log(totalCost.toFixed(1));
         return totalCost.toFixed(1);
     }
 
@@ -153,7 +154,7 @@ var DinnerModel = function() {
             var found = true;
             if (filter) {
                 found = false;
-                $.each(dish.ingredients, function(index, ingredient) {
+                $.each(dish.extendedIngredients, function(index, ingredient) {
                     if (ingredient.name.indexOf(filter) != -1) {
                         found = true;
                     }

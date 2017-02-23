@@ -47,7 +47,7 @@ var DishOverviewView = function(container, model) {
       totalPrice += piecePrice;
     }
     
-    totalCost.html("SEK " + totalPrice.toString());
+    totalCost.html("SEK " + totalPrice.toFixed(1));
   }
   // Maybe only update ingredient amount and cost if only nr of guests are changed.
   this.update = function(obj) {
