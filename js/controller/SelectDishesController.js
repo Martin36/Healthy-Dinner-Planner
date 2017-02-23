@@ -18,19 +18,19 @@ var SelectDishesController = function(view, model) {
     view.selectedDropdown.html("Starter");
     view.courseFilter = "starter"
     view.showDishesWithFilter();
-    updateButtons();
+    //updateButtons();
   });
   view.filterMain.on("click", function(event){
     view.selectedDropdown.html("Main");
     view.courseFilter = "main dish";
     view.showDishesWithFilter();
-    updateButtons();
+    //updateButtons();
   });
   view.filterDesert.on("click", function(event){
     view.selectedDropdown.html("Dessert");
     view.courseFilter = "dessert";
     view.showDishesWithFilter();
-    updateButtons();
+    //updateButtons();
   });
 
   var updateButtons = function(){

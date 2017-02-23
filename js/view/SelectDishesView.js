@@ -25,13 +25,12 @@ var SelectDishesView = function(container, model) {
 
   this.showDishesWithFilter = function(filter){
     clearAllDishes(this.dishButtons);
-/*
+
     if(filter == "")
       allDishes = model.getAllDishes(this.courseFilter);
     else{
       allDishes = model.getAllDishes(this.courseFilter,filter);
     }
-    */
     for (var i = 0; i < allDishes.length; i++) {
       dishList
       .append($("<div>").addClass("col-md-2 frame")

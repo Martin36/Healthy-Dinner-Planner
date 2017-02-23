@@ -75,20 +75,6 @@ var DinnerModel = function() {
       var newDish = $(dishes).filter(function(index, dish) {
           return dish.id == id;
       })[0];
-      //Set type for dish
-      for (var i = 0; i < newDish.dishTypes.length; i++) {
-        if (dishTypes.indexOf(newDish.dishTypes[i]) > -1) {
-          newDish.type = newDish.dishTypes[i];
-          break;
-        } else if (newDish.dishTypes[i] == "main course") {
-          //Convert to "main dish"
-          newDish.type = "main dish";
-        }
-      }
-      //If there is no match
-      if (newDish.type == undefined) {
-        newDish.type = "main dish";
-      }
       //Check if there is another dish of the same type
       for(var i = 0; i < dishTypes.length; i++){
         if(newDish.type == dishTypes[i]){
@@ -101,6 +87,29 @@ var DinnerModel = function() {
       //Append newDish to selectedDishes
       selectedDishes.push(newDish);
       notifyObservers(newDish.type);
+    }
+
+    var setTypeForDishes = function () {
+      //Set type for dish
+      $.each(dishes, function (index, dish) {
+       
+        for (var i = 0; i < dish.dishTypes.length; i++) {
+          if (dishTypes.indexOf(dish.dishTypes[i]) > -1) {
+            dish.type = dish.dishTypes[i];
+            break;
+          } else if (dish.dishTypes[i] == "main course") {
+            //Convert to "main dish"
+            dish.type = "main dish";
+          }
+        }
+        //If there is no match
+        if (dish.type == undefined) {
+          dish.type = "main dish";
+        }
+
+       // console.log(dish.type);
+      })
+
     }
 
     //Removes dish from menu
@@ -129,6 +138,7 @@ var DinnerModel = function() {
              console.log(data);
              APIDishes = data.recipes;
              dishes = APIDishes;
+             setTypeForDishes();
              dataLoaded = true;
              notifyObservers("data loaded");
              //When data is loaded call the callback function
