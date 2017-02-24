@@ -26,6 +26,9 @@ var SelectDishesView = function(container, model) {
   this.showDishesWithFilter = function(filter){
     clearAllDishes(this.dishButtons);
 
+    container.find("#loading").toggle();
+    dishList.hide();
+
     if(filter == "")
       allDishes = model.getAllDishes(this.courseFilter);
     else{
@@ -56,7 +59,7 @@ var SelectDishesView = function(container, model) {
     model.buttonsLoaded();
     //Hide the loading screen and toggle the selectDishesView
     container.find("#loading").toggle();
-    dishList.toggle();
+    dishList.show(1000);
   }
 
   model.getAllDishes(undefined, filter, function(data){

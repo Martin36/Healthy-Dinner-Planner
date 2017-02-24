@@ -8,6 +8,13 @@ var DinnerModel = function() {
     var dataLoaded = false;
     var dataLoading = false;
     var dishTypes = ["starter", "main dish", "dessert"];
+    var urls =  [
+      'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/random?limitLicense=false&number=10&tags=starter',
+      'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/random?limitLicense=false&number=10&tags=main dish',
+      'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/random?limitLicense=false&number=10&tags=dessert'
+    ];
+
+
 
     var notifyObservers = function(obj) {
       $.each(observers, function(index, observer){
@@ -93,7 +100,7 @@ var DinnerModel = function() {
     var setTypeForDishes = function () {
       //Set type for dish
       $.each(dishes, function (index, dish) {
-       
+
         for (var i = 0; i < dish.dishTypes.length; i++) {
           if (dishTypes.indexOf(dish.dishTypes[i]) > -1) {
             dish.type = dish.dishTypes[i];
@@ -124,31 +131,40 @@ var DinnerModel = function() {
     //function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
     //you can use the filter argument to filter out the dish by name or ingredient (use for search)
     //if you don't pass any filter all the dishes will be returned
-      
+    function loadData(cb, cbObj){
+      dataLoading = true;
+      dishes = [];
+      var counter = dishTypes.length;
+      for(var i = 0; i < dishTypes.length; i++){
+        var typeUrl = urls[i];
+        $.ajax( {
+          url: typeUrl,
+          headers: {
+            'X-Mashape-Key': 'Qu9grxVNWpmshA4Kl9pTwyiJxVGUp1lKzrZjsnghQMkFkfA4LB'
+          },
+          success: function(data) {
+            console.log(data);
+            dishes.push.apply(dishes, data.recipes);
+            if(--counter <= 0){
+              console.log(dishes);
+              setTypeForDishes();
+              dataLoaded = true;
+              notifyObservers("data loaded");
+              //When data is loaded call the callback function
+              cb.apply(cbObj, [dishes]);
+            }
+          },
+          error: function(data) {
+            console.log(data)
+          }
+        });
+      }
+    }
+
     this.getAllDishes = function(type, filter, cb, cbObj) {
 
       if(!dataLoading && !dataLoaded){
-        dataLoading = true;
-        var APIDishes = [];
-        $.ajax( {
-           url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/random?limitLicense=false&number=10&tags=meat',
-           headers: {
-             'X-Mashape-Key': 'Qu9grxVNWpmshA4Kl9pTwyiJxVGUp1lKzrZjsnghQMkFkfA4LB'
-           },
-           success: function(data) {
-             console.log(data);
-             APIDishes = data.recipes;
-             dishes = APIDishes;
-             setTypeForDishes();
-             dataLoaded = true;
-             notifyObservers("data loaded");
-             //When data is loaded call the callback function
-             cb.apply(cbObj, [APIDishes]);
-           },
-           error: function(data) {
-             console.log(data)
-           }
-         });
+        loadData(cb, cbObj);
       }else{
         return $(dishes).filter(function(index, dish) {
             var found = true;
@@ -205,7 +221,7 @@ var DinnerModel = function() {
       notifyObservers("buttons loaded");
     }
 
-    
+
     // the dishes variable contains an array of all the
     // dishes in the database. each dish has id, name, type,
     // image (name of the image file), description and
