@@ -50,6 +50,7 @@
               </div>
             </div>
 
+
             <!--This is filled with dishes via the view-->
             <div id="selectedDishes"></div>
 
@@ -67,6 +68,8 @@
             </div>
             <button type="button" class="btn btn-primary btn-block specialButton" id="confirmButton">Confirm Dinner</button>
           </div>
+
+
 
           <!--Right column with info and stuff (View 3)-->
           <div class="col-md-10" id="selectDishesView">
@@ -106,7 +109,11 @@
 
             <!--Grid layout with dishes and scroll functionality when overflow-->
             <div class="row outerFrame">
-              <div class="col-md-12" id="listWithDishes">
+
+              <div id="loading" class="loader"></div>
+
+
+              <div class="col-md-12" id="listWithDishes" style="display:none">
                 <!--Meals-->
 
               </div>

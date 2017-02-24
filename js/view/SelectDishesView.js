@@ -52,7 +52,11 @@ var SelectDishesView = function(container, model) {
       //Animate dishes
 
     }
+
     model.buttonsLoaded();
+    //Hide the loading screen and toggle the selectDishesView
+    container.find("#loading").toggle();
+    dishList.toggle();
   }
 
   model.getAllDishes(undefined, filter, function(data){
