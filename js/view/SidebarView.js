@@ -20,11 +20,12 @@ var SidebarView = function(container, model) {
         dishID = dishTypes[dish];
 
       dishContainer
-      .append($("<div>").addClass("row").attr("id", dishID+"Container").attr("style", "display: none;")
+      .append($("<div>").addClass("row  well margin").attr("id", dishID+"Container").attr("style", "display: none;")
         .append($("<div>").addClass("col-md-12")
-          .append($("<div>").addClass("well margin")
-            .append($("<span>").addClass("").attr("id", dishID+"Name"))
-            .append($("<span>").addClass("").attr("id", dishID+"Cost"))//.html(model.getDishPrice(dish.id)))
+          .append($("<div>")//.addClass("well margin")
+            .append($("<div>").addClass("row")
+            .append($("<div>").addClass("col-md-8 alignLeft").attr("id", dishID+"Name"))
+            .append($("<div>").addClass("col-md-4 alignRight").attr("id", dishID+"Cost")))//.html(model.getDishPrice(dish.id)))
             .append($("<button>").addClass("btn btn-danger circle")
             .attr("type", "button").attr("id", "delete"+dishID+"Button")
               .append($("<span>").addClass("glyphicon glyphicon-remove"))))));
