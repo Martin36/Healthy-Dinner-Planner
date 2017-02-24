@@ -17,19 +17,19 @@ var SelectDishesController = function(view, model) {
   view.filterStarter.on("click", function(event){
     view.selectedDropdown.html("Starter");
     view.courseFilter = "starter"
-    view.showDishesWithFilter();
+    view.updateFilter();
     //updateButtons();
   });
   view.filterMain.on("click", function(event){
     view.selectedDropdown.html("Main");
     view.courseFilter = "main dish";
-    view.showDishesWithFilter();
+    view.updateFilter();
     //updateButtons();
   });
   view.filterDesert.on("click", function(event){
     view.selectedDropdown.html("Dessert");
     view.courseFilter = "dessert";
-    view.showDishesWithFilter();
+    view.updateFilter();
     //updateButtons();
   });
 
@@ -50,6 +50,6 @@ var SelectDishesController = function(view, model) {
   }
 
   var filterDish = function(){
-    view.showDishesWithFilter(view.searchDishInput.val());
+    view.updateFilter(view.searchDishInput.val());
   };
 }
