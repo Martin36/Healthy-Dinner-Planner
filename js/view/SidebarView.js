@@ -23,8 +23,8 @@ var SidebarView = function(container, model) {
       .append($("<div>").addClass("row").attr("id", dishID+"Container").attr("style", "display: none;")
         .append($("<div>").addClass("col-md-12")
           .append($("<div>").addClass("well margin")
-            .append($("<p>").addClass("alignLeft").attr("id", dishID+"Name"))
-            .append($("<p>").addClass("alignRight").attr("id", dishID+"Cost"))//.html(model.getDishPrice(dish.id)))
+            .append($("<span>").addClass("").attr("id", dishID+"Name"))
+            .append($("<span>").addClass("alignRight").attr("id", dishID+"Cost"))//.html(model.getDishPrice(dish.id)))
             .append($("<button>").addClass("btn btn-danger circle")
             .attr("type", "button").attr("id", "delete"+dishID+"Button")
               .append($("<span>").addClass("glyphicon glyphicon-remove"))))));
