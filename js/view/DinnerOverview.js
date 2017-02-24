@@ -68,13 +68,12 @@ var DinnerOverview = function(container, model) {
     var courseString = converDishType(dish.type);
 
     container.find("#coursesRow")
-      .append($("<div>").attr("class", "col-md-2 col-sm-2 frame").attr("id", courseString + "Container").attr("style", "")
+      .append($("<div>").attr("class", "col-md-2 col-sm-2 frame noHilight").attr("id", courseString + "Container").attr("style", "")
         .append($("<div>").attr("class", "thumbnail")
-          .append($("<a>").attr("href", "#")
-            .append($("<img>").attr("class", "foodImage").attr("id",courseString + "Image"))
-            .append($("<div>").attr("class", "caption")
-              .append($("<h3>").attr("id", courseString + "Title"))
-              .append($("<h3>Price: <span id='" + courseString + "Price'></span> SEK</h3>"))))));
+          .append($("<img>").attr("class", "foodImage").attr("id",courseString + "Image"))
+          .append($("<div>").attr("class", "caption")
+            .append($("<h3>").attr("id", courseString + "Title"))
+            .append($("<h3>Price: <span id='" + courseString + "Price'></span> SEK</h3>")))));
   }
   //Function for updating the price of everything
   var updatePrice = function(){

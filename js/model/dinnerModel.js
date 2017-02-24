@@ -72,7 +72,6 @@ var DinnerModel = function() {
         $.each(this.getAllIngredients(), function(index, ingredient) {
             totalCost += ingredient.amount * numberOfGuests;
         });
-        console.log(totalCost.toFixed(1));
         return totalCost.toFixed(1);
     }
 
