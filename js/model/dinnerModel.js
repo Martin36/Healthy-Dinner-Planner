@@ -198,6 +198,13 @@ var DinnerModel = function() {
                 return dishes[i];
             }
         }
+        //Also check the selected dishes because these will be removed when the filter changes
+        for (var i = 0; i < selectedDishes.length; i++){
+          if(selectedDishes[i].id == id){
+            return selectedDishes[i];
+          }
+        }
+
     }
     //Function that returns price of selected dish of type
     this.getDishPrice = function(id){
