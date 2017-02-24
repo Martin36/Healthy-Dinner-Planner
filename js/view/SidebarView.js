@@ -24,7 +24,7 @@ var SidebarView = function(container, model) {
         .append($("<div>").addClass("col-md-12")
           .append($("<div>").addClass("well margin")
             .append($("<span>").addClass("").attr("id", dishID+"Name"))
-            .append($("<span>").addClass("alignRight").attr("id", dishID+"Cost"))//.html(model.getDishPrice(dish.id)))
+            .append($("<span>").addClass("").attr("id", dishID+"Cost"))//.html(model.getDishPrice(dish.id)))
             .append($("<button>").addClass("btn btn-danger circle")
             .attr("type", "button").attr("id", "delete"+dishID+"Button")
               .append($("<span>").addClass("glyphicon glyphicon-remove"))))));
@@ -72,7 +72,7 @@ var SidebarView = function(container, model) {
     for(i = 0; i < dishes.length; i++){
       switch (dishes[i].type) {
         case "starter":
-            this.starterName.html(dishes[i].title);
+            this.starterName.html(dishes[i].title+". ");
             this.deleteStarterButton.attr("dishID", dishes[i].id);
             this.starterCost.html(model.getDishPrice(dishes[i].id) + " /each");
             if(this.starterContainer.attr("style") == "display: none;")
@@ -81,7 +81,7 @@ var SidebarView = function(container, model) {
               this.starterContainer.fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
           break;
         case "main dish":
-            this.mainCourseName.html(dishes[i].title);
+            this.mainCourseName.html(dishes[i].title+". ");
             this.deleteMainCourseButton.attr("dishID", dishes[i].id);
             this.mainCourseCost.html(model.getDishPrice(dishes[i].id) + " /each");
             if(this.mainCourseContainer.attr("style") == "display: none;")
@@ -90,7 +90,7 @@ var SidebarView = function(container, model) {
               this.mainCourseContainer.fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
           break;
         case "dessert":
-            this.dessertName.html(dishes[i].title);
+            this.dessertName.html(dishes[i].title+". ");
             this.deleteDessertButton.attr("dishID", dishes[i].id);
             this.dessertCost.html(model.getDishPrice(dishes[i].id) + " /each");
             if(this.dessertContainer.attr("style") == "display: none;")
