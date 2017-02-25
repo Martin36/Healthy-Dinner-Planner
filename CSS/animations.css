@@ -1,0 +1,11 @@
+@keyframes loader{
+  25% {transform: scale(2);}
+  50% {transform: rotate(360deg);}
+  100% {transform: rotate(0deg);}
+}
+
+#searchIconLoad{
+  animation-name: loader;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+}
