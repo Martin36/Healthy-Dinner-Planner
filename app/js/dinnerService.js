@@ -16,6 +16,21 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
   var defaultUrl = 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/random?limitLicense=false&number=10&tags=';
   var request;
 
+  this.DishSearch = $resource('https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search',{},{
+    get: {
+      headers: {
+        'X-Mashape-Key': 'Qu9grxVNWpmshA4Kl9pTwyiJxVGUp1lKzrZjsnghQMkFkfA4LB'
+      }
+    }
+  });
+  this.Dish = $resource('https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/:id/information',{},{
+    get: {
+      headers: {
+         'X-Mashape-Key': 'Qu9grxVNWpmshA4Kl9pTwyiJxVGUp1lKzrZjsnghQMkFkfA4LB'
+      }
+    }
+  });
+  
   this.setNumberOfGuests = function(num) {
       //don't use this.numberOfGuests to access class variable
       numberOfGuests = (num <= 0) ? 0 : num;
