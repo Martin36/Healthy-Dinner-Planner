@@ -1,24 +1,8 @@
 <!-- We include the sidebar as it is shared across two screens. -->
-<ng-include src="'partials/dinner-sidebar.html'" ng-controller="DinnerCtrl"></ng-include>
+<!--<ng-include src="'partials/dinner-sidebar.html'" ng-controller="DinnerCtrl"></ng-include>-->
 
 <!-- TODO in Lab 5: Display the input box for search (you can ignore the type dropdown since BigOven does
 not support it in free version) and list all the dishes that match the search. -->
-<input ng-model="query"/>
-<select ng-model="type" name="dishType" ng-change="search(query, type)">
-  <option value="starter">Starter</option>
-  <option value="main dish">Main</option>
-  <option value="dessert">Dessert</option>
-</select>
-<button ng-click="search(query, type)">Find</button>
-{{status}}
-<ul>
-  <li ng-repeat="dish in dishes">
-  <img ng-src="https://spoonacular.com/recipeImages/{{dish.image}}"/>
-  {{dish.title}}
-  <a ng-href="#!/dish/{{dish.id}}">View more</a>
-  Dish ready in {{dish.readyInMinutes}} minutes
-  </li>
-</ul>
 
 
 <!--Right column with info and stuff (View 3)-->
@@ -31,9 +15,9 @@ not support it in free version) and list all the dishes that match the search. -
       <div class="row topMargin">
         <div class=" col-md-5 ">
           <div class="input-group ">
-            <input ng-model="text" class="form-control" id="searchDishInput">
+            <input ng-model="query" class="form-control" id="searchDishInput">
             <span class="input-group-btn ">
-              <button type="button" class="btn btn-primary specialButton" id="searchDishButton">
+              <button ng-click="search(query,type)" type="button" class="btn btn-primary specialButton" id="searchDishButton">
             <span class="glyphicon glyphicon-search "></span> Search
             </button>
             </span>
@@ -42,16 +26,11 @@ not support it in free version) and list all the dishes that match the search. -
 
         <!--Dish type drop down-->
         <div class="col-md-2">
-          <div class="dropdown">
-            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="specialButton">
-              <span id="selectedDropdown">Starter</span>
-              <span class="caret"></span></button>
-            <ul class="dropdown-menu">
-              <li><a href="#" id="filterStarter">Starter</a></li>
-              <li><a href="#" id="filterMain">Main</a></li>
-              <li><a href="#" id="filterDesert">Desert</a></li>
-            </ul>
-          </div>
+          <select class="specialButton" ng-model="type" name="dishType" ng-change="search(query, type)">
+            <option value="starter">Starter</option>
+            <option value="main dish">Main</option>
+            <option value="dessert">Dessert</option>
+          </select>
         </div>
       </div>
     </div>
@@ -66,8 +45,16 @@ not support it in free version) and list all the dishes that match the search. -
       <h1> Could not find the dish!</h1>
     </div>
 
-    <div class="col-md-12" id="listWithDishes" style="display:none">
+    <div class="col-md-12" id="listWithDishes" >
       <!--Meals-->
+      <ul>
+        <li ng-repeat="dish in dishes">
+        <img ng-src="https://spoonacular.com/recipeImages/{{dish.image}}"/>
+        {{dish.title}}
+        <a ng-href="#!/dish/{{dish.id}}">View more</a>
+        Dish ready in {{dish.readyInMinutes}} minutes
+        </li>
+      </ul>
 
     </div>
     <!--Dishes end-->
