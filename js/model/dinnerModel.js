@@ -148,9 +148,7 @@ var DinnerModel = function() {
           'X-Mashape-Key': 'Qu9grxVNWpmshA4Kl9pTwyiJxVGUp1lKzrZjsnghQMkFkfA4LB'
         },
         success: function(data) {
-          console.log(data);
           dishes.push.apply(dishes, data.recipes);
-          console.log(dishes);
           setTypeForDishes();
           dataLoaded = true;
           notifyObservers("data loaded");
