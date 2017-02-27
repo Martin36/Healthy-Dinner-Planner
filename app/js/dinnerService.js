@@ -19,7 +19,6 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
   this.setNumberOfGuests = function(num) {
       //don't use this.numberOfGuests to access class variable
       numberOfGuests = (num <= 0) ? 0 : num;
-      notifyObservers("nrGuests");
   }
 
   // should return
@@ -83,7 +82,6 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
     }
     //Append newDish to selectedDishes
     selectedDishes.push(newDish);
-    notifyObservers(newDish.type);
   }
 
   var setTypeForDishes = function () {
@@ -114,7 +112,6 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
       selectedDishes = $(selectedDishes).filter(function(index, dish) {
           return dish.id !== id;
       });
-      notifyObservers("dishRemoved");
   }
 
   //function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
@@ -144,7 +141,6 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
         console.log(dishes);
         setTypeForDishes();
         dataLoaded = true;
-        notifyObservers("data loaded");
         //When data is loaded call the callback function
         cb.apply(cbObj, [dishes]);
       },
@@ -171,7 +167,6 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
       return inspectedDish;
     else {
       inspectedDish = this.getDish(id);
-      notifyObservers();
     }
   }
 
@@ -180,7 +175,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
   }
 
   this.buttonsLoaded = function(){
-    notifyObservers("buttons loaded");
+
   }
 
 
