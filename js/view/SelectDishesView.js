@@ -41,7 +41,6 @@ var SelectDishesView = function(container, model) {
     loadingScreen.show();
 
     model.getAllDishes(this.courseFilter, filter, function(data){
-        console.log(data);
         if(data == "Dish not found"){
           loadingScreen.hide();
           container.find("#dishNotFound").show();
