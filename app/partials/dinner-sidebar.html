@@ -5,8 +5,8 @@
   <h2>My Dinner</h2>
   <p>Number Of Guests: <span id="nrGuests"> {{numberOfGuests}} </span>
     <div>
-      <button ng-click="incrementGuests()" class="btn"><span class="glyphicon glyphicon-minus"></span></button>
-      <button ng-click="decreaseGuests()" class="btn"><span class="glyphicon glyphicon-plus"></span></button>
+      <button ng-click="decreaseGuests()" class="btn"><span class="glyphicon glyphicon-minus"></span></button>
+      <button ng-click="incrementGuests()" class="btn"><span class="glyphicon glyphicon-plus"></span></button>
     </div>
   </p>
   <div class="row header1">
@@ -22,16 +22,16 @@
   <div class="row topMargin">
     <div class=" col-md-12">
       <p class="alignLeft">Pending</p>
-      <p class="alignRight" id="pendingCost">0.00</p>
+      <p class="alignRight">{{totalMenuPrice}}</p>
     </div>
   </div>
   <hr>
   <div class="row topMargin">
     <div class="col-md-12 ">
-      <p class="alignRight" id="totalCost">SEK 0</p>
+      <p class="alignRight">SEK {{totalMenuPrice}}</p>
     </div>
   </div>
-  <button type="button" class="btn btn-primary btn-block specialButton" id="confirmButton">Confirm Dinner</button>
+  <button type="button" class="btn btn-primary btn-block specialButton">Confirm Dinner</button>
 </div>
 
 
