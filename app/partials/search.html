@@ -38,7 +38,7 @@ not support it in free version) and list all the dishes that match the search. -
   <!--Grid layout with dishes and scroll functionality when overflow-->
   <div class="row outerFrame">
 
-    <div id="loading" class="loader"></div>
+    <div ng-show="showSearch" class="loader"></div>
 
     <div id="dishNotFound" style="text-align:center; display:none">
       <h1> Could not find the dish!</h1>
