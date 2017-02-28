@@ -19,13 +19,6 @@ dinnerPlannerApp.controller('DinnerCtrl', function ($scope,Dinner) {
     return Dinner.getNumberOfGuests();
   }
 
-
-
-
-  // TODO in Lab 5: Implement the methods to get the dinner menu
-  // add dish to menu and get total menu price
-
-<<<<<<< HEAD
   $scope.fullMenu = Dinner.getFullMenu();
 
   $scope.dishPrice = function(id){
@@ -37,6 +30,4 @@ dinnerPlannerApp.controller('DinnerCtrl', function ($scope,Dinner) {
   console.log($scope.fullMenu.length);
 
   $scope.menuPrice = Dinner.getTotalMenuPrice();
-=======
->>>>>>> 42559d5ebaa825986a794db0837d6c227b9ef9d0
 });
