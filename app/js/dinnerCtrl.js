@@ -9,11 +9,12 @@ dinnerPlannerApp.controller('DinnerCtrl', function ($scope,Dinner) {
   }
 
   $scope.getNumberOfGuests = function() {
+    console.log("getNumberOfGuests()");
     return Dinner.getNumberOfGuests();
   }
 
   $scope.incrementGuests = function() {
-    console.log("Hej");
+    console.log("incrementGuests()");
     var guests = Dinner.getNumberOfGuests() + 1;
     Dinner.setNumberOfGuests(guests);
   }
