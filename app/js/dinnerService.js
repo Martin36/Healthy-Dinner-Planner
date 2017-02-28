@@ -13,7 +13,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
   var dataLoading = false;
   var dishTypes = ["starter", "main dish", "dessert"];
   var dishes = [];
-  var defaultUrl = 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/random?limitLicense=false&number=10&tags=';
+  var defaultUrl = 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/random?limitLicense=false&number=3&tags=';
   var request;
 
   this.DishSearch = $resource('https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search',{},{
@@ -30,7 +30,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
       }
     }
   });
-  
+
   this.setNumberOfGuests = function(num) {
       //don't use this.numberOfGuests to access class variable
       numberOfGuests = (num <= 0) ? 0 : num;
@@ -189,21 +189,10 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
     return dataLoaded;
   }
 
-  this.buttonsLoaded = function(){
+  loadData("starter", undefined, function(data){
+    selectedDishes = data;
 
-  }
-
-
-    // the dishes variable contains an array of all the
-    // dishes in the database. each dish has id, name, type,
-    // image (name of the image file), description and
-    // array of ingredients. Each ingredient has name,
-    // quantity (a number), price (a number) and unit (string
-    // defining the unit i.e. "g", "slices", "ml". Unit
-    // can sometimes be empty like in the example of eggs where
-    // you just say "5 eggs" and not "5 pieces of eggs" or anything else.
-
-
+  }, this);
   // Angular service needs to return an object that has all the
   // methods created in it. You can consider that this is instead
   // of calling var model = new DinnerModel() we did in the previous labs
