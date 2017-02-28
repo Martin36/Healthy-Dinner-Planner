@@ -17,7 +17,17 @@
   </div>
 
   <!--This is filled with dishes via the view-->
-  <div id="selectedDishes"></div>
+  <div ng-repeat="dish in fullMenu" class="row well margin">
+    <div class="col-md-12">
+      <div class="row">
+          <div class="col-md-8 alignLeft">{{dish.name}}</div>
+          <div class="col-md-4 alignRight">{{dishPrice(dish.id)}}/each</div>
+      </div>
+      <button ng-click="removeDishFromMenu(dish.id)" type="button" name="button">'
+        <span class="glyphicon glyphicon-remove"></span>
+      </button>
+    </div>
+  </div>
 
   <div class="row topMargin">
     <div class=" col-md-12">
