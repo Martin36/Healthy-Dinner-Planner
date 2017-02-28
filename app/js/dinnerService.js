@@ -188,11 +188,15 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
   this.dataLoaded = function(){
     return dataLoaded;
   }
-
-  loadData("starter", undefined, function(data){
-    selectedDishes = data;
-
-  }, this);
+/*
+  selectedDishes = [
+    {
+      name: "starter1",
+      type: "starter",
+      description: "aäpsofdjsöldgkjösldgkjhsöldfh",
+    }
+  ]
+*/
   // Angular service needs to return an object that has all the
   // methods created in it. You can consider that this is instead
   // of calling var model = new DinnerModel() we did in the previous labs

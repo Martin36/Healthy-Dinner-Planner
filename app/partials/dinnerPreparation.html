@@ -1,0 +1,36 @@
+<div id="dinnerPreparation">
+
+  <!-- Second bar -->
+  <hr>
+  <div class="jumbotron" id="no-margin">
+    <div class="modal-body row">
+      <div class="col-md-6">
+        <h2 style="margin-top:0">My Dinner: <span id="nrGuests"></span> people</h2>
+      </div>
+      <div class="col-md-6">
+        <button id="backButton" type="button" class="btn btn-default btn-lg" style="float:right">
+          <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Back
+        </button>
+      </div>
+    </div>
+  </div>
+  <hr>
+
+  <!-- Dishes -->
+  <div id="preparationContainer">
+    <div ng-repeat="dish in fullMenu" class="row">
+      <div class="col-md-2 col-sm-2 center-content">
+        <img class="img-responsive center-block border">
+      </div>
+      <div class="col-md-5 col-sm-5">
+        <h1>{{dish.name}}</h1>
+        <p>{{dish.description}}</p>
+      </div>
+      <div class="col-md-5 col-sm-5">
+        <h2>Preparation</h2>
+        <p>{{dish.preparation}}</p>
+      </div>
+    </div>
+  </div>
+
+</div>
