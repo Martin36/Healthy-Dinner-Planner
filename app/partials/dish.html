@@ -1,5 +1,64 @@
 <!-- We include the sidebar as it is shared across two screens. -->
 <ng-include src="'partials/dinner-sidebar.html'" ng-controller="DinnerCtrl"></ng-include>
 
-<!-- TODO in Lab 5: Display the dish information including image, Description, 
-Instructions, Ingredients and total cost. -->
+<!--Right column with info and stuff-->
+<div class="col-md-10" id="dishOverview">
+
+  <!--Grid layout with dishes and scroll functionality when overflow-->
+  <div class="row outerFrame2">
+    <div class="col-md-12">
+
+      <!--Meal with more info and back button-->
+      <div class="col-md-4 col-sm-4 frame noHilight">
+        <div class="thumbnail noBorder">
+          <h3>{{selectedDish.name}}</h3>
+          <div class="cropper">
+            <img src="{{selectedDish.image}}" alt="IceCream">
+          </div>
+          <div class="caption">
+            <!--Model has no description of dishes-->
+          </div>
+          <button type="button" class="btn btn-info" id="backButton">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            Back to Select Dish
+            </button>
+        </div>
+        <div class="col-md-12" id="preparations">
+          <h1>Preparations</h1>
+          <p>{{selectedDish.preparations}}</p>
+        </div>
+      </div>
+
+      <div class="col-md-5 col-sm-5 ingredients">
+        <div class="row" id="ingredientList">
+          <h3 id="listTitle"></h3>
+          <hr>
+          <!--All ingredients will go here-->
+          <div id="ingredients">
+            <div class="row" ng-repeat="ingredient in selectedDish.extendedIngredients">
+              <div class="col-md-3 space">
+                {{piecePrice(ingredient.amount)}} {{ingredient.unit}}
+              </div>
+              <div class="col-md-5 space"> {{ingredient.name}} </div>
+              <div class="col-md-4 space">
+                <p class="alignRight"> SEK {{piecePrice(ingredient.amount)}}
+            </div>
+          </div>
+        </div>
+        <!--row end-->
+        <hr>
+        <div class="row">
+          <div class="col-md-4">
+            <button type="button" class="btn btn-success" id="confirmDishButton">
+          <span class="glyphicon glyphicon-ok"></span>
+          Confirm Dish</button>
+          </div>
+          <div class="col-md-4"></div>
+          <div class="col-md-4">
+            <p class="alignRight" style="padding-top: 20px;">SEK {{dishPrice(selectedDish.id)}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

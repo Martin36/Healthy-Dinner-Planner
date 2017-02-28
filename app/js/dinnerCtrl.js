@@ -27,7 +27,18 @@ dinnerPlannerApp.controller('DinnerCtrl', function ($scope,Dinner) {
 
   $scope.extraCols = 5 - $scope.fullMenu.length;
 
-  console.log($scope.fullMenu.length);
 
   $scope.menuPrice = Dinner.getTotalMenuPrice();
+
+  $scope.selectedDish = Dinner.getSelectedDish();
+
+  console.log($scope.selectedDish);
+
+  $scope.convertFloat = function(float){
+    return parseFloat(float).toFixed(1);
+  }
+
+  $scope.piecePrice = function(amount){
+    return parseFloat(float).toFixed(1) * $scope.numberOfGuests;
+  }
 });
