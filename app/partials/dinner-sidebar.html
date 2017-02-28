@@ -1,9 +1,41 @@
-People: <input type="number" ng-model="numberOfGuests" ng-change="setNumberOfGuest(numberOfGuests)"/>
+<!--People: <input type="number" ng-model="numberOfGuests" ng-change="setNumberOfGuest(numberOfGuests)"/>-->
 
 <!-- TODO in Lab 5: Display the items on the menu with cost for each -->
+<div class="col-md-2 border" id="sidebar">
+  <h2>My Dinner</h2>
+  <p>Number Of Guests: <span id="nrGuests"> {{numberOfGuests}} </span>
+    <div>
+      <button ng-onClick="incrementGuests()" class="btn"><span class="glyphicon glyphicon-minus"></span></button>
+      <button ng-onClick="decreaseGuests()" class="btn"><span class="glyphicon glyphicon-plus"></span></button>
+    </div>
+  </p>
+  <div class="row header1">
+    <div class="col-md-12">
+      <p class="alignLeft noMargin">Dish Name</p>
+      <p class="alignRight noMargin">Cost</p>
+    </div>
+  </div>
+
+  <!--This is filled with dishes via the view-->
+  <div id="selectedDishes"></div>
+
+  <div class="row topMargin">
+    <div class=" col-md-12">
+      <p class="alignLeft">Pending</p>
+      <p class="alignRight" id="pendingCost">0.00</p>
+    </div>
+  </div>
+  <hr>
+  <div class="row topMargin">
+    <div class="col-md-12 ">
+      <p class="alignRight" id="totalCost">SEK 0</p>
+    </div>
+  </div>
+  <button type="button" class="btn btn-primary btn-block specialButton" id="confirmButton">Confirm Dinner</button>
+</div>
 
 
 <!-- Displaying number of guests both in input box and here is redundant. It is here only for the example
-purpose so you can see how some information from the model can be retrieved. In Lab 5 you will replace 
+purpose so you can see how some information from the model can be retrieved. In Lab 5 you will replace
 this with Total price of the menu -->
-Total number of guest: {{getNumberOfGuests()}}
+<!--Total number of guest: {{getNumberOfGuests()}}-->
