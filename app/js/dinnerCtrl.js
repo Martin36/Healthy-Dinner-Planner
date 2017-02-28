@@ -25,6 +25,10 @@ dinnerPlannerApp.controller('DinnerCtrl', function ($scope,Dinner) {
     return Dinner.getDishPrice(id);
   }
 
+  $scope.removeDishFromMenu = function(id){
+    Dinner.removeDishFromMenu(id);
+  }
+
   $scope.extraCols = 5 - $scope.fullMenu.length;
 
 
