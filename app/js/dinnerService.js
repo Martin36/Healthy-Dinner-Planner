@@ -141,9 +141,12 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
       });
   }
 
+  //THIS IS NOT USED LEL
+
   //function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
   //you can use the filter argument to filter out the dish by name or ingredient (use for search)
   //if you don't pass any filter all the dishes will be returned
+  /*
   function loadData(type, filter, cb, cbObj){
     dataLoading = true;
     if(request != undefined){
@@ -177,6 +180,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
       }
     });
   }
+  */
 
   //Function that returns price of selected dish of type
   this.getDishPrice = function(id){
