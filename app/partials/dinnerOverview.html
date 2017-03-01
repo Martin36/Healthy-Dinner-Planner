@@ -8,9 +8,11 @@
         <h2 style="margin-top:0">My Dinner: <span id="numberOfGuests"></span> people</h2>
       </div>
       <div class="col-md-6">
-        <button id="backButton" type="button" class="btn btn-default btn-lg" style="float:right">
+        <a ng-href="#/search">
+          <button type="button" class="btn btn-default btn-lg" style="float:right">
             <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Back
           </button>
+        </a>
       </div>
     </div>
   </div>
@@ -39,7 +41,11 @@
   <div class="row">
     <hr class="padding">
     <div class="col-md-12 text-center">
-      <button type="button" class="btn btn-default btn-lg" id="specialButton"><font size="4"> Print Full Recipe </font></button>
+      <a ng-href="#/dinnerPreparation">
+        <button type="button" class="btn btn-default btn-lg" id="specialButton">
+          <font size="4"> Print Full Recipe </font>
+        </button>
+      </a>
     </div>
   </div>
 
