@@ -18,5 +18,4 @@ dinnerPlannerApp.controller('SearchCtrl', function ($scope,Dinner) {
      $scope.status = "There was an error";
    });
   }
-
 });

@@ -31,6 +31,10 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
     }
   });
 
+  this.getAllDishes = function() {
+    return dishes;
+  }
+
   this.setNumberOfGuests = function(num) {
       //don't use this.numberOfGuests to access class variable
       numberOfGuests = (num <= 0) ? 0 : num;
