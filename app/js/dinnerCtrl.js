@@ -28,14 +28,6 @@ dinnerPlannerApp.controller('DinnerCtrl', function ($scope,Dinner) {
     return Dinner.getNumberOfGuests();
   }
 
-  $scope.dishPrice = function(id){
-    return Dinner.getDishPrice(id);
-  }
-
-  $scope.removeDishFromMenu = function(id){
-    Dinner.removeDishFromMenu(id);
-  }
-
   $scope.getFullMenu = function() {
     return Dinner.getFullMenu();
   }
@@ -49,9 +41,4 @@ dinnerPlannerApp.controller('DinnerCtrl', function ($scope,Dinner) {
   $scope.printId = function(id){
     console.log(id);
   }
-/*
-  $scope.piecePrice = function(amount){
-    return parseFloat(float).toFixed(1) * $scope.numberOfGuests;
-  }
-*/
 });

@@ -88,7 +88,6 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
 
   //Adds the passed dish to the menu. If the dish of that type already exists on the menu
   //it is removed from the menu and the new one added.
-  /*
   this.addDishToMenu = function(id) {
     //Get the dish (in an array) with the specified id
     var newDish = $(dishes).filter(function(index, dish) {
@@ -106,7 +105,6 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
     //Append newDish to selectedDishes
     selectedDishes.push(newDish);
   }
-  */
 
   this.addDishToMenu = function(dish) {
     //Append newDish to selectedDishes
