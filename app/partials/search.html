@@ -14,7 +14,7 @@ not support it in free version) and list all the dishes that match the search. -
       <div class="row topMargin">
         <div class=" col-md-5 ">
           <div class="input-group ">
-            <input ng-model="query" class="form-control" id="searchDishInput">
+            <input ng-model="query" ng-change="search(query,type)" class="form-control">
             <span class="input-group-btn ">
               <button ng-click="search(query,type)" type="button" class="btn btn-primary specialButton" id="searchDishButton">
             <span class="glyphicon glyphicon-search "></span> Search
@@ -44,7 +44,7 @@ not support it in free version) and list all the dishes that match the search. -
       <h1> Could not find the dish!</h1>
     </div>
 
-    <div class="col-md-12" id="listWithDishes">
+    <div class="col-md-12">
       <!--Meals-->
       <div ng-repeat="dish in dishes" class="col-md-2 frame">
         <div class="thumbnail fixedHeight">

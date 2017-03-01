@@ -1,5 +1,3 @@
-<!--People: <input type="number" ng-model="numberOfGuests" ng-change="setNumberOfGuest(numberOfGuests)"/>-->
-
 <!-- TODO in Lab 5: Display the items on the menu with cost for each -->
 <div class="col-md-2 border" id="sidebar">
   <h2>My Dinner</h2>
@@ -17,15 +15,15 @@
   </div>
 
   <!--This is filled with dishes via the view-->
-  <div ng-repeat="dish in fullMenu" class="row well margin">
-    <div class="col-md-12">
-      <div class="row">
-          <div class="col-md-8 alignLeft">{{dish.name}}</div>
-          <div class="col-md-4 alignRight">{{dishPrice(dish.id)}}/each</div>
+  <div ng-repeat="dish in getSelectedDishes()" class="well margin">
+    <div class="row">
+      <div class="col-md-8">{{dish.title}}</div>
+      <div class="col-md-4">{{dish.pricePerServing}} /each
+        <!--Button is only visible when we have it inside this col. Don't know why-->
+        <button ng-click="printId(dish.id)" class="btn btn-danger circle" type="button">
+          <span class="glyphicon glyphicon-remove"></span>
+        </button>
       </div>
-      <button ng-click="removeDishFromMenu(dish.id)" type="button" name="button">'
-        <span class="glyphicon glyphicon-remove"></span>
-      </button>
     </div>
   </div>
 

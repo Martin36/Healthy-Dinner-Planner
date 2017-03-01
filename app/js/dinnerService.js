@@ -51,6 +51,9 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
           return dish.type == type;
       })[0];
   }
+  this.getSelectedDishes = function() {
+    return selectedDishes;
+  }
 
   //Returns all the dishes on the menu.
   this.getFullMenu = function() {
@@ -106,17 +109,8 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
   */
 
   this.addDishToMenu = function(dish) {
-    //Check if there is another dish of the same type
-    for(var i = 0; i < dishTypes.length; i++){
-      if(dish.type == dishTypes[i]){
-        var selectedDishOfType = this.getSelectedDish(dishTypes[i]);
-        if(selectedDishOfType != undefined){
-          this.removeDishFromMenu(selectedDishOfType.id);
-        }
-      }
-    }
     //Append newDish to selectedDishes
-    selectedDishes.push(newDish);
+    selectedDishes.push(dish);
   }
 
   var setTypeForDishes = function () {
