@@ -5,7 +5,7 @@
   <div class="jumbotron" id="no-margin">
     <div class="modal-body row">
       <div class="col-md-6">
-        <h2 style="margin-top:0">My Dinner: <span id="numberOfGuests"></span> people</h2>
+        <h2 style="margin-top:0">My Dinner: {{getNumberOfGuests()}} people</h2>
       </div>
       <div class="col-md-6">
         <a ng-href="#/search">
@@ -24,11 +24,13 @@
 
     <div ng-repeat="dish in fullMenu" class="col-md-2 col-sm-2 frame noHilight">
       <div class="thumbnail">
-        {{dish.image}}
-        <img class="foodImage" src="dish.image">
+
+        <img class="foodImage" src="{{dish.image}}">
         <div class="caption">
           <h3>{{dish.name}}</h3>
-          <h3>Price: {{dishPrice(dish.id)}} SEK</h3>
+          <h3>
+            Price: {{dish.pricePerServing * getNumberOfGuests() | number: 1}} SEK
+          </h3>
         </div>
       </div>
     </div>

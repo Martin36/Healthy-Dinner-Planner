@@ -36,6 +36,10 @@ dinnerPlannerApp.controller('DinnerCtrl', function ($scope,Dinner) {
     Dinner.removeDishFromMenu(id);
   }
 
+  $scope.getFullMenu = function() {
+    return Dinner.getFullMenu();
+  }
+
   //$scope.selectedDish = Dinner.getSelectedDish();
   //console.log($scope.selectedDish);
   $scope.convertFloat = function(float){
