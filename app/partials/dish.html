@@ -18,10 +18,12 @@
           <div class="caption">
             <!--Model has no description of dishes-->
           </div>
-          <button type="button" class="btn btn-info" id="backButton">
-            <span class="glyphicon glyphicon-chevron-left"></span>
-            Back to Select Dish
+          <a href="#/search">
+            <button type="button" class="btn btn-info" id="backButton">
+              <span class="glyphicon glyphicon-chevron-left"></span>
+              Back to Select Dish
             </button>
+          </a>
         </div>
         <div class="col-md-12" id="preparations">
           <h1>Preparations</h1>
@@ -51,7 +53,7 @@
         <hr>
         <div class="row">
           <div class="col-md-4">
-            <button type="button" class="btn btn-success">
+            <button ng-click="addDishToMenu()" type="button" class="btn btn-success">
           <span class="glyphicon glyphicon-ok"></span>
           Confirm Dish</button>
           </div>
