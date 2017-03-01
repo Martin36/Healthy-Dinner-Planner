@@ -11,7 +11,7 @@
       <!--Meal with more info and back button-->
       <div class="col-md-4 col-sm-4 frame noHilight">
         <div class="thumbnail noBorder">
-          <h3>{{selectedDish.name}}</h3>
+          <h3>{{selectedDish.title}}</h3>
           <div class="cropper">
             <img src="{{selectedDish.image}}" alt="IceCream">
           </div>
@@ -25,7 +25,7 @@
         </div>
         <div class="col-md-12" id="preparations">
           <h1>Preparations</h1>
-          <p>{{selectedDish.preparations}}</p>
+          <p>{{selectedDish.instructions}}</p>
         </div>
       </div>
 
@@ -37,11 +37,13 @@
           <div id="ingredients">
             <div class="row" ng-repeat="ingredient in selectedDish.extendedIngredients">
               <div class="col-md-3 space">
-                {{piecePrice(ingredient.amount)}} {{ingredient.unit}}
+                {{ingredient.amount * getNumberOfGuests()}} {{ingredient.unit}}
               </div>
               <div class="col-md-5 space"> {{ingredient.name}} </div>
               <div class="col-md-4 space">
-                <p class="alignRight"> SEK {{piecePrice(ingredient.amount)}}
+                <p class="alignRight"> SEK {{
+                  (selectedDish.pricePerServing / selectedDish.extendedIngredients.length)
+                  * getNumberOfGuests() | number:1}}
             </div>
           </div>
         </div>
@@ -55,7 +57,9 @@
           </div>
           <div class="col-md-4"></div>
           <div class="col-md-4">
-            <p class="alignRight" style="padding-top: 20px;">SEK {{dishPrice(selectedDish.id)}}</p>
+            <p class="alignRight" style="padding-top: 20px;">
+              SEK {{selectedDish.pricePerServing * getNumberOfGuests()}}
+            </p>
           </div>
         </div>
       </div>

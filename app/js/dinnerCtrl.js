@@ -41,7 +41,9 @@ dinnerPlannerApp.controller('DinnerCtrl', function ($scope,Dinner) {
     return parseFloat(float).toFixed(1);
   }
 
+/*
   $scope.piecePrice = function(amount){
     return parseFloat(float).toFixed(1) * $scope.numberOfGuests;
   }
+*/
 });
