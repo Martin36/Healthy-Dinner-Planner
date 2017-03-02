@@ -25,7 +25,7 @@ not support it in free version) and list all the dishes that match the search. -
 
         <!--Dish type drop down-->
         <div class="col-md-2">
-          <select class="specialButton" name="dishType"
+          <select class="dropdown" name="dishType"
             ng-init="type = types[0]" ng-model="type"
             ng-change="search(query, type)" ng-options="type for type in types">
           </select>
