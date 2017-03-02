@@ -41,6 +41,10 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
     return dishes;
   }
 
+  this.getTypes = function() {
+    return dishTypes;
+  }
+
   this.setNumberOfGuests = function(num) {
       numberOfGuests = (num <= 0) ? 0 : num;
   }

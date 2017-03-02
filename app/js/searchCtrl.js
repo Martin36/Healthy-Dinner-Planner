@@ -6,6 +6,7 @@ dinnerPlannerApp.controller('SearchCtrl', function ($scope,Dinner) {
   // including the case while the search is still running.
   $scope.showSearch = false;
   $scope.dishes = Dinner.getDishes();
+  $scope.types = Dinner.getTypes();
 
   $scope.getDishes = function() {
     return Dinner.getDishes();
