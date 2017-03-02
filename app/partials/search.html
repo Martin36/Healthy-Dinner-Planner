@@ -46,17 +46,21 @@ not support it in free version) and list all the dishes that match the search. -
 
     <div class="col-md-12">
       <!--Meals-->
-      <div ng-repeat="dish in dishes" class="col-md-2 frame">
-        <div class="thumbnail fixedHeight">
-          <a ng-href="#/dish/{{dish.id}}">
-            <img src="https://spoonacular.com/recipeImages/{{dish.image}}" style="width: 100%"/>
-            <div class="caption">
-              <h4>{{dish.title}}</h4>
-            </div>
-          </a>
+      <span ng-repeat="dish in dishes">
+        <div class="col-md-2 frame">
+          <div class="thumbnail fixedHeight">
+            <a ng-href="#/dish/{{dish.id}}">
+              <img src="https://spoonacular.com/recipeImages/{{dish.image}}" style="width: 100%"/>
+              <div class="caption">
+                <h4>{{dish.title + ($index + 1) % 5}}</h4>
+              </div>
+            </a>
+          </div>
         </div>
-      </div>
-      <div ng-if="true"  class="clearfix visible-md visible-lg"></div>
+        <div ng-if="($index + 1)%5==0" class="clearfix visible-md visible-lg"></div>
+      </span>
+
+
     </div>
     <!--Dishes end-->
   </div>
