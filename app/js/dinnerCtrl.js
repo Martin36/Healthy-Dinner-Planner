@@ -9,10 +9,6 @@ dinnerPlannerApp.controller('DinnerCtrl', function ($scope,Dinner) {
   $scope.extraCols = 5 - $scope.fullMenu.length;
   $scope.selectedDishes = Dinner.getSelectedDishes();
 
-  $scope.deleteSidebarDishes = function(id) {
-    $scope.selectedDishes.splice(id,1);
-  }
-
   $scope.getSelectedDishes = function() {
     return Dinner.getSelectedDishes();
   }
@@ -42,9 +38,12 @@ dinnerPlannerApp.controller('DinnerCtrl', function ($scope,Dinner) {
   }
 
   $scope.removeDishFromMenu = function(dish) {
-    var index = $scope.selectedDishes.indexOf(dish);
-    $scope.selectedDishes.splice(index,1);
+//    var index = $scope.selectedDishes.indexOf(dish);
+//    $scope.selectedDishes.splice(index,1);
     Dinner.removeDishFromMenu(dish.id);
+    //WHY?
+    $scope.selectedDishes = Dinner.getSelectedDishes();
+
   }
 
   //$scope.selectedDish = Dinner.getSelectedDish();
