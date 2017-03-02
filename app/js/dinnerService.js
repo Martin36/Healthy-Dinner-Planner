@@ -100,10 +100,14 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
   }
 
   //Removes dish from menu
-  this.removeDishFromMenu = function(id) {
+  this.removeDishFromMenu = function(dish) {
+    var index = selectedDishes.indexOf(dish);
+    selectedDishes.splice(index,1);
+/*
       selectedDishes = $(selectedDishes).filter(function(index, dish) {
           return dish.id !== id;
       });
+*/
   }
 
   /*
