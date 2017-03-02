@@ -87,14 +87,6 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
 
 
   this.addDishToMenu = function(newDish) {
-    /*
-    for(var i = 0; i < selectedDishes.length; i++) {
-      if(selectedDishes[i].id == newDish.id) {
-        selectedDishes[i] = newDish;
-        return;
-      }
-    }
-    */
     //Append newDish to selectedDishes
     selectedDishes.push(newDish);
   }
@@ -103,46 +95,8 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
   this.removeDishFromMenu = function(dish) {
     var index = selectedDishes.indexOf(dish);
     selectedDishes.splice(index,1);
-/*
-      selectedDishes = $(selectedDishes).filter(function(index, dish) {
-          return dish.id !== id;
-      });
-*/
   }
 
-  /*
-  //Returns the total price of the menu (all the ingredients multiplied by number of guests).
-  this.getTotalMenuPrice = function() {
-      var totalCost = 0;
-      var nrGuests = this.getNumberOfGuests();
-      $.each(this.getAllIngredients(), function(index, ingredient) {
-          totalCost += ingredient.amount * numberOfGuests;
-      });
-      return totalCost.toFixed(1);
-  }
-  */
-
-  //Adds the passed dish to the menu. If the dish of that type already exists on the menu
-  //it is removed from the menu and the new one added.
-  /*
-  this.addDishToMenu = function(id) {
-    //Get the dish (in an array) with the specified id
-    var newDish = $(dishes).filter(function(index, dish) {
-        return dish.id == id;
-    })[0];
-    //Check if there is another dish of the same type
-    for(var i = 0; i < dishTypes.length; i++){
-      if(newDish.type == dishTypes[i]){
-        var selectedDishOfType = this.getSelectedDish(dishTypes[i]);
-        if(selectedDishOfType != undefined){
-          this.removeDishFromMenu(selectedDishOfType.id);
-        }
-      }
-    }
-    //Append newDish to selectedDishes
-    selectedDishes.push(newDish);
-  }
-  */
 
 
 
@@ -171,84 +125,11 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
 
 
 
-  //THIS IS NOT USED, LEL
-
-  //function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
-  //you can use the filter argument to filter out the dish by name or ingredient (use for search)
-  //if you don't pass any filter all the dishes will be returned
-  /*
-  function loadData(type, filter, cb, cbObj){
-    dataLoading = true;
-    if(request != undefined){
-      request.abort();
-    }
-    dishes = [];
-    var typeUrl;
-    if(filter != undefined){
-      typeUrl = defaultUrl + type + "," +filter ;
-      console.log(typeUrl);
-    }else{
-      typeUrl = defaultUrl + "," + type;
-    }
-    request = $.ajax( {
-      url: typeUrl,
-      headers: {
-        'X-Mashape-Key': 'Qu9grxVNWpmshA4Kl9pTwyiJxVGUp1lKzrZjsnghQMkFkfA4LB'
-      },
-      success: function(data) {
-        console.log(data);
-        dishes.push.apply(dishes, data.recipes);
-        console.log(dishes);
-        setTypeForDishes();
-        dataLoaded = true;
-        //When data is loaded call the callback function
-        cb.apply(cbObj, [dishes]);
-      },
-      error: function(data) {
-        //console.log(data)
-        cb.apply(cbObj, ["Dish not found"]);
-      }
-    });
-  }
-  */
-
-  // The database has pricePerServing
-  /*
-  //Function that returns price of selected dish of type
-  this.getDishPrice = function(id){
-    var totalPrice = 0;
-    var ingredients = this.getDish(id).extendedIngredients;
-    for(index in ingredients){
-      totalPrice += ingredients[index].amount;
-    }
-    return totalPrice.toFixed(1);
-  }
-  */
-
-  // Route params is used instead
-  /*
-  //Get and set function for inspectedDish
-  this.inspectedDish = function(id){
-    if(id == undefined)
-      return inspectedDish;
-    else {
-      inspectedDish = this.getDish(id);
-    }
-  }
-  */
 
   this.dataLoaded = function(){
     return dataLoaded;
   }
-/*
-  selectedDishes = [
-    {
-      name: "starter1",
-      type: "starter",
-      description: "aäpsofdjsöldgkjösldgkjhsöldfh",
-    }
-  ]
-*/
+
   // Angular service needs to return an object that has all the
   // methods created in it. You can consider that this is instead
   // of calling var model = new DinnerModel() we did in the previous labs
