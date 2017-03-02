@@ -25,10 +25,9 @@ not support it in free version) and list all the dishes that match the search. -
 
         <!--Dish type drop down-->
         <div class="col-md-2">
-          <select class="specialButton" ng-model="type" name="dishType" ng-change="search(query, type)">
-            <option value="starter">Starter</option>
-            <option value="main dish">Main</option>
-            <option value="dessert">Dessert</option>
+          <select class="dropdown" name="dishType"
+            ng-init="type = types[0]" ng-model="type"
+            ng-change="search(query, type)" ng-options="type for type in types">
           </select>
         </div>
       </div>
@@ -52,15 +51,13 @@ not support it in free version) and list all the dishes that match the search. -
             <a ng-href="#/dish/{{dish.id}}">
               <img src="https://spoonacular.com/recipeImages/{{dish.image}}" style="width: 100%"/>
               <div class="caption">
-                <h4>{{dish.title + ($index + 1) % 5}}</h4>
+                <h4>{{dish.title}}</h4>
               </div>
             </a>
           </div>
         </div>
         <div ng-if="($index + 1)%5==0" class="clearfix visible-md visible-lg"></div>
       </span>
-
-
     </div>
     <!--Dishes end-->
   </div>

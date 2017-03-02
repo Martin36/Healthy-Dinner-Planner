@@ -43,6 +43,10 @@ dinnerPlannerApp.factory('Dinner',function ($resource/*, $cookies*/) {
     return dishes;
   }
 
+  this.getTypes = function() {
+    return dishTypes;
+  }
+
   this.setNumberOfGuests = function(num) {
       numberOfGuests = (num <= 0) ? 0 : num;
       //$cookies.put(guests, numberOfGuests);
