@@ -263,6 +263,11 @@ button.circle {
   display: flex;
 }
 
+#preparationContainer img {
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
 @-webkit-keyframes backgroundScroll {
 from {background-position: 0 0;}
 to {background-position: -400px 0;}
