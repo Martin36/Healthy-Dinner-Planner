@@ -33,7 +33,6 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
     dishes = newDishes;
     //Set the type for the dishes
     dishes.forEach(function(dish){
-      console.log(dish);
       dish.type = type;
     });
   }
@@ -105,7 +104,6 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
     })[0];
     //Then set the type for the newDish dish
     newDish.type = dishObj.type;
-    console.log(newDish);
     //Append newDish to selectedDishes
     for(var i = 0; i <selectedDishes.length; i++){
       if(newDish.type == selectedDishes[i].type){
