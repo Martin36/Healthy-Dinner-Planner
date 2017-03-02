@@ -3,13 +3,15 @@
 // dependency on any service you need. Angular will insure that the
 // service is created first time it is needed and then just reuse it
 // the next time.
-dinnerPlannerApp.factory('Dinner',function ($resource) {
+dinnerPlannerApp.factory('Dinner',function ($resource/*, $cookies*/) {
 
+  //var numberOfGuests = ($cookies.get(guests) != undefined) ? $cookies.get(guests) : 2 ;
   var numberOfGuests = 2;
   var dishes = [];
+  //var selectedDishes = ($cookies.get(selectedDishesCookie) != undefined) ? $cookies.get(selectedDishesCookie) : [];
   var selectedDishes = [];
   var dishTypes = ["starter", "main dish", "dessert"];
-  //var defaultUrl = 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/random?limitLicense=false&number=3&tags=';
+
 
   this.DishSearch = $resource('https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search',{},{
     get: {
@@ -43,6 +45,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
 
   this.setNumberOfGuests = function(num) {
       numberOfGuests = (num <= 0) ? 0 : num;
+      //$cookies.put(guests, numberOfGuests);
   }
 
   // should return
@@ -94,6 +97,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
   this.removeDishFromMenu = function(dish) {
     var index = selectedDishes.indexOf(dish);
     selectedDishes.splice(index,1);
+    //$cookies.put(selectedDishesCookie, selectedDishes);
   }
 
   this.addDishToMenu = function(newDish) {
@@ -111,36 +115,8 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
       }
     }
     selectedDishes.push(newDish);
+    //$cookies.put(selectedDishesCookie, selectedDishes);
   }
-
-
-
-
-  var setTypeForDishes = function () {
-    //Set type for dish
-    $.each(dishes, function (index, dish) {
-
-      for (var i = 0; i < dish.dishTypes.length; i++) {
-        if (dishTypes.indexOf(dish.dishTypes[i]) > -1) {
-          dish.type = dish.dishTypes[i];
-          break;
-        } else if (dish.dishTypes[i] == "main course") {
-          //Convert to "main dish"
-          dish.type = "main dish";
-        }
-      }
-      //If there is no match
-      if (dish.type == undefined) {
-        dish.type = "main dish";
-      }
-
-     // console.log(dish.type);
-    })
-
-  }
-
-
-
 
   this.dataLoaded = function(){
     return dataLoaded;
