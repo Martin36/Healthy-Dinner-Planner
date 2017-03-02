@@ -20,7 +20,7 @@ dinnerPlannerApp.controller('SearchCtrl', function ($scope,Dinner) {
      //This will reset when we change view??
      $scope.dishes=data.results;
 
-     Dinner.setDishes($scope.dishes);
+     Dinner.setDishes($scope.dishes, type);
      $scope.showSearch = false;
    },function(data){
      $scope.status = "There was an error";

@@ -29,8 +29,13 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
   this.getDishes = function(){
     return dishes;
   }
-  this.setDishes = function(newDishes){
+  this.setDishes = function(newDishes, type){
     dishes = newDishes;
+    //Set the type for the dishes
+    dishes.forEach(function(dish){
+      console.log(dish);
+      dish.type = type;
+    });
   }
 
   this.getAllDishes = function() {
@@ -52,6 +57,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
           return dish.type == type;
       })[0];
   }
+
   this.getSelectedDishes = function() {
     return selectedDishes;
   }
@@ -85,16 +91,28 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
     return totalCost;
   }
 
-
-  this.addDishToMenu = function(newDish) {
-    //Append newDish to selectedDishes
-    selectedDishes.push(newDish);
-  }
-
   //Removes dish from menu
   this.removeDishFromMenu = function(dish) {
     var index = selectedDishes.indexOf(dish);
     selectedDishes.splice(index,1);
+  }
+
+  this.addDishToMenu = function(newDish) {
+    //Need to check the type for the newDish
+    //First find the object with the same id as the new one
+    var dishObj = dishes.filter(function(dish){
+      return dish.id == newDish.id
+    })[0];
+    //Then set the type for the newDish dish
+    newDish.type = dishObj.type;
+    console.log(newDish);
+    //Append newDish to selectedDishes
+    for(var i = 0; i <selectedDishes.length; i++){
+      if(newDish.type == selectedDishes[i].type){
+        this.removeDishFromMenu(selectedDishes[i]);
+      }
+    }
+    selectedDishes.push(newDish);
   }
 
 
