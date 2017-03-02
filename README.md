@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 #Healthy-Dinner-Planner
 =======
 Interaction Programing - Lab assignment - HTML
@@ -14,4 +14,4 @@ http://api.jquery.com/show/
 
 Visualizations:
 http://selection.datavisualization.ch/
->>>>>>> cb76afe293c4047532b7c9885126348716f5571d
+
