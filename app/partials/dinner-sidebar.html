@@ -1,4 +1,4 @@
-<!-- TODO in Lab 5: Display the items on the menu with cost for each -->
+           <!-- TODO in Lab 5: Display the items on the menu with cost for each -->
 <div class="col-md-2 border" id="sidebar">
   <h2>My Dinner</h2>
   <p>Number Of Guests: <span id="nrGuests"> {{getNumberOfGuests()}} </span>
@@ -16,17 +16,21 @@
 
   <!--This is filled with dishes via the view-->
   <!--Note: not allowed to use getSelectedDishes(), error when dish is removed-->
-  <div ng-repeat="dish in selectedDishes" class="well margin">
-    <div class="row">
-      <div class="col-md-8">{{dish.title}}</div>
-      <div class="col-md-4">{{dish.pricePerServing}} /each
-        <!--Button is only visible when we have it inside this col. Don't know why-->
-        <button ng-click="removeDishFromMenu(dish)" class="btn btn-danger circle" type="button">
-          <span class="glyphicon glyphicon-remove"></span>
-        </button>
+  <span >
+    <div ng-repeat="dish in selectedDishes" class="well margin">
+      <div class="row">
+        <div class="col-md-8">{{dish.title}}</div>
+        <div class="col-md-4">{{dish.pricePerServing}} /each
+          <button ng-click="removeDishFromMenu(dish)" class="btn btn-danger circle" type="button">
+            <span class="glyphicon glyphicon-remove"></span>
+          </button>
+        </div>
       </div>
     </div>
-  </div>
+    <div ng-if={{(#index + 1) % 5 == 0}} class="clearfix visible-md visible-lg"></div>
+    <!-- if ((i + 1) % 5 == 0) {
+     var clearFix = $("<div>").addClass("clearfix visible-md visible-lg"); -->
+  </span>
 
   <div class="row topMargin">
     <div class=" col-md-12">
