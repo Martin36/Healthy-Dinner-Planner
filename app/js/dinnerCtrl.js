@@ -38,11 +38,9 @@ dinnerPlannerApp.controller('DinnerCtrl', function ($scope,Dinner) {
   }
 
   $scope.removeDishFromMenu = function(dish) {
-//    var index = $scope.selectedDishes.indexOf(dish);
-//    $scope.selectedDishes.splice(index,1);
-    Dinner.removeDishFromMenu(dish.id);
+    Dinner.removeDishFromMenu(dish);
     //WHY?
-    $scope.selectedDishes = Dinner.getSelectedDishes();
+  //  $scope.selectedDishes = Dinner.getSelectedDishes();
 
   }
 
