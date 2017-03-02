@@ -34,11 +34,11 @@ dinnerPlannerApp.controller('DinnerCtrl', function ($scope,Dinner) {
   }
 
   $scope.incrementGuests = function() {
-    Dinner.setNumberOfGuests($scope.numberOfGuests++);
+    Dinner.setNumberOfGuests(++$scope.numberOfGuests);
   }
 
   $scope.decreaseGuests = function() {
-    Dinner.setNumberOfGuests($scope.numberOfGuests--);
+    Dinner.setNumberOfGuests(--$scope.numberOfGuests);
   }
 
   $scope.removeDishFromMenu = function(dish) {
