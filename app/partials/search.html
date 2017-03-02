@@ -46,7 +46,7 @@ not support it in free version) and list all the dishes that match the search. -
 
     <div class="col-md-12">
       <!--Meals-->
-      <div ng-repeat="dish in dishes" class="col-md-2 frame">
+      <div ng-repeat="dish in getDishes()" class="col-md-2 frame">
         <div class="thumbnail fixedHeight">
           <a ng-href="#/dish/{{dish.id}}">
             <img src="https://spoonacular.com/recipeImages/{{dish.image}}" style="width: 100%"/>

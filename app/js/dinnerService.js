@@ -31,12 +31,18 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
     }
   });
 
+  this.getDishes = function(){
+    return dishes;
+  }
+  this.setDishes = function(newDishes){
+    dishes = newDishes;
+  }
+
   this.getAllDishes = function() {
     return dishes;
   }
 
   this.setNumberOfGuests = function(num) {
-      //don't use this.numberOfGuests to access class variable
       numberOfGuests = (num <= 0) ? 0 : num;
   }
 
@@ -88,6 +94,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
 
   //Adds the passed dish to the menu. If the dish of that type already exists on the menu
   //it is removed from the menu and the new one added.
+  /*
   this.addDishToMenu = function(id) {
     //Get the dish (in an array) with the specified id
     var newDish = $(dishes).filter(function(index, dish) {
@@ -105,8 +112,10 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
     //Append newDish to selectedDishes
     selectedDishes.push(newDish);
   }
+  */
 
   this.addDishToMenu = function(dish) {
+
     //Append newDish to selectedDishes
     selectedDishes.push(dish);
   }
@@ -141,7 +150,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
       });
   }
 
-  //THIS IS NOT USED LEL
+  //THIS IS NOT USED, LEL
 
   //function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
   //you can use the filter argument to filter out the dish by name or ingredient (use for search)
@@ -182,6 +191,8 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
   }
   */
 
+  // The database has pricePerServing
+  /*
   //Function that returns price of selected dish of type
   this.getDishPrice = function(id){
     var totalPrice = 0;
@@ -191,7 +202,10 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
     }
     return totalPrice.toFixed(1);
   }
+  */
 
+  // Route params is used instead
+  /*
   //Get and set function for inspectedDish
   this.inspectedDish = function(id){
     if(id == undefined)
@@ -200,6 +214,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
       inspectedDish = this.getDish(id);
     }
   }
+  */
 
   this.dataLoaded = function(){
     return dataLoaded;
