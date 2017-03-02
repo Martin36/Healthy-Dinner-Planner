@@ -3,7 +3,7 @@
 // dependency on any service you need. Angular will insure that the
 // service is created first time it is needed and then just reuse it
 // the next time.
-dinnerPlannerApp.factory('Dinner',function ($resource/*, $cookies*/) {
+dinnerPlannerApp.factory('Dinner',function ($resource/*, $cookieStore*/) {
 
   //var numberOfGuests = ($cookies.get(guests) != undefined) ? $cookies.get(guests) : 2 ;
   var numberOfGuests = 2;
@@ -41,10 +41,6 @@ dinnerPlannerApp.factory('Dinner',function ($resource/*, $cookies*/) {
 
   this.getAllDishes = function() {
     return dishes;
-  }
-
-  this.getTypes = function() {
-    return dishTypes;
   }
 
   this.setNumberOfGuests = function(num) {
