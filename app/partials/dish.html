@@ -60,7 +60,7 @@
           <div class="col-md-4"></div>
           <div class="col-md-4">
             <p class="alignRight" style="padding-top: 20px;">
-              SEK {{selectedDish.pricePerServing * getNumberOfGuests()}}
+              SEK {{selectedDish.pricePerServing * getNumberOfGuests() | number: 1}}
             </p>
           </div>
         </div>

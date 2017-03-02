@@ -11,13 +11,15 @@ dinnerPlannerApp.controller('SearchCtrl', function ($scope,Dinner) {
   }
 
   $scope.search = function(query,type) {
-   //$scope.status = "Searching...";
-   Dinner.setDishes([]);
-   $scope.showSearch = true;
+    // Empty shown dishes list
+    Dinner.setDishes([]);
+    $scope.showSearch = true;
+
    Dinner.DishSearch.get({query:query,type:type},function(data){
+     //This will reset when we change view??
      $scope.dishes=data.results;
+
      Dinner.setDishes($scope.dishes);
-     //$scope.status = "Showing " + data.results.length + " results";
      $scope.showSearch = false;
    },function(data){
      $scope.status = "There was an error";

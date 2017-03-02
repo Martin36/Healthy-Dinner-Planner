@@ -6,15 +6,10 @@
 dinnerPlannerApp.factory('Dinner',function ($resource) {
 
   var numberOfGuests = 2;
-  var selectedDishes = [];
-  var observers = [];
-  var inspectedDish;
-  var dataLoaded = false;
-  var dataLoading = false;
-  var dishTypes = ["starter", "main dish", "dessert"];
   var dishes = [];
-  var defaultUrl = 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/random?limitLicense=false&number=3&tags=';
-  var request;
+  var selectedDishes = [];
+  var dishTypes = ["starter", "main dish", "dessert"];
+  //var defaultUrl = 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/random?limitLicense=false&number=3&tags=';
 
   this.DishSearch = $resource('https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search',{},{
     get: {
@@ -82,6 +77,36 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
       return ingredients;
   }
 
+  this.getTotalMenuPrice = function() {
+    totalCost = 0;
+    for(var i = 0; i < selectedDishes.length; i++) {
+      totalCost += selectedDishes[i].pricePerServing * numberOfGuests;
+    }
+    return totalCost;
+  }
+
+
+  this.addDishToMenu = function(newDish) {
+    /*
+    for(var i = 0; i < selectedDishes.length; i++) {
+      if(selectedDishes[i].id == newDish.id) {
+        selectedDishes[i] = newDish;
+        return;
+      }
+    }
+    */
+    //Append newDish to selectedDishes
+    selectedDishes.push(newDish);
+  }
+
+  //Removes dish from menu
+  this.removeDishFromMenu = function(id) {
+      selectedDishes = $(selectedDishes).filter(function(index, dish) {
+          return dish.id !== id;
+      });
+  }
+
+  /*
   //Returns the total price of the menu (all the ingredients multiplied by number of guests).
   this.getTotalMenuPrice = function() {
       var totalCost = 0;
@@ -91,6 +116,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
       });
       return totalCost.toFixed(1);
   }
+  */
 
   //Adds the passed dish to the menu. If the dish of that type already exists on the menu
   //it is removed from the menu and the new one added.
@@ -114,11 +140,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
   }
   */
 
-  this.addDishToMenu = function(dish) {
 
-    //Append newDish to selectedDishes
-    selectedDishes.push(dish);
-  }
 
   var setTypeForDishes = function () {
     //Set type for dish
@@ -143,12 +165,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
 
   }
 
-  //Removes dish from menu
-  this.removeDishFromMenu = function(id) {
-      selectedDishes = $(selectedDishes).filter(function(index, dish) {
-          return dish.id !== id;
-      });
-  }
+
 
   //THIS IS NOT USED, LEL
 

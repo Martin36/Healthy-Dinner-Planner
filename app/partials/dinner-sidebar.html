@@ -1,7 +1,7 @@
 <!-- TODO in Lab 5: Display the items on the menu with cost for each -->
 <div class="col-md-2 border" id="sidebar">
   <h2>My Dinner</h2>
-  <p>Number Of Guests: <span id="nrGuests"> {{numberOfGuests}} </span>
+  <p>Number Of Guests: <span id="nrGuests"> {{getNumberOfGuests()}} </span>
     <div>
       <button ng-click="decreaseGuests()" class="btn"><span class="glyphicon glyphicon-minus"></span></button>
       <button ng-click="incrementGuests()" class="btn"><span class="glyphicon glyphicon-plus"></span></button>
@@ -15,12 +15,13 @@
   </div>
 
   <!--This is filled with dishes via the view-->
-  <div ng-repeat="dish in getSelectedDishes()" class="well margin">
+  <!--Note: not allowed to use getSelectedDishes(), error when dish is removed-->
+  <div ng-repeat="dish in selectedDishes" class="well margin">
     <div class="row">
       <div class="col-md-8">{{dish.title}}</div>
       <div class="col-md-4">{{dish.pricePerServing}} /each
         <!--Button is only visible when we have it inside this col. Don't know why-->
-        <button ng-click="printId(dish.id)" class="btn btn-danger circle" type="button">
+        <button ng-click="removeDishFromMenu(dish)" class="btn btn-danger circle" type="button">
           <span class="glyphicon glyphicon-remove"></span>
         </button>
       </div>
@@ -30,13 +31,13 @@
   <div class="row topMargin">
     <div class=" col-md-12">
       <p class="alignLeft">Pending</p>
-      <p class="alignRight">{{totalMenuPrice}}</p>
+      <p class="alignRight">{{getTotalMenuPrice() | number: 1}}</p>
     </div>
   </div>
   <hr>
   <div class="row topMargin">
     <div class="col-md-12 ">
-      <p class="alignRight">SEK {{totalMenuPrice}}</p>
+      <p class="alignRight">SEK {{getTotalMenuPrice() | number: 1}}</p>
     </div>
   </div>
   <a ng-href="#/dinnerOverview">
