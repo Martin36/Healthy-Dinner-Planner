@@ -3,10 +3,9 @@
 // dependency on any service you need. Angular will insure that the
 // service is created first time it is needed and then just reuse it
 // the next time.
-dinnerPlannerApp.factory('Dinner',function ($resource/*, $cookieStore*/) {
+dinnerPlannerApp.factory('Dinner', function ($resource, $cookieStore) {
 
-  //var numberOfGuests = ($cookies.get(guests) != undefined) ? $cookies.get(guests) : 2 ;
-  var numberOfGuests = 2;
+  var numberOfGuests = ($cookieStore.get("nrGuests") != undefined) ? $cookieStore.get("nrGuests") : 2 ;
   var dishes = [];
   //var selectedDishes = ($cookies.get(selectedDishesCookie) != undefined) ? $cookies.get(selectedDishesCookie) : [];
   var selectedDishes = [];
@@ -45,12 +44,12 @@ dinnerPlannerApp.factory('Dinner',function ($resource/*, $cookieStore*/) {
 
   this.setNumberOfGuests = function(num) {
       numberOfGuests = (num <= 0) ? 0 : num;
-      //$cookies.put(guests, numberOfGuests);
+      $cookieStore.put("nrGuests", numberOfGuests);
   }
 
   // should return
   this.getNumberOfGuests = function() {
-      return numberOfGuests;
+      return $cookieStore.get("nrGuests");
   }
 
   //Returns the dish that is on the menu for selected type
@@ -72,6 +71,8 @@ dinnerPlannerApp.factory('Dinner',function ($resource/*, $cookieStore*/) {
       })
 
       return array;
+      //return $cookieStore.get("selectedDishes");
+
   }
 
   //Returns all ingredients for all the dishes on the menu.
@@ -91,6 +92,10 @@ dinnerPlannerApp.factory('Dinner',function ($resource/*, $cookieStore*/) {
       totalCost += selectedDishes[i].pricePerServing * numberOfGuests;
     }
     return totalCost;
+  }
+
+  this.getTypes = function() {
+    return dishTypes;
   }
 
   //Removes dish from menu
@@ -115,6 +120,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource/*, $cookieStore*/) {
       }
     }
     selectedDishes.push(newDish);
+    //$cookieStore.put("selectedDishes", selectedDishes);
     //$cookies.put(selectedDishesCookie, selectedDishes);
   }
 
