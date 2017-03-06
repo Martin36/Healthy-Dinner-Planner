@@ -5,6 +5,7 @@ dinnerPlannerApp.controller('SearchCtrl', function ($scope,Dinner) {
   // TODO in Lab 5: you will need to implement a method that searchers for dishes
   // including the case while the search is still running.
   $scope.showSearch = false;
+  $scope.loadingFailed = false;
   $scope.dishes = Dinner.getDishes();
   $scope.types = Dinner.getTypes();
 
@@ -20,11 +21,16 @@ dinnerPlannerApp.controller('SearchCtrl', function ($scope,Dinner) {
    Dinner.DishSearch.get({query:query,type:type},function(data){
      //This will reset when we change view??
      $scope.dishes=data.results;
-
+     $scope.loadingFailed = false;
      Dinner.setDishes($scope.dishes, type);
      $scope.showSearch = false;
    },function(data){
+     Dinner.setDishes([]);
+     $scope.dishes = Dinner.getDishes();
      $scope.status = "There was an error";
+     console.log($scope.status);
+     $scope.showSearch = false;
+     $scope.loadingFailed = true;
    });
   }
 });

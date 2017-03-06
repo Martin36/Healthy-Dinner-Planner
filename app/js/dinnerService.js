@@ -23,13 +23,13 @@ dinnerPlannerApp.factory('Dinner', function ($resource, $cookieStore) {
     return newSelectedDishes;
   }
 
+
   var numberOfGuests = ($cookieStore.get("nrGuests") != undefined) ? $cookieStore.get("nrGuests") : 2 ;
   var dishes = [];
   // Only save the id's of the selectedDishes as cookies
   var dishTypes = ["starter", "main dish", "dessert"];
   var selectedDishes = ($cookieStore.get("selDishes") != undefined) ? this.getDishesFromCookies() : [];
   var selectedDishesIds = ($cookieStore.get("selDishes") != undefined) ? $cookieStore.get("selDishes") : [];
-
 
   this.DishSearch = $resource('https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search',{},{
     get: {
@@ -38,7 +38,6 @@ dinnerPlannerApp.factory('Dinner', function ($resource, $cookieStore) {
       }
     }
   });
-
 
   this.getDishes = function(){
     return dishes;
@@ -127,7 +126,7 @@ dinnerPlannerApp.factory('Dinner', function ($resource, $cookieStore) {
       return dish.id == newDish.id
     })[0];
     //Then set the type for the newDish dish
-    newDish.type = dishObj.type;
+    newDish.type = newDish.dishTypes[0];
     //Append newDish to selectedDishes
     for(var i = 0; i <selectedDishes.length; i++){
       if(newDish.type == selectedDishes[i].type){

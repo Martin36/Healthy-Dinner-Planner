@@ -39,7 +39,7 @@ not support it in free version) and list all the dishes that match the search. -
 
     <div ng-show="showSearch" class="loader"></div>
 
-    <div id="dishNotFound" style="text-align:center; display:none">
+    <div ng-show="loadingFailed" id="dishNotFound" style="text-align:center;">
       <h1> Could not find the dish!</h1>
     </div>
 
