@@ -5,11 +5,31 @@
 // the next time.
 dinnerPlannerApp.factory('Dinner', function ($resource, $cookieStore) {
 
+  this.Dish = $resource('https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/:id/information',{},{
+    get: {
+      headers: {
+         'X-Mashape-Key': 'Qu9grxVNWpmshA4Kl9pTwyiJxVGUp1lKzrZjsnghQMkFkfA4LB'
+      }
+    }
+  });
+
+  this.getDishesFromCookies = function(){
+    selectedDishesIds = $cookieStore.get("selDishes");
+    var newSelectedDishes = [];
+    for(var i = 0; i < selectedDishesIds.length; i++){
+      var dish = this.Dish.get({id:selectedDishesIds[i]});
+      newSelectedDishes.push(dish);
+    }
+    return newSelectedDishes;
+  }
+
   var numberOfGuests = ($cookieStore.get("nrGuests") != undefined) ? $cookieStore.get("nrGuests") : 2 ;
   var dishes = [];
   // Only save the id's of the selectedDishes as cookies
   var dishTypes = ["starter", "main dish", "dessert"];
-  var selectedDishesId = ($cookieStore.get("selDishes") != undefined) ? $cookieStore.get("selDishes") : [];
+  var selectedDishes = ($cookieStore.get("selDishes") != undefined) ? this.getDishesFromCookies() : [];
+  var selectedDishesIds = ($cookieStore.get("selDishes") != undefined) ? $cookieStore.get("selDishes") : [];
+
 
   this.DishSearch = $resource('https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search',{},{
     get: {
@@ -18,13 +38,7 @@ dinnerPlannerApp.factory('Dinner', function ($resource, $cookieStore) {
       }
     }
   });
-  this.Dish = $resource('https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/:id/information',{},{
-    get: {
-      headers: {
-         'X-Mashape-Key': 'Qu9grxVNWpmshA4Kl9pTwyiJxVGUp1lKzrZjsnghQMkFkfA4LB'
-      }
-    }
-  });
+
 
   this.getDishes = function(){
     return dishes;
@@ -101,6 +115,8 @@ dinnerPlannerApp.factory('Dinner', function ($resource, $cookieStore) {
   this.removeDishFromMenu = function(dish) {
     var index = selectedDishes.indexOf(dish);
     selectedDishes.splice(index,1);
+    selectedDishesIds.splice(index,1);
+    $cookieStore.put("selDishes", selectedDishesIds);
     //$cookies.put(selectedDishesCookie, selectedDishes);
   }
 
@@ -119,7 +135,8 @@ dinnerPlannerApp.factory('Dinner', function ($resource, $cookieStore) {
       }
     }
     selectedDishes.push(newDish);
-    $cookieStore.put("selDishes", selectedDishes);
+    selectedDishesIds.push(newDish.id);
+    $cookieStore.put("selDishes", selectedDishesIds);
   }
 
   this.dataLoaded = function(){
