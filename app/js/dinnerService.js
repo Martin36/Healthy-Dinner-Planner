@@ -7,10 +7,9 @@ dinnerPlannerApp.factory('Dinner', function ($resource, $cookieStore) {
 
   var numberOfGuests = ($cookieStore.get("nrGuests") != undefined) ? $cookieStore.get("nrGuests") : 2 ;
   var dishes = [];
-  //var selectedDishes = ($cookies.get(selectedDishesCookie) != undefined) ? $cookies.get(selectedDishesCookie) : [];
-  var selectedDishes = [];
+  // Only save the id's of the selectedDishes as cookies
   var dishTypes = ["starter", "main dish", "dessert"];
-
+  var selectedDishesId = ($cookieStore.get("selDishes") != undefined) ? $cookieStore.get("selDishes") : [];
 
   this.DishSearch = $resource('https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search',{},{
     get: {
@@ -30,6 +29,7 @@ dinnerPlannerApp.factory('Dinner', function ($resource, $cookieStore) {
   this.getDishes = function(){
     return dishes;
   }
+
   this.setDishes = function(newDishes, type){
     dishes = newDishes;
     //Set the type for the dishes
@@ -44,12 +44,13 @@ dinnerPlannerApp.factory('Dinner', function ($resource, $cookieStore) {
 
   this.setNumberOfGuests = function(num) {
       numberOfGuests = (num <= 0) ? 0 : num;
+      //Save number of guests as a cookie
       $cookieStore.put("nrGuests", numberOfGuests);
   }
 
   // should return
   this.getNumberOfGuests = function() {
-      return $cookieStore.get("nrGuests");
+    return numberOfGuests;
   }
 
   //Returns the dish that is on the menu for selected type
@@ -71,8 +72,6 @@ dinnerPlannerApp.factory('Dinner', function ($resource, $cookieStore) {
       })
 
       return array;
-      //return $cookieStore.get("selectedDishes");
-
   }
 
   //Returns all ingredients for all the dishes on the menu.
@@ -120,8 +119,7 @@ dinnerPlannerApp.factory('Dinner', function ($resource, $cookieStore) {
       }
     }
     selectedDishes.push(newDish);
-    //$cookieStore.put("selectedDishes", selectedDishes);
-    //$cookies.put(selectedDishesCookie, selectedDishes);
+    $cookieStore.put("selDishes", selectedDishes);
   }
 
   this.dataLoaded = function(){
